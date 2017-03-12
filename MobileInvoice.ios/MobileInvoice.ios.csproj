@@ -70,7 +70,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: zjding@outlook.com (MXXU27ZFBP)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -83,6 +83,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>17088826-e625-4e71-a287-367b1ba20d7b</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -100,6 +101,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Images\" />
+    <Folder Include="Components\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -112,14 +115,25 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="FirstViewController.cs" />
-    <Compile Include="SecondViewController.cs" />
-    <Compile Include="FirstViewController.designer.cs">
-      <DependentUpon>FirstViewController.cs</DependentUpon>
+    <Compile Include="Components\RaisedTabBarController.cs" />
+    <Compile Include="InvoiceTabBarController.cs" />
+    <Compile Include="InvoiceTabBarController.designer.cs">
+      <DependentUpon>InvoiceTabBarController.cs</DependentUpon>
     </Compile>
-    <Compile Include="SecondViewController.designer.cs">
-      <DependentUpon>SecondViewController.cs</DependentUpon>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Bar Chart-50.png" />
+    <BundleResource Include="Images\Bar Chart-30.png" />
+    <BundleResource Include="Images\Bar Chart-25.png" />
+    <BundleResource Include="Images\Positive Dynamic-50.png" />
+    <BundleResource Include="Images\Positive Dynamic-25.png" />
+    <BundleResource Include="Images\To Do-50.png" />
+    <BundleResource Include="Images\To Do-25.png" />
+    <BundleResource Include="Images\Check File-50.png" />
+    <BundleResource Include="Images\Check File-25.png" />
+    <BundleResource Include="Images\Settings-50.png" />
+    <BundleResource Include="Images\Settings-25.png" />
+    <BundleResource Include="Images\Add-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

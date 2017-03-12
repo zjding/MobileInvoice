@@ -18,8 +18,17 @@ namespace MobileInvoice.ios
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
+
+
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes()
+			{
+				Font = UIFont.FromName("Avenir Next", 15)
+				//TextColor = UIColor.White
+			}, UIControlState.Normal);
+
+
 
 			return true;
 		}
