@@ -98,11 +98,19 @@
     <ImageAsset Include="Assets.xcassets\Second.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Second.imageset\vector.pdf" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%4029w.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%4058w.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%4087w.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%4080w.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%40120w.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%40180w.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Images\" />
     <Folder Include="Components\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Cell\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -116,9 +124,21 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Components\RaisedTabBarController.cs" />
-    <Compile Include="InvoiceTabBarController.cs" />
-    <Compile Include="InvoiceTabBarController.designer.cs">
+    <Compile Include="Controller\InvoiceTabBarController.cs" />
+    <Compile Include="Controller\InvoiceTabBarController.designer.cs">
       <DependentUpon>InvoiceTabBarController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\InvoiceViewController.cs" />
+    <Compile Include="Controller\InvoiceViewController.designer.cs">
+      <DependentUpon>InvoiceViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\InvoiceViewNavigationController.cs" />
+    <Compile Include="Controller\InvoiceViewNavigationController.designer.cs">
+      <DependentUpon>InvoiceViewNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceDateCell.cs" />
+    <Compile Include="Cell\InvoiceDateCell.designer.cs">
+      <DependentUpon>InvoiceDateCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +154,11 @@
     <BundleResource Include="Images\Settings-50.png" />
     <BundleResource Include="Images\Settings-25.png" />
     <BundleResource Include="Images\Add-50.png" />
+    <BundleResource Include="Images\Left-64.png" />
+    <BundleResource Include="Images\Left-32.png" />
+    <BundleResource Include="Images\Left-25.png" />
+    <BundleResource Include="Images\Calendar-25.png" />
+    <BundleResource Include="Images\Client-25.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -26,7 +26,18 @@ namespace MobileInvoice.ios
 			UIAlertController actionSheetAlert = UIAlertController.Create("Create a new item", "Select an type from below", UIAlertControllerStyle.ActionSheet);
 
 			// Add Actions
-			actionSheetAlert.AddAction(UIAlertAction.Create("New Invoice", UIAlertActionStyle.Default, (action) => Console.WriteLine("Item One pressed.")));
+			actionSheetAlert.AddAction(UIAlertAction.Create("New Invoice", UIAlertActionStyle.Default, (action) => {
+				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
+				//InvoiceViewController invoiceVC = (InvoiceViewController)storyBoard.InstantiateViewController("estimationVC");r
+				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+				//this.PresentViewController(invoiceVC, true, null);
+
+				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+				this.PresentViewController(invoiceViewNavigationController, true, null);
+
+				//InvoiceViewController estimationVC = new InvoiceViewController();			
+				//this.PresentViewController(estimationVC, true, null);
+			}));
 
 
 
@@ -37,8 +48,8 @@ namespace MobileInvoice.ios
 				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
 				//this.PresentViewController(invoiceVC, true, null);
 
-				UINavigationController invoiceNavigationVC = (UINavigationController)storyBoard.InstantiateViewController("invoiceNavigationVC");
-				this.PresentViewController(invoiceNavigationVC, true, null);
+				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+				this.PresentViewController(invoiceViewNavigationController, true, null);
 
 				//InvoiceViewController estimationVC = new InvoiceViewController();			
 				//this.PresentViewController(estimationVC, true, null);
