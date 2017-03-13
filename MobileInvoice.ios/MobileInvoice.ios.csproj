@@ -140,6 +140,10 @@
     <Compile Include="Cell\InvoiceDateCell.designer.cs">
       <DependentUpon>InvoiceDateCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cell\InvoiceClientNameCell.cs" />
+    <Compile Include="Cell\InvoiceClientNameCell.designer.cs">
+      <DependentUpon>InvoiceClientNameCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />

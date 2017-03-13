@@ -250,84 +250,48 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="379" accessoryType="disclosureIndicator">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="379" accessoryType="disclosureIndicator" customClass="InvoiceClientNameCell" reuseIdentifier="InvoiceClientNameCellIdentifier">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="379" id="380">
                                     <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="407" translatesAutoresizingMaskIntoConstraints="NO">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="480" translatesAutoresizingMaskIntoConstraints="NO" image="Images/Client-25.png">
                                             <rect key="frame" x="20" y="9" width="25" height="25"/>
-                                            <variation key="heightClass=regular-widthClass=compact" image="Images/Client-25.png">
-                                                <mask key="constraints">
-                                                    <include reference="421"/>
-                                                    <include reference="422"/>
-                                                </mask>
-                                            </variation>
                                             <constraints>
-                                                <constraint id="421" firstItem="407" firstAttribute="height" constant="25"/>
-                                                <constraint id="422" firstItem="407" firstAttribute="width" constant="25"/>
+                                                <constraint id="485" firstItem="480" firstAttribute="height" constant="25"/>
+                                                <constraint id="486" firstItem="480" firstAttribute="width" constant="25"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="421"/>
-                                                    <exclude reference="422"/>
-                                                </mask>
-                                            </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jason Ding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="408" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="65" y="11" width="200" height="21"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="481" translatesAutoresizingMaskIntoConstraints="NO" text="Jason Ding">
+                                            <rect key="frame" x="65" y="4" width="223" height="21"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                             <constraints>
-                                                <constraint id="425" firstItem="408" firstAttribute="height" constant="21"/>
-                                                <constraint id="426" firstItem="408" firstAttribute="width" constant="200"/>
+                                                <constraint id="489" firstItem="481" firstAttribute="height" constant="21"/>
+                                                <constraint id="490" firstItem="481" firstAttribute="width" constant="223"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="425"/>
-                                                    <exclude reference="426"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="constraints">
-                                                    <include reference="425"/>
-                                                    <include reference="426"/>
-                                                </mask>
-                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1642 Crossgate Dr., Vestavia AL 35216" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="482" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="65" y="26" width="311" height="14"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                            <constraints>
+                                                <constraint id="494" firstItem="482" firstAttribute="height" constant="14"/>
+                                            </constraints>
                                         </label>
                                     </subviews>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="407"/>
-                                            <exclude reference="408"/>
-                                        </mask>
-                                        <mask key="constraints">
-                                            <exclude reference="419"/>
-                                            <exclude reference="420"/>
-                                            <exclude reference="423"/>
-                                            <exclude reference="424"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="heightClass=regular-widthClass=compact">
-                                        <mask key="subviews">
-                                            <include reference="407"/>
-                                            <include reference="408"/>
-                                        </mask>
-                                        <mask key="constraints">
-                                            <include reference="419"/>
-                                            <include reference="420"/>
-                                            <include reference="423"/>
-                                            <include reference="424"/>
-                                        </mask>
-                                    </variation>
                                     <constraints>
-                                        <constraint id="419" firstItem="407" firstAttribute="leading" secondItem="380" secondAttribute="leading" constant="20"/>
-                                        <constraint id="420" firstItem="407" firstAttribute="centerY" secondItem="380" secondAttribute="centerY"/>
-                                        <constraint id="423" firstItem="408" firstAttribute="leading" secondItem="380" secondAttribute="leading" constant="65"/>
-                                        <constraint id="424" firstItem="408" firstAttribute="centerY" secondItem="380" secondAttribute="centerY"/>
+                                        <constraint id="483" firstItem="480" firstAttribute="leading" secondItem="380" secondAttribute="leading" constant="20"/>
+                                        <constraint id="484" firstItem="480" firstAttribute="centerY" secondItem="380" secondAttribute="centerY"/>
+                                        <constraint id="487" firstItem="481" firstAttribute="leading" secondItem="380" secondAttribute="leading" constant="65"/>
+                                        <constraint id="488" firstItem="481" firstAttribute="top" secondItem="380" secondAttribute="top" constant="5"/>
+                                        <constraint id="491" firstItem="482" firstAttribute="leading" secondItem="380" secondAttribute="leading" constant="65"/>
+                                        <constraint id="492" firstItem="482" firstAttribute="trailing" secondItem="380" secondAttribute="trailing"/>
+                                        <constraint id="493" firstItem="482" firstAttribute="top" secondItem="380" secondAttribute="top" constant="26"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

@@ -24,8 +24,8 @@ namespace MobileInvoice.ios
 		{
 			if (section == 0)
 				return " ";
-			//if (section == 1)
-			//	return "Client";
+			if (section == 1)
+				return " ";
 			if (section == 2)
 				return "Items";
 
@@ -46,12 +46,14 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 1;
+			return 2;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
 			if (section == 0)
+				return 1;
+			else if (section == 1)
 				return 1;
 
 			return 0;
@@ -59,15 +61,25 @@ namespace MobileInvoice.ios
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			//if (indexPath.Section == 0)
-			//{
+			if (indexPath.Section == 0)
+			{
 				InvoiceDateCell cell = this.TableView.DequeueReusableCell("InvoiceDateCellIdentifier") as InvoiceDateCell;
 
 				//cell.TextLabel.Text = "Client";
 				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
 
 				return cell;
-			//}
+			}
+			else
+			{
+				InvoiceClientNameCell cell = this.TableView.DequeueReusableCell("InvoiceClientNameCellIdentifier") as InvoiceClientNameCell;
+
+				//cell.TextLabel.Text = "Client";
+				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
+
+				return cell;
+
+			}
 		}
     }
 }
