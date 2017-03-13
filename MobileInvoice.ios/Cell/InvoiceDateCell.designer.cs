@@ -14,8 +14,33 @@ namespace MobileInvoice.ios
     [Register ("InvoiceDateCell")]
     partial class InvoiceDateCell
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDueTerm { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnIssueDate { get; set; }
+
+        [Action ("btnDueTerm_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnDueTerm_UpInside (UIKit.UIButton sender);
+
+        [Action ("btnIssueDate_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnIssueDate_UpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (btnDueTerm != null) {
+                btnDueTerm.Dispose ();
+                btnDueTerm = null;
+            }
+
+            if (btnIssueDate != null) {
+                btnIssueDate.Dispose ();
+                btnIssueDate = null;
+            }
         }
     }
 }

@@ -224,16 +224,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 11, 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="454" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="65" y="11" width="120" height="21"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <constraints>
-                                                <constraint id="462" firstItem="454" firstAttribute="height" constant="21"/>
-                                                <constraint id="463" firstItem="454" firstAttribute="width" constant="120"/>
-                                            </constraints>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="455" translatesAutoresizingMaskIntoConstraints="NO" image="Images/Calendar-25.png">
                                             <rect key="frame" x="20" y="9" width="25" height="25"/>
                                             <constraints>
@@ -241,14 +231,50 @@
                                                 <constraint id="459" firstItem="455" firstAttribute="width" constant="25"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="508" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="65" y="7" width="140" height="30"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                            <state key="normal" title="March 12, 2017">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="btnIssueDate_UpInside:" destination="367" id="509" eventType="touchUpInside"/>
+                                            </connections>
+                                            <constraints>
+                                                <constraint id="518" firstItem="508" firstAttribute="height" constant="30"/>
+                                                <constraint id="519" firstItem="508" firstAttribute="width" constant="140"/>
+                                            </constraints>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="520" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="255" y="7" width="139" height="30"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                            <state key="normal" title="Due in 30 days">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                            </state>
+                                            <constraints>
+                                                <constraint id="523" firstItem="520" firstAttribute="height" constant="30"/>
+                                                <constraint id="524" firstItem="520" firstAttribute="width" constant="139"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="btnDueTerm_UpInside:" destination="367" id="525" eventType="touchUpInside"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint id="456" firstItem="455" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="20"/>
                                         <constraint id="457" firstItem="455" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
-                                        <constraint id="460" firstItem="454" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="65"/>
-                                        <constraint id="461" firstItem="454" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
+                                        <constraint id="516" firstItem="508" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="65"/>
+                                        <constraint id="517" firstItem="508" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
+                                        <constraint id="521" firstItem="368" firstAttribute="trailing" secondItem="520" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="522" firstItem="520" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnIssueDate" destination="508" id="name-outlet-508"/>
+                                    <outlet property="btnDueTerm" destination="520" id="name-outlet-520"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="379" accessoryType="disclosureIndicator" customClass="InvoiceClientNameCell" reuseIdentifier="InvoiceClientNameCellIdentifier">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>

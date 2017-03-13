@@ -64,7 +64,7 @@ namespace MobileInvoice.ios
 			if (indexPath.Section == 0)
 			{
 				InvoiceDateCell cell = this.TableView.DequeueReusableCell("InvoiceDateCellIdentifier") as InvoiceDateCell;
-
+				cell.callingController = this;
 				//cell.TextLabel.Text = "Client";
 				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
 
