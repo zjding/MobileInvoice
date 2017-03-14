@@ -16,7 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0.066666666666666666" green="0.5607843137254902" blue="0.85098039215686272" alpha="1"/>
+                        <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0.14509803921568629" green="0.41176470588235292" blue="0.69019607843137254" alpha="1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -42,5 +42,10 @@
         <image name="Images/Left-25.png" width="25" height="25"/>
         <image name="Images/Calendar-25.png" width="25" height="25"/>
         <image name="Images/Client-25.png" width="25" height="25"/>
+        <image name="Images/Add List-25.png" width="25" height="25"/>
+        <image name="Images/User-25.png" width="25" height="25"/>
+        <image name="Images/Circled User-25.png" width="25" height="25"/>
+        <image name="Images/Circled User-50.png" width="50" height="50"/>
     </resources>
+    <color key="tintColor" colorSpace="calibratedRGB" red="0.14509803921568629" green="0.41176470588235292" blue="0.69019607843137254" alpha="1"/>
 </document>

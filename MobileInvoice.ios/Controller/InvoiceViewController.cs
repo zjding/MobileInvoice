@@ -46,7 +46,7 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 2;
+			return 3;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
@@ -55,8 +55,27 @@ namespace MobileInvoice.ios
 				return 1;
 			else if (section == 1)
 				return 1;
+			else if (section == 2)
+				return 1;
 
 			return 0;
+		}
+
+		public override string TitleForFooter(UITableView tableView, nint section)
+		{
+			if (section == 1)
+				return " ";
+
+			if (section == 3)
+				return " ";
+
+			if (section == 4)
+				return " ";
+
+			if (section == 7)
+				return " ";
+
+			return base.TitleForFooter(tableView, section);
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -70,9 +89,19 @@ namespace MobileInvoice.ios
 
 				return cell;
 			}
-			else
+			else if (indexPath.Section == 1)
 			{
 				InvoiceClientNameCell cell = this.TableView.DequeueReusableCell("InvoiceClientNameCellIdentifier") as InvoiceClientNameCell;
+
+				//cell.TextLabel.Text = "Client";
+				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
+
+				return cell;
+
+			}
+			else 
+			{
+				InvoiceAddItemCell cell = this.TableView.DequeueReusableCell("InvoiceAddItemCellIdentifier") as InvoiceAddItemCell;
 
 				//cell.TextLabel.Text = "Client";
 				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;

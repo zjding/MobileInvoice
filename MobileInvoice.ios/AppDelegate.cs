@@ -24,7 +24,7 @@ namespace MobileInvoice.ios
 			// If not required for your application you can safely delete this method
 			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes()
 			{
-				Font = UIFont.FromName("Avenir Next", 15)
+				Font = UIFont.FromName("AvenirNext-Medium", 16)
 				//TextColor = UIColor.White
 			}, UIControlState.Normal);
 

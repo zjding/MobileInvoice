@@ -144,6 +144,10 @@
     <Compile Include="Cell\InvoiceClientNameCell.designer.cs">
       <DependentUpon>InvoiceClientNameCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cell\InvoiceAddItemCell.cs" />
+    <Compile Include="Cell\InvoiceAddItemCell.designer.cs">
+      <DependentUpon>InvoiceAddItemCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
@@ -163,6 +167,10 @@
     <BundleResource Include="Images\Left-25.png" />
     <BundleResource Include="Images\Calendar-25.png" />
     <BundleResource Include="Images\Client-25.png" />
+    <BundleResource Include="Images\Add List-25.png" />
+    <BundleResource Include="Images\User-25.png" />
+    <BundleResource Include="Images\Circled User-25.png" />
+    <BundleResource Include="Images\Circled User-50.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
