@@ -148,6 +148,10 @@
     <Compile Include="Cell\InvoiceAddItemCell.designer.cs">
       <DependentUpon>InvoiceAddItemCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewClientController.cs" />
+    <Compile Include="NewClientController.designer.cs">
+      <DependentUpon>NewClientController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
