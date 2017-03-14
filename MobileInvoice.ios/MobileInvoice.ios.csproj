@@ -148,8 +148,8 @@
     <Compile Include="Cell\InvoiceAddItemCell.designer.cs">
       <DependentUpon>InvoiceAddItemCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewClientController.cs" />
-    <Compile Include="NewClientController.designer.cs">
+    <Compile Include="Controller\NewClientController.cs" />
+    <Compile Include="Controller\NewClientController.designer.cs">
       <DependentUpon>NewClientController.cs</DependentUpon>
     </Compile>
   </ItemGroup>

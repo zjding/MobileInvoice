@@ -16,8 +16,8 @@ namespace MobileInvoice.ios
 			var header = headerView as UITableViewHeaderFooterView;
 
 			header.TextLabel.TextColor = UIColor.DarkGray;
-			header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12);
-
+			//header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12);
+			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
 		}
 
 		public override string TitleForHeader(UITableView tableView, nint section)
@@ -27,7 +27,7 @@ namespace MobileInvoice.ios
 			if (section == 1)
 				return " ";
 			if (section == 2)
-				return "Items";
+				return "ITEMS";
 
 			if (section == 4)
 				return "Attachments";
