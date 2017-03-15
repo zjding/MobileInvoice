@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileInvoice.ios", "Mobile
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMobileCode.ModalPicker", "SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj", "{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileInvoice.model", "MobileInvoice.model\MobileInvoice.model.csproj", "{2705A23F-97EB-435D-8E2B-F8EC32921C99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -29,5 +31,13 @@ Global
 		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Release|iPhone.Build.0 = Release|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2705A23F-97EB-435D-8E2B-F8EC32921C99}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

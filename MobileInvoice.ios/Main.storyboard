@@ -614,7 +614,7 @@
                                                     <rect key="frame" x="100" y="7" width="261" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="938" firstItem="908" firstAttribute="height" constant="30"/>
                                                     </constraints>
@@ -642,7 +642,7 @@
                                                     <rect key="frame" x="100" y="7" width="261" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="945" firstItem="909" firstAttribute="height" constant="30"/>
                                                     </constraints>
@@ -688,7 +688,7 @@
                                                     <rect key="frame" x="100" y="7" width="294" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="988" firstItem="980" firstAttribute="height" constant="30"/>
                                                     </constraints>
@@ -728,7 +728,7 @@
                                                     <rect key="frame" x="100" y="7" width="294" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="1060" firstItem="1019" firstAttribute="height" constant="30"/>
                                                     </constraints>
@@ -795,7 +795,7 @@
                                                     <rect key="frame" x="100" y="7" width="294" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="1064" firstItem="1021" firstAttribute="height" constant="30"/>
                                                     </constraints>
@@ -867,7 +867,7 @@
                                                     <rect key="frame" x="100" y="7" width="290" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="1072" firstItem="1023" firstAttribute="height" constant="30"/>
                                                     </constraints>
@@ -903,7 +903,7 @@
                                                     <rect key="frame" x="100" y="7" width="294" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint id="1076" firstItem="1024" firstAttribute="height" constant="30"/>
                                                     </constraints>

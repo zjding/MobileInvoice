@@ -2,11 +2,15 @@ using Foundation;
 using System;
 using UIKit;
 using AddressBookUI;
+using MobileInvoice.model;
 
 namespace MobileInvoice.ios
 {
     public partial class NewClientController : UITableViewController
     {
+		public Client client = new Client();
+		public bool bNewMode = true;
+
         public NewClientController (IntPtr handle) : base (handle)
         {
         }
@@ -46,21 +50,36 @@ namespace MobileInvoice.ios
 
 		void ContactController_SelectPerson2(object sender, ABPeoplePickerSelectPerson2EventArgs e)
 		{
+			
 			txtName.Text = e.Person.FirstName + " " + e.Person.LastName;
+
+
+			client.FirstName = e.Person.FirstName;
+			client.LastName = e.Person.LastName;
 
 			var phones = e.Person.GetPhones();
 			var emails = e.Person.GetEmails();
 			var addresses = e.Person.GetAllAddresses();
 
 			if (phones.Count > 0)
+			{
 				txtPhone.Text = phones[0].Value;
+			}
 			else
+			{
 				txtPhone.Text = "";
+			}
+			client.Phone = txtPhone.Text;
 
 			if (emails.Count > 0)
+			{
 				txtEmail.Text = emails[0].Value;
+			}
 			else
+			{
 				txtEmail.Text = "";
+			}
+			client.Email = txtEmail.Text;
 
 			if (addresses.Count > 0)
 			{
@@ -78,6 +97,12 @@ namespace MobileInvoice.ios
 				txtCountry.Text = "";
 				txtPostal.Text = "";
 			}
+			client.Street1 = txtStreet1.Text;
+			client.Street2 = txtStreet2.Text;
+			client.City = txtCity.Text;
+			client.State = txtState.Text;
+			client.Country = txtCountry.Text;
+			client.PostCode = txtPostal.Text;
 		}
 
 		void AddDoneButtonToKeyboard(UITextField textField)

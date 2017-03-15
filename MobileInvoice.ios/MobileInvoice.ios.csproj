@@ -181,6 +181,10 @@
       <Project>{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}</Project>
       <Name>SharpMobileCode.ModalPicker</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MobileInvoice.model\MobileInvoice.model.csproj">
+      <Project>{2705A23F-97EB-435D-8E2B-F8EC32921C99}</Project>
+      <Name>MobileInvoice.model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
