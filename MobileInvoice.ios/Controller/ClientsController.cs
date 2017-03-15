@@ -36,10 +36,25 @@ namespace MobileInvoice.ios
 			return clients[keys[(int)section]].Count;
 		}
 
+		public override string[] SectionIndexTitles(UITableView tableView)
+		{
+			return keys.ToArray();
+		}
+
+		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
+		{
+
+			var header = headerView as UITableViewHeaderFooterView;
+
+			header.TextLabel.TextColor = UIColor.LightGray;
+			//header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12
+			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
+		}
+
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			UITableViewCell cell = this.TableView.DequeueReusableCell("ClientCell");
-			cell.TextLabel.Text = clients[keys[indexPath.Section]][indexPath.Row];
+			ClientCell cell = this.TableView.DequeueReusableCell("ClientCell") as ClientCell;
+			cell.lblName.Text = clients[keys[indexPath.Section]][indexPath.Row];
 			return cell;
 		}
 

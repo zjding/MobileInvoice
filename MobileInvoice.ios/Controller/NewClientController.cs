@@ -134,11 +134,16 @@ namespace MobileInvoice.ios
 				List<string> nameList = new List<string>();
 				nameList.Add(client.Name);
 				callingController.clients.Add(key, nameList);
-				callingController.keys.Add(key);
+
+				InsertInOrder(key, ref callingController.keys);
+				//callingController.keys.Add(key);
 			}
 			else
 			{
-				callingController.clients[key].Add(client.Name);
+				List<string> _tempList = callingController.clients[key];
+				InsertInOrder(client.Name, ref _tempList);
+				callingController.clients[key] = _tempList;
+				//callingController.clients[key].Add(client.Name);
 			}
 
 			callingController.DismissViewController(true, null);
@@ -147,6 +152,25 @@ namespace MobileInvoice.ios
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
 		{
 			callingController.DismissViewController(true, null);
+		}
+
+		void InsertInOrder(string stringToInsert, ref List<string> list)
+		{
+
+			if (list.Count == 0)
+			{
+				list.Add(stringToInsert);
+				return;
+			}
+
+			int i = 0;
+
+			while (i < list.Count && list[i].CompareTo(stringToInsert) < 0)
+			{
+				i++;
+			}
+
+			list.Insert(i, stringToInsert);
 		}
 	}
 }
