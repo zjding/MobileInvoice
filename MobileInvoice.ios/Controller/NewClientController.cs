@@ -146,6 +146,8 @@ namespace MobileInvoice.ios
 				//callingController.clients[key].Add(client.Name);
 			}
 
+			callingController.clientList.Add(client.Name);
+
 			callingController.DismissViewController(true, null);
 		}
 
