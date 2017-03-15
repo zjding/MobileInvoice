@@ -381,7 +381,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue id="664" destination="629" kind="show"/>
+                                    <segue id="664" destination="629" kind="show" identifier="Invoice_to_ClientList_Segue"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="381" customClass="InvoiceAddItemCell" reuseIdentifier="InvoiceAddItemCellIdentifier">
@@ -401,7 +401,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="540" translatesAutoresizingMaskIntoConstraints="NO" text="Add Item">
                                             <rect key="frame" x="65" y="11" width="162" height="21"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                            <color key="textColor" colorSpace="calibratedRGB" red="0.25098039215686274" green="0.44313725490196076" blue="0.90980392156862744" alpha="1"/>
+                                            <color key="textColor" colorSpace="calibratedRGB" red="0.14901960784313725" green="0.41176470588235292" blue="0.68627450980392157" alpha="1"/>
                                             <nil key="highlightedColor"/>
                                             <constraints>
                                                 <constraint id="547" firstItem="540" firstAttribute="height" constant="21"/>

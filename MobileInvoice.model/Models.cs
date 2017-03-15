@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace MobileInvoice.model
 {
 	public class Client
 	{
-		public int id { get; set; }
+		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Phone { get; set; }
 		public string Email { get; set; }
@@ -13,5 +15,27 @@ namespace MobileInvoice.model
 		public string State { get; set; }
 		public string Country { get; set; }
 		public string PostCode { get; set; }
+	}
+
+	public class Item
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public decimal Price { get; set; }
+		public int Quantity { get; set; }
+		public string DiscountType { get; set; }
+		public decimal DiscountAmount { get; set; }
+		public bool bTaxable { get; set; }
+		public string Note { get; set; }
+	}
+
+	public class Invoice
+	{
+		public int Id { get; set; }
+		public DateTime IssueDT { get; set; }
+		public string DueTerm { get; set; }
+		public DateTime DueDT { get; set; }
+		public Client client { get; set; }
+		public List<Item> Items { get; set; }
 	}
 }

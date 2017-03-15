@@ -110,5 +110,16 @@ namespace MobileInvoice.ios
 
 			}
 		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			if (segue.Identifier == "Invoice_to_ClientList_Segue")
+			{
+				ClientsController clientsCtl = segue.DestinationViewController as ClientsController;
+				clientsCtl.bPickClientMode = true;
+			}
+
+			base.PrepareForSegue(segue, sender);
+		}
     }
 }

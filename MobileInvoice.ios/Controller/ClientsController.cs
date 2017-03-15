@@ -13,9 +13,12 @@ namespace MobileInvoice.ios
 		public List<string> clientList = new List<string>();
 		public List<string> filteredClientList = new List<string>();
 
+		string[] emptyArray = new string[0];
+
 		UISearchController searchController;
 		UISearchBar searchBar;
-		bool bSearching = false;
+		public bool bSearching = false;
+		public bool bPickClientMode = false;
 
         public ClientsController (IntPtr handle) : base (handle)
         {
@@ -122,7 +125,7 @@ namespace MobileInvoice.ios
 			if (!bSearching)
 				return keys.ToArray();
 			else
-				return keys.ToArray();
+				return emptyArray;
 		}
 
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
