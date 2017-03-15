@@ -3,11 +3,14 @@ using System;
 using UIKit;
 using AddressBookUI;
 using MobileInvoice.model;
+using System.Collections.Generic;
 
 namespace MobileInvoice.ios
 {
     public partial class NewClientController : UITableViewController
     {
+		public ClientsController callingController;
+
 		public Client client = new Client();
 		public bool bNewMode = true;
 
@@ -121,5 +124,29 @@ namespace MobileInvoice.ios
 
 			textField.InputAccessoryView = toolbar;
 		}
-    }
+
+		partial void btnSave_UpInside(UIBarButtonItem sender)
+		{
+			string key = client.Name.Substring(0, 1);
+
+			if (!callingController.clients.ContainsKey(key))
+			{
+				List<string> nameList = new List<string>();
+				nameList.Add(client.Name);
+				callingController.clients.Add(key, nameList);
+				callingController.keys.Add(key);
+			}
+			else
+			{
+				callingController.clients[key].Add(client.Name);
+			}
+
+			callingController.DismissViewController(true, null);
+		}
+
+		partial void btnCancel_UpInside(UIBarButtonItem sender)
+		{
+			callingController.DismissViewController(true, null);
+		}
+	}
 }

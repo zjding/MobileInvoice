@@ -16,6 +16,14 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem btnCancel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem btnSave { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgContact { get; set; }
 
         [Outlet]
@@ -54,8 +62,26 @@ namespace MobileInvoice.ios
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtStreet2 { get; set; }
 
+        [Action ("btnCancel_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnCancel_UpInside (UIKit.UIBarButtonItem sender);
+
+        [Action ("btnSave_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnSave_UpInside (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (btnCancel != null) {
+                btnCancel.Dispose ();
+                btnCancel = null;
+            }
+
+            if (btnSave != null) {
+                btnSave.Dispose ();
+                btnSave = null;
+            }
+
             if (imgContact != null) {
                 imgContact.Dispose ();
                 imgContact = null;

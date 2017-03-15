@@ -152,6 +152,10 @@
     <Compile Include="Controller\NewClientController.designer.cs">
       <DependentUpon>NewClientController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\ClientsController.cs" />
+    <Compile Include="Controller\ClientsController.designer.cs">
+      <DependentUpon>ClientsController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
