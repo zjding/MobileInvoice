@@ -1019,4 +1019,5 @@
         <image name="Images/Circled User-25.png" width="25" height="25"/>
         <image name="Images/Circled User-50.png" width="50" height="50"/>
     </resources>
+    <color key="tintColor" colorSpace="calibratedRGB" red="0.14901960784313725" green="0.41176470588235292" blue="0.68627450980392157" alpha="1"/>
 </document>
