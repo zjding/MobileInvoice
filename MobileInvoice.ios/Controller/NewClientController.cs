@@ -50,12 +50,9 @@ namespace MobileInvoice.ios
 
 		void ContactController_SelectPerson2(object sender, ABPeoplePickerSelectPerson2EventArgs e)
 		{
-			
-			txtName.Text = e.Person.FirstName + " " + e.Person.LastName;
 
-
-			client.FirstName = e.Person.FirstName;
-			client.LastName = e.Person.LastName;
+			txtName.Text = e.Person.ToString();
+			client.Name = txtName.Text;
 
 			var phones = e.Person.GetPhones();
 			var emails = e.Person.GetEmails();
