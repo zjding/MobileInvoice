@@ -31,6 +31,8 @@ namespace MobileInvoice.ios
 			AddDoneButtonToKeyboard(txtName);
 			AddDoneButtonToKeyboard(txtPhone);
 			AddDoneButtonToKeyboard(txtEmail);
+
+
 		}
 
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
@@ -135,15 +137,14 @@ namespace MobileInvoice.ios
 				nameList.Add(client.Name);
 				callingController.clients.Add(key, nameList);
 
-				InsertInOrder(key, ref callingController.keys);
-				//callingController.keys.Add(key);
+				Helper.InsertInOrder(key, ref callingController.keys);
+
 			}
 			else
 			{
 				List<string> _tempList = callingController.clients[key];
-				InsertInOrder(client.Name, ref _tempList);
+				Helper.InsertInOrder(client.Name, ref _tempList);
 				callingController.clients[key] = _tempList;
-				//callingController.clients[key].Add(client.Name);
 			}
 
 			callingController.clientList.Add(client.Name);
@@ -156,23 +157,6 @@ namespace MobileInvoice.ios
 			callingController.DismissViewController(true, null);
 		}
 
-		void InsertInOrder(string stringToInsert, ref List<string> list)
-		{
 
-			if (list.Count == 0)
-			{
-				list.Add(stringToInsert);
-				return;
-			}
-
-			int i = 0;
-
-			while (i < list.Count && list[i].CompareTo(stringToInsert) < 0)
-			{
-				i++;
-			}
-
-			list.Insert(i, stringToInsert);
-		}
 	}
 }

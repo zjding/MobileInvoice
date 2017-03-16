@@ -2,6 +2,10 @@ using Foundation;
 using System;
 using UIKit;
 using System.Collections.Generic;
+using System.Net.Http;
+using MobileInvoice.model;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace MobileInvoice.ios
 {
@@ -12,6 +16,10 @@ namespace MobileInvoice.ios
 
 		public List<string> clientList = new List<string>();
 		public List<string> filteredClientList = new List<string>();
+
+		public List<Client> clientList1 = new List<Client>();
+		public Dictionary<string, List<Client>> clientDictionary1 = new Dictionary<string, List<Client>>();
+		public List<string> keyList1 = new List<string>();
 
 		string[] emptyArray = new string[0];
 
@@ -31,7 +39,7 @@ namespace MobileInvoice.ios
 			TableView.ReloadData();
 		}
 
-		public override void ViewDidLoad()
+		public async override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
@@ -63,8 +71,47 @@ namespace MobileInvoice.ios
 			searchBar.CancelButtonClicked += SearchBar_CancelButtonClicked;
 			searchBar.OnEditingStarted += SearchBar_OnEditingStarted;
 
-
 			TableView.TableHeaderView = searchBar;
+
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
+
+			await LoadClients();
+
+			loadingOverlay.Hide();
+
+			TableView.ReloadData();
+		}
+
+		async Task<int> LoadClients()
+		{
+			
+			HttpClient httpClient = new HttpClient();
+
+			string result = await httpClient.GetStringAsync(Helper.GetClientsURL());
+
+			clientList1 = JsonConvert.DeserializeObject<List<Client>>(result);
+
+			foreach (Client client in clientList1)
+			{
+				string key = client.Name.Substring(0, 1);
+
+				if (clientDictionary1.ContainsKey(key))
+				{
+					List<Client> _tempList = clientDictionary1[key];
+					Helper.InsertInOrder(client, ref _tempList);
+					clientDictionary1[key] = _tempList;
+				}
+				else
+				{
+					List<Client> _tempList = new List<Client>();
+					_tempList.Add(client);
+					clientDictionary1.Add(key, _tempList);
+					Helper.InsertInOrder(key, ref keyList1);
+				}
+			}
+
+			return 0;
 		}
 
 		void SearchBar_TextChanged(object sender, UISearchBarTextChangedEventArgs e)
@@ -99,7 +146,8 @@ namespace MobileInvoice.ios
 		public override nint NumberOfSections(UITableView tableView)
 		{
 			if (!bSearching)
-				return clients.Count;
+				//return clients.Count;
+				return keyList1.Count;
 			else
 				return 1;
 		}
@@ -107,7 +155,8 @@ namespace MobileInvoice.ios
 		public override string TitleForHeader(UITableView tableView, nint section)
 		{
 			if (!bSearching)
-				return keys[(int)section];
+				//return keys[(int)section];
+				return keyList1[(int)section];
 			else
 				return "";
 		}
@@ -115,7 +164,8 @@ namespace MobileInvoice.ios
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
 			if (!bSearching)
-				return clients[keys[(int)section]].Count;
+				//return clients[keys[(int)section]].Count;
+				return clientDictionary1[keyList1[(int)section]].Count;
 			else
 				return filteredClientList.Count;
 		}
@@ -123,18 +173,17 @@ namespace MobileInvoice.ios
 		public override string[] SectionIndexTitles(UITableView tableView)
 		{
 			if (!bSearching)
-				return keys.ToArray();
+				//return keys.ToArray();
+				return keyList1.ToArray();
 			else
 				return emptyArray;
 		}
 
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
 		{
-
 			var header = headerView as UITableViewHeaderFooterView;
 
 			header.TextLabel.TextColor = UIColor.LightGray;
-			//header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12
 			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
 		}
 
@@ -142,7 +191,7 @@ namespace MobileInvoice.ios
 		{
 			ClientCell cell = this.TableView.DequeueReusableCell("ClientCell") as ClientCell;
 			if (!bSearching)
-				cell.lblName.Text = clients[keys[indexPath.Section]][indexPath.Row];
+				cell.lblName.Text = clientDictionary1[keyList1[indexPath.Section]][indexPath.Row].Name;
 			else
 				cell.lblName.Text = filteredClientList[indexPath.Row];
 			return cell;
