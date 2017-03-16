@@ -39,6 +39,14 @@ namespace MobileInvoice.ios
 
 		}
 
+		public override nint NumberOfSections(UITableView tableView)
+		{
+			if (bNewMode)
+				return 2;
+			else
+				return 3;
+		}
+
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
 		{
 

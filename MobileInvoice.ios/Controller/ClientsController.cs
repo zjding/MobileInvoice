@@ -217,6 +217,13 @@ namespace MobileInvoice.ios
 			{
 				NewClientController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as NewClientController;
 				destCtrl.callingController = this;
+				destCtrl.bNewMode = true;
+			}
+			else if (segue.Identifier == "Clients_to_EditClient_Segue")
+			{
+				NewClientController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as NewClientController;
+				destCtrl.callingController = this;
+				destCtrl.bNewMode = false;
 			}
 
 			base.PrepareForSegue(segue, sender);
