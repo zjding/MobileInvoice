@@ -14,6 +14,11 @@ namespace MobileInvoice.ios
 			return WebAPI_URL + "/api/Clients/GetClients";
 		}
 
+		public static string AddClientURL()
+		{
+			return WebAPI_URL + "/api/Client/AddClient";
+		}
+
 		public static void InsertInOrder(string stringToInsert, ref List<string> list)
 		{
 

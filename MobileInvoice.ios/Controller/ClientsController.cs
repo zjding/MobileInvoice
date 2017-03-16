@@ -73,6 +73,8 @@ namespace MobileInvoice.ios
 
 			TableView.TableHeaderView = searchBar;
 
+			TableView.TableFooterView = new UIView();
+
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
 

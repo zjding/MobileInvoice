@@ -4,6 +4,10 @@ using UIKit;
 using AddressBookUI;
 using MobileInvoice.model;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MobileInvoice.ios
 {
@@ -127,27 +131,33 @@ namespace MobileInvoice.ios
 			textField.InputAccessoryView = toolbar;
 		}
 
-		partial void btnSave_UpInside(UIBarButtonItem sender)
+		async partial void btnSave_UpInside(UIBarButtonItem sender)
 		{
 			string key = client.Name.Substring(0, 1);
 
-			if (!callingController.clients.ContainsKey(key))
+			if (callingController.clientDictionary1.ContainsKey(key))
 			{
-				List<string> nameList = new List<string>();
-				nameList.Add(client.Name);
-				callingController.clients.Add(key, nameList);
-
-				Helper.InsertInOrder(key, ref callingController.keys);
-
+				List<Client> _tempList = callingController.clientDictionary1[key];
+				Helper.InsertInOrder(client, ref _tempList);
+				callingController.clientDictionary1[key] = _tempList;
 			}
 			else
 			{
-				List<string> _tempList = callingController.clients[key];
-				Helper.InsertInOrder(client.Name, ref _tempList);
-				callingController.clients[key] = _tempList;
+				List<Client> _tempList = new List<Client>();
+				_tempList.Add(client);
+				callingController.clientDictionary1.Add(key, _tempList);
+
+				Helper.InsertInOrder(key, ref callingController.keyList1);
 			}
 
 			callingController.clientList.Add(client.Name);
+
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
+
+			await AddClient(client);
+
+			loadingOverlay.Hide();
 
 			callingController.DismissViewController(true, null);
 		}
@@ -157,6 +167,25 @@ namespace MobileInvoice.ios
 			callingController.DismissViewController(true, null);
 		}
 
+		async Task<bool> AddClient(Client _client)
+		{
+			string jsonClient = JsonConvert.SerializeObject(_client);
 
+			var strContentClient = new StringContent(jsonClient, Encoding.UTF8, "application/json");
+
+			HttpClient httpClient = new HttpClient();
+
+			var result = await httpClient.PostAsync(Helper.AddClientURL(), strContentClient);
+
+			var contents = await result.Content.ReadAsStringAsync();
+
+			string returnMessage = contents.ToString();
+
+			if (returnMessage == "\"Added client successfully\"")
+				return true;
+			else
+				return false;
+				
+		}
 	}
 }
