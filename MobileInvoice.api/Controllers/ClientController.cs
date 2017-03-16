@@ -60,7 +60,7 @@ namespace MobileInvoice.api.Controllers
         public HttpResponseMessage AddClient(Client client)
         {
             string commandString = @"INSERT INTO Client (Name, Phone, Email, Street1, Street2, City, State, Country, PostCode) 
-                                     Values(@FirstName, @Phone, @Email, @Street1, @Street2, @City, @State, @Country, @PostCode)";
+                                     Values(@Name, @Phone, @Email, @Street1, @Street2, @City, @State, @Country, @PostCode)";
 
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Constant.connectionString;
