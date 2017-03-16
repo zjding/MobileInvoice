@@ -35,7 +35,13 @@ namespace MobileInvoice.model
 		public DateTime IssueDT { get; set; }
 		public string DueTerm { get; set; }
 		public DateTime DueDT { get; set; }
-		public Client client { get; set; }
+		public Client Client { get; set; }
 		public List<Item> Items { get; set; }
+
+		public Invoice()
+		{
+			Client = new Client();
+			Items = new List<Item>();
+		}
 	}
 }

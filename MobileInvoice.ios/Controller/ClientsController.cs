@@ -11,15 +11,10 @@ namespace MobileInvoice.ios
 {
     public partial class ClientsController : UITableViewController
     {
-		public Dictionary<string, List<string>> clients = new Dictionary<string, List<string>>();
-		public List<string> keys = new List<string>();
-
-		public List<string> clientList = new List<string>();
-		public List<string> filteredClientList = new List<string>();
-
-		public List<Client> clientList1 = new List<Client>();
-		public Dictionary<string, List<Client>> clientDictionary1 = new Dictionary<string, List<Client>>();
-		public List<string> keyList1 = new List<string>();
+		public List<Client> clientList = new List<Client>();
+		public Dictionary<string, List<Client>> clientDictionary = new Dictionary<string, List<Client>>();
+		public List<string> keyList = new List<string>();
+		public List<Client> filteredClientList = new List<Client>();
 
 		string[] emptyArray = new string[0];
 
@@ -27,6 +22,8 @@ namespace MobileInvoice.ios
 		UISearchBar searchBar;
 		public bool bSearching = false;
 		public bool bPickClientMode = false;
+
+		public InvoiceViewController callingController;
 
         public ClientsController (IntPtr handle) : base (handle)
         {
@@ -92,24 +89,24 @@ namespace MobileInvoice.ios
 
 			string result = await httpClient.GetStringAsync(Helper.GetClientsURL());
 
-			clientList1 = JsonConvert.DeserializeObject<List<Client>>(result);
+			clientList = JsonConvert.DeserializeObject<List<Client>>(result);
 
-			foreach (Client client in clientList1)
+			foreach (Client client in clientList)
 			{
 				string key = client.Name.Substring(0, 1);
 
-				if (clientDictionary1.ContainsKey(key))
+				if (clientDictionary.ContainsKey(key))
 				{
-					List<Client> _tempList = clientDictionary1[key];
+					List<Client> _tempList = clientDictionary[key];
 					Helper.InsertInOrder(client, ref _tempList);
-					clientDictionary1[key] = _tempList;
+					clientDictionary[key] = _tempList;
 				}
 				else
 				{
 					List<Client> _tempList = new List<Client>();
 					_tempList.Add(client);
-					clientDictionary1.Add(key, _tempList);
-					Helper.InsertInOrder(key, ref keyList1);
+					clientDictionary.Add(key, _tempList);
+					Helper.InsertInOrder(key, ref keyList);
 				}
 			}
 
@@ -127,7 +124,7 @@ namespace MobileInvoice.ios
 			{
 				bSearching = true;
 
-				filteredClientList = clientList.FindAll(s => (s.ToUpper().Contains(searchBar.Text.ToUpper())));;
+				filteredClientList = clientList.FindAll(c => c.Name.ToUpper().Contains(searchBar.Text.ToUpper()));
 				TableView.ReloadData();
 			}
 		}
@@ -148,8 +145,7 @@ namespace MobileInvoice.ios
 		public override nint NumberOfSections(UITableView tableView)
 		{
 			if (!bSearching)
-				//return clients.Count;
-				return keyList1.Count;
+				return keyList.Count;
 			else
 				return 1;
 		}
@@ -157,8 +153,7 @@ namespace MobileInvoice.ios
 		public override string TitleForHeader(UITableView tableView, nint section)
 		{
 			if (!bSearching)
-				//return keys[(int)section];
-				return keyList1[(int)section];
+				return keyList[(int)section];
 			else
 				return "";
 		}
@@ -166,8 +161,7 @@ namespace MobileInvoice.ios
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
 			if (!bSearching)
-				//return clients[keys[(int)section]].Count;
-				return clientDictionary1[keyList1[(int)section]].Count;
+				return clientDictionary[keyList[(int)section]].Count;
 			else
 				return filteredClientList.Count;
 		}
@@ -175,8 +169,7 @@ namespace MobileInvoice.ios
 		public override string[] SectionIndexTitles(UITableView tableView)
 		{
 			if (!bSearching)
-				//return keys.ToArray();
-				return keyList1.ToArray();
+				return keyList.ToArray();
 			else
 				return emptyArray;
 		}
@@ -193,10 +186,29 @@ namespace MobileInvoice.ios
 		{
 			ClientCell cell = this.TableView.DequeueReusableCell("ClientCell") as ClientCell;
 			if (!bSearching)
-				cell.lblName.Text = clientDictionary1[keyList1[indexPath.Section]][indexPath.Row].Name;
+				cell.lblName.Text = clientDictionary[keyList[indexPath.Section]][indexPath.Row].Name;
 			else
-				cell.lblName.Text = filteredClientList[indexPath.Row];
+				cell.lblName.Text = filteredClientList[indexPath.Row].Name;
 			return cell;
+		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+			//base.RowSelected(tableView, indexPath);
+
+			if (bPickClientMode)
+			{
+				if (bSearching)
+				{
+					callingController.invoice.Client = filteredClientList[indexPath.Row];
+				}
+				else
+				{
+					callingController.invoice.Client = clientDictionary[this.TableView.GetHeaderView(indexPath.Section).TextLabel.Text][indexPath.Row];
+				}
+
+				this.NavigationController.PopViewController(true);
+			}
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)

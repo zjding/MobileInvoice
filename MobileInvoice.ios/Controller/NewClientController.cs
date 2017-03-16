@@ -135,22 +135,22 @@ namespace MobileInvoice.ios
 		{
 			string key = client.Name.Substring(0, 1);
 
-			if (callingController.clientDictionary1.ContainsKey(key))
+			if (callingController.clientDictionary.ContainsKey(key))
 			{
-				List<Client> _tempList = callingController.clientDictionary1[key];
+				List<Client> _tempList = callingController.clientDictionary[key];
 				Helper.InsertInOrder(client, ref _tempList);
-				callingController.clientDictionary1[key] = _tempList;
+				callingController.clientDictionary[key] = _tempList;
 			}
 			else
 			{
 				List<Client> _tempList = new List<Client>();
 				_tempList.Add(client);
-				callingController.clientDictionary1.Add(key, _tempList);
+				callingController.clientDictionary.Add(key, _tempList);
 
-				Helper.InsertInOrder(key, ref callingController.keyList1);
+				Helper.InsertInOrder(key, ref callingController.keyList);
 			}
 
-			callingController.clientList.Add(client.Name);
+			callingController.clientList.Add(client);
 
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);

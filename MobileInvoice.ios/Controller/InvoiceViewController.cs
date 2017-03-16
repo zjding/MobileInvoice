@@ -1,14 +1,24 @@
 using Foundation;
 using System;
 using UIKit;
+using MobileInvoice.model;
 
 namespace MobileInvoice.ios
 {
     public partial class InvoiceViewController : UITableViewController
     {
+		public Invoice invoice = new Invoice();
+
         public InvoiceViewController (IntPtr handle) : base (handle)
         {
         }
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			TableView.ReloadData();
+		}
 
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
 		{
@@ -92,7 +102,7 @@ namespace MobileInvoice.ios
 			else if (indexPath.Section == 1)
 			{
 				InvoiceClientNameCell cell = this.TableView.DequeueReusableCell("InvoiceClientNameCellIdentifier") as InvoiceClientNameCell;
-
+				cell.lblClientName.Text = invoice.Client.Name;
 				//cell.TextLabel.Text = "Client";
 				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
 
@@ -117,6 +127,7 @@ namespace MobileInvoice.ios
 			{
 				ClientsController clientsCtl = segue.DestinationViewController as ClientsController;
 				clientsCtl.bPickClientMode = true;
+				clientsCtl.callingController = this;
 			}
 
 			base.PrepareForSegue(segue, sender);
