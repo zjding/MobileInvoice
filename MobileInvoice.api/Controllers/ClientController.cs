@@ -91,7 +91,7 @@ namespace MobileInvoice.api.Controllers
         [HttpPut]
         public HttpResponseMessage PutClient(Client client)
         {
-            string commandString = @"UPDATE Client Set FirstName = @FirstName, Phone = @Phone, 
+            string commandString = @"UPDATE Client Set Name = @Name, Phone = @Phone, 
                                     Email = @Email, Street1 = @Street1, Street2 = @Street2, City = @City, 
                                     State = @State, Country = @Country, PostCode = @PostCode
                                     WHERE Id = @Id";
