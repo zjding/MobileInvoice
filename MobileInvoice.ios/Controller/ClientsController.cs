@@ -209,21 +209,34 @@ namespace MobileInvoice.ios
 
 				this.NavigationController.PopViewController(true);
 			}
+			else
+			{
+				NewClientController clientController = (NewClientController)UIStoryboard.FromName("Main", null).InstantiateViewController("NewClientController");
+
+
+				this.NavigationController.PushViewController(clientController, true);
+			}
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
-			if (segue.Identifier == "Clients_to_NewClient_Segue")
+			if (bPickClientMode)
 			{
-				NewClientController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as NewClientController;
-				destCtrl.callingController = this;
-				destCtrl.bNewMode = true;
+				if (segue.Identifier == "Clients_to_NewClient_Segue")
+				{
+					NewClientController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as NewClientController;
+					destCtrl.callingController = this;
+					destCtrl.bNewMode = true;
+				}
 			}
-			else if (segue.Identifier == "Clients_to_EditClient_Segue")
+			else
 			{
-				NewClientController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as NewClientController;
-				destCtrl.callingController = this;
-				destCtrl.bNewMode = false;
+				if (segue.Identifier == "Clients_to_EditClient_Segue")
+				{
+					NewClientController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as NewClientController;
+					destCtrl.callingController = this;
+					destCtrl.bNewMode = false;
+				}
 			}
 
 			base.PrepareForSegue(segue, sender);

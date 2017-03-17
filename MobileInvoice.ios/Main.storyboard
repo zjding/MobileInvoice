@@ -560,7 +560,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblName" destination="1111" id="name-outlet-1111"/>
-                                    <segue id="1454" destination="790" kind="presentation" identifier="Clients_to_EditClient_Segue"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -583,7 +582,7 @@
         </scene>
         <scene sceneID="780">
             <objects>
-                <tableViewController id="781" sceneMemberID="viewController" customClass="NewClientController">
+                <tableViewController id="781" sceneMemberID="viewController" customClass="NewClientController" storyboardIdentifier="NewClientController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="783">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
