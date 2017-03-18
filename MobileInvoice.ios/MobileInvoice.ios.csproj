@@ -207,6 +207,10 @@
     <BundleResource Include="Images\User-25.png" />
     <BundleResource Include="Images\Circled User-25.png" />
     <BundleResource Include="Images\Circled User-50.png" />
+    <BundleResource Include="Images\User Group-50.png" />
+    <BundleResource Include="Images\User Group-25.png" />
+    <BundleResource Include="Images\Delete-50.png" />
+    <BundleResource Include="Images\Delete-25.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">

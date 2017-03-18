@@ -20,6 +20,10 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDelete { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnSave { get; set; }
 
         [Outlet]
@@ -66,6 +70,10 @@ namespace MobileInvoice.ios
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btnCancel_UpInside (UIKit.UIBarButtonItem sender);
 
+        [Action ("btnDelete_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnDelete_UpInside (UIKit.UIButton sender);
+
         [Action ("btnSave_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btnSave_UpInside (UIKit.UIBarButtonItem sender);
@@ -75,6 +83,11 @@ namespace MobileInvoice.ios
             if (btnCancel != null) {
                 btnCancel.Dispose ();
                 btnCancel = null;
+            }
+
+            if (btnDelete != null) {
+                btnDelete.Dispose ();
+                btnDelete = null;
             }
 
             if (btnSave != null) {

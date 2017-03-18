@@ -132,5 +132,10 @@ namespace MobileInvoice.ios
 
 			base.PrepareForSegue(segue, sender);
 		}
-    }
+
+		partial void btnClose_UpInside(UIBarButtonItem sender)
+		{
+			DismissViewController(true, null);
+		}
+	}
 }

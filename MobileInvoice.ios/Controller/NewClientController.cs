@@ -17,6 +17,7 @@ namespace MobileInvoice.ios
 
 		public Client client = new Client();
 		public bool bNewMode = true;
+		public bool bNavigationPush = true;
 
         public NewClientController (IntPtr handle) : base (handle)
         {
@@ -36,7 +37,21 @@ namespace MobileInvoice.ios
 			AddDoneButtonToKeyboard(txtPhone);
 			AddDoneButtonToKeyboard(txtEmail);
 
+			LoadClient(client);
+		}
 
+		void LoadClient(Client _client)
+		{
+			txtName.Text = _client.Name;
+			txtPhone.Text = _client.Phone;
+			txtEmail.Text = _client.Email;
+
+			txtStreet1.Text = _client.Street1;
+			txtStreet2.Text = _client.Street2;
+			txtCity.Text = _client.City;
+			txtState.Text = _client.State;
+			txtCountry.Text = _client.Country;
+			txtPostal.Text = _client.PostCode;
 		}
 
 		public override nint NumberOfSections(UITableView tableView)
@@ -141,38 +156,52 @@ namespace MobileInvoice.ios
 
 		async partial void btnSave_UpInside(UIBarButtonItem sender)
 		{
-			string key = client.Name.Substring(0, 1);
-
-			if (callingController.clientDictionary.ContainsKey(key))
-			{
-				List<Client> _tempList = callingController.clientDictionary[key];
-				Helper.InsertInOrder(client, ref _tempList);
-				callingController.clientDictionary[key] = _tempList;
-			}
-			else
-			{
-				List<Client> _tempList = new List<Client>();
-				_tempList.Add(client);
-				callingController.clientDictionary.Add(key, _tempList);
-
-				Helper.InsertInOrder(key, ref callingController.keyList);
-			}
-
-			callingController.clientList.Add(client);
-
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
 
-			await AddClient(client);
+			if (bNewMode)
+			{
+				string key = client.Name.Substring(0, 1);
+
+				if (callingController.clientDictionary.ContainsKey(key))
+				{
+					List<Client> _tempList = callingController.clientDictionary[key];
+					Helper.InsertInOrder(client, ref _tempList);
+					callingController.clientDictionary[key] = _tempList;
+				}
+				else
+				{
+					List<Client> _tempList = new List<Client>();
+					_tempList.Add(client);
+					callingController.clientDictionary.Add(key, _tempList);
+
+					Helper.InsertInOrder(key, ref callingController.keyList);
+				}
+
+				callingController.clientList.Add(client);
+
+				await AddClient(client);
+			}
+			else
+			{
+
+
+			}
 
 			loadingOverlay.Hide();
 
-			callingController.DismissViewController(true, null);
+			if (!bNavigationPush)
+				DismissViewController(true, null);
+			else
+				this.NavigationController.PopViewController(true);
 		}
 
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
 		{
-			callingController.DismissViewController(true, null);
+			if (!bNavigationPush)
+				DismissViewController(true, null);
+			else
+				this.NavigationController.PopViewController(true);
 		}
 
 		async Task<bool> AddClient(Client _client)
@@ -194,6 +223,51 @@ namespace MobileInvoice.ios
 			else
 				return false;
 				
+		}
+
+		async Task<bool> DeleteClient(Client _client)
+		{
+			HttpClient httpClient = new HttpClient();
+
+			var result = await httpClient.DeleteAsync(Helper.DeleteClientURL() + client.Id.ToString());
+
+			result.EnsureSuccessStatusCode();
+
+			if (result.IsSuccessStatusCode)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		async partial void btnDelete_UpInside(UIButton sender)
+		{
+
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
+
+			bool result = await DeleteClient(client);
+
+			loadingOverlay.Hide();
+
+			if (result)
+			{
+				string key = client.Name.Substring(0, 1);
+
+				callingController.clientDictionary[key].Remove(client);
+				callingController.clientList.Remove(client);
+
+				if (callingController.clientDictionary[key].Count == 0)
+				{
+					callingController.clientDictionary.Remove(key);
+					callingController.keyList.Remove(key);
+				}
+
+				NavigationController.PopViewController(true);
+			}
 		}
 	}
 }
