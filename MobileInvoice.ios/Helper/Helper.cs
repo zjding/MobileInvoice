@@ -21,7 +21,12 @@ namespace MobileInvoice.ios
 
 		public static string DeleteClientURL()
 		{
-			return WebAPI_URL + "api/Clients/Delete/";
+			return WebAPI_URL + "/api/Clients/Delete/";
+		}
+
+		public static string UpdateClientURL()
+		{
+			return WebAPI_URL + "/api/Client/PutClient";
 		}
 
 		public static void InsertInOrder(string stringToInsert, ref List<string> list)
