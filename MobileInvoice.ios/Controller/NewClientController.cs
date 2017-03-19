@@ -197,13 +197,15 @@ namespace MobileInvoice.ios
 
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
 		{
-			if (!bNavigationPush)
-			{
-				DismissViewController(true, null);
-				//callingController.DismissViewController(true, null);
-			}
-			else
-				this.NavigationController.PopViewController(true);
+			(this.NavigationController as NewClientNavigationController).Close();
+
+			//if (!bNavigationPush)
+			//{
+			//	DismissViewController(true, null);
+			//	//callingController.DismissViewController(true, null);
+			//}
+			//else
+			//	this.NavigationController.PopViewController(true);
 		}
 
 		async Task<bool> AddClient(Client _client)

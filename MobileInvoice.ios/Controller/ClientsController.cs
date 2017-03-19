@@ -241,19 +241,19 @@ namespace MobileInvoice.ios
 
 			UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
 
-			//NewClientNavigationController newClientNavigationController = (UINavigationController)storyBoard.InstantiateViewController("NewClientNavigationController") as NewClientNavigationController;
-			//NewClientController newClientController = newClientNavigationController.ViewControllers[0] as NewClientController;
-			//newClientController.callingController = this;
-			//newClientController.bNavigationPush = false;
-
-			//this.PresentViewController(newClientNavigationController, true, null);
-
-			NewClientController newClientController = (UIViewController)storyBoard.InstantiateViewController("NewClientController") as NewClientController;
-
+			NewClientNavigationController newClientNavigationController = (NewClientNavigationController)storyBoard.InstantiateViewController("NewClientNavigationController");
+			NewClientController newClientController = newClientNavigationController.ViewControllers[0] as NewClientController;
 			newClientController.callingController = this;
-			newClientController.bNavigationPush = true;
+			newClientController.bNavigationPush = false;
 
-			this.NavigationController.PushViewController(newClientController, true);
+			this.PresentViewController(newClientNavigationController, true, null);
+
+			//NewClientController newClientController = (UIViewController)storyBoard.InstantiateViewController("NewClientController") as NewClientController;
+
+			//newClientController.callingController = this;
+			//newClientController.bNavigationPush = true;
+
+			//this.NavigationController.PushViewController(newClientController, true);
 		}
 	}
 }

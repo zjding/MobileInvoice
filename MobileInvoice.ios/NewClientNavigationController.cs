@@ -9,5 +9,10 @@ namespace MobileInvoice.ios
         public NewClientNavigationController (IntPtr handle) : base (handle)
         {
         }
+
+		public void Close()
+		{
+			DismissViewController(true, null);
+		}
     }
 }

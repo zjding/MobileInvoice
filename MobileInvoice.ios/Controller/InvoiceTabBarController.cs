@@ -10,14 +10,19 @@ namespace MobileInvoice.ios
         {
         }
 
-		public override void ViewWillAppear(bool animated)
+		public override void ViewDidLoad()
 		{
-			base.ViewWillAppear(animated);
+			base.ViewDidLoad();
 
 			this.InsertEmptyTabItem("", 2);
 
 			var img = UIImage.FromFile("Images/Add-50.png");
 			this.AddRaisedButton(img, null);
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
 		}
 
 		public override void onRaisedButton_TouchUpInside(object sender, EventArgs e)
@@ -32,7 +37,7 @@ namespace MobileInvoice.ios
 				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
 				//this.PresentViewController(invoiceVC, true, null);
 
-				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+				NewClientNavigationController invoiceViewNavigationController = (NewClientNavigationController)storyBoard.InstantiateViewController("NewClientNavigationController");
 				this.PresentViewController(invoiceViewNavigationController, true, null);
 
 				//InvoiceViewController estimationVC = new InvoiceViewController();			
