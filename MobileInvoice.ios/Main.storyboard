@@ -473,10 +473,13 @@
                     <navigationItem key="navigationItem" title="Clients" id="630">
                         <barButtonItem key="rightBarButtonItem" id="720" systemItem="add">
                             <connections>
-                                <segue id="856" destination="790" kind="presentation" identifier="Clients_to_NewClient_Segue"/>
+                                <action selector="btnAdd_UpInside:" destination="629" id="1333"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnAdd" destination="720" id="name-outlet-720"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="636" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -528,6 +531,9 @@
                                                     <constraints>
                                                         <constraint id="938" firstItem="908" firstAttribute="height" constant="30"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="txtName_UpInside:" destination="781" id="1348" eventType="touchUpInside"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -567,6 +573,19 @@
                                                         <constraint id="942" firstItem="910" firstAttribute="width" constant="62"/>
                                                     </constraints>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1351" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="348" y="7" width="46" height="30"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <constraints>
+                                                        <constraint id="1354" firstItem="1351" firstAttribute="height" constant="30"/>
+                                                        <constraint id="1355" firstItem="1351" firstAttribute="width" constant="46"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="btnButton_UpInside:" destination="781" id="1356" eventType="touchUpInside"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint id="939" firstItem="910" firstAttribute="leading" secondItem="864" secondAttribute="leading" constant="20"/>
@@ -574,6 +593,8 @@
                                                 <constraint id="943" firstItem="909" firstAttribute="leading" secondItem="864" secondAttribute="leading" constant="100"/>
                                                 <constraint id="944" firstItem="909" firstAttribute="centerY" secondItem="864" secondAttribute="centerY"/>
                                                 <constraint id="946" firstItem="864" firstAttribute="trailing" secondItem="909" secondAttribute="trailing" constant="53"/>
+                                                <constraint id="1352" firstItem="864" firstAttribute="trailing" secondItem="1351" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="1353" firstItem="1351" firstAttribute="centerY" secondItem="909" secondAttribute="centerY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -902,6 +923,7 @@
                         <outlet property="btnCancel" destination="874" id="name-outlet-874"/>
                         <outlet property="btnSave" destination="875" id="name-outlet-875"/>
                         <outlet property="btnDelete" destination="1159" id="name-outlet-1159"/>
+                        <outlet property="btnButton" destination="1351" id="name-outlet-1351"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="788" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -910,7 +932,7 @@
         </scene>
         <scene sceneID="789">
             <objects>
-                <navigationController id="790" sceneMemberID="viewController">
+                <navigationController id="790" sceneMemberID="viewController" customClass="NewClientNavigationController" storyboardIdentifier="NewClientNavigationController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="792">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -234,5 +234,26 @@ namespace MobileInvoice.ios
 
 			base.PrepareForSegue(segue, sender);
 		}
-    }
+
+
+		partial void btnAdd_UpInside(UIBarButtonItem sender)
+		{
+
+			UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
+
+			//NewClientNavigationController newClientNavigationController = (UINavigationController)storyBoard.InstantiateViewController("NewClientNavigationController") as NewClientNavigationController;
+			//NewClientController newClientController = newClientNavigationController.ViewControllers[0] as NewClientController;
+			//newClientController.callingController = this;
+			//newClientController.bNavigationPush = false;
+
+			//this.PresentViewController(newClientNavigationController, true, null);
+
+			NewClientController newClientController = (UIViewController)storyBoard.InstantiateViewController("NewClientController") as NewClientController;
+
+			newClientController.callingController = this;
+			newClientController.bNavigationPush = true;
+
+			this.NavigationController.PushViewController(newClientController, true);
+		}
+	}
 }

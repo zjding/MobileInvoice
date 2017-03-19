@@ -184,6 +184,10 @@
     </Compile>
     <Compile Include="Components\LoadingOverlay.cs" />
     <Compile Include="Helper\Helper.cs" />
+    <Compile Include="NewClientNavigationController.cs" />
+    <Compile Include="NewClientNavigationController.designer.cs">
+      <DependentUpon>NewClientNavigationController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />

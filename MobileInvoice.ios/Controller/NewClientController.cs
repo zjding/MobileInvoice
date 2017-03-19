@@ -198,7 +198,10 @@ namespace MobileInvoice.ios
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
 		{
 			if (!bNavigationPush)
+			{
 				DismissViewController(true, null);
+				//callingController.DismissViewController(true, null);
+			}
 			else
 				this.NavigationController.PopViewController(true);
 		}
@@ -306,6 +309,16 @@ namespace MobileInvoice.ios
 
 				NavigationController.PopViewController(true);
 			}
+		}
+
+		partial void txtName_UpInside(UITextField sender)
+		{
+			DismissViewController(true, null);
+		}
+
+		partial void btnButton_UpInside(UIButton sender)
+		{
+			DismissViewController(true, null);
 		}
 	}
 }
