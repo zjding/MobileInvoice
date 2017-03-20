@@ -32,6 +32,10 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch swTaxable { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtName { get; set; }
 
         [Outlet]
@@ -45,6 +49,14 @@ namespace MobileInvoice.ios
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtUnitCost { get; set; }
+
+        [Action ("btnCancel_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnCancel_UpInside (UIKit.UIBarButtonItem sender);
+
+        [Action ("btnSave_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnSave_UpInside (UIKit.UIBarButtonItem sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -66,6 +78,11 @@ namespace MobileInvoice.ios
             if (imgItems != null) {
                 imgItems.Dispose ();
                 imgItems = null;
+            }
+
+            if (swTaxable != null) {
+                swTaxable.Dispose ();
+                swTaxable = null;
             }
 
             if (txtName != null) {

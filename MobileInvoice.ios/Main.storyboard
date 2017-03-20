@@ -1065,19 +1065,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="1450" translatesAutoresizingMaskIntoConstraints="NO" placeholder="1.23">
-                                                    <rect key="frame" x="96" y="7" width="298" height="30"/>
+                                                    <rect key="frame" x="100" y="7" width="294" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
-                                                        <constraint id="1455" firstItem="1450" firstAttribute="height" constant="30"/>
+                                                        <constraint id="1531" firstItem="1450" firstAttribute="height" constant="30"/>
                                                     </constraints>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint id="1452" firstItem="1450" firstAttribute="leading" secondItem="1410" secondAttribute="leading" constant="96"/>
-                                                <constraint id="1453" firstItem="1410" firstAttribute="trailing" secondItem="1450" secondAttribute="trailing" constant="20"/>
-                                                <constraint id="1454" firstItem="1450" firstAttribute="centerY" secondItem="1410" secondAttribute="centerY"/>
+                                                <constraint id="1528" firstItem="1450" firstAttribute="leading" secondItem="1410" secondAttribute="leading" constant="100"/>
+                                                <constraint id="1529" firstItem="1410" firstAttribute="trailing" secondItem="1450" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="1530" firstItem="1450" firstAttribute="centerY" secondItem="1410" secondAttribute="centerY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1096,26 +1096,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="1451" translatesAutoresizingMaskIntoConstraints="NO" placeholder="2">
-                                                    <rect key="frame" x="93" y="7" width="301" height="30"/>
+                                                    <rect key="frame" x="100" y="7" width="301" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <constraints>
-                                                        <constraint id="1458" firstItem="1451" firstAttribute="height" constant="30"/>
+                                                        <constraint id="1534" firstItem="1451" firstAttribute="height" constant="30"/>
                                                     </constraints>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint id="1456" firstItem="1451" firstAttribute="leading" secondItem="1412" secondAttribute="leading" constant="93"/>
-                                                <constraint id="1457" firstItem="1412" firstAttribute="trailing" secondItem="1451" secondAttribute="trailing" constant="20"/>
-                                                <constraint id="1459" firstItem="1451" firstAttribute="centerY" secondItem="1412" secondAttribute="centerY"/>
+                                                <constraint id="1532" firstItem="1451" firstAttribute="leading" secondItem="1412" secondAttribute="leading" constant="100"/>
+                                                <constraint id="1533" firstItem="1412" firstAttribute="trailing" secondItem="1451" secondAttribute="trailing" constant="13"/>
+                                                <constraint id="1535" firstItem="1451" firstAttribute="centerY" secondItem="1412" secondAttribute="centerY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1413" accessoryType="checkmark">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1413">
                                         <rect key="frame" x="0.0" y="260" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1413" id="1414">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAXABLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1444" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -1125,7 +1125,15 @@
                                                     <color key="textColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="1536" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="354" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" colorSpace="calibratedRGB" red="0.14901960784313725" green="0.41176470588235292" blue="0.68627450980392157" alpha="1"/>
+                                                </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint id="1553" firstItem="1414" firstAttribute="trailing" secondItem="1536" secondAttribute="trailing" constant="9"/>
+                                                <constraint id="1554" firstItem="1536" firstAttribute="centerY" secondItem="1414" secondAttribute="centerY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1165,16 +1173,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1467" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1467" translatesAutoresizingMaskIntoConstraints="NO">
                                                     <rect key="frame" x="20" y="7" width="374" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <state key="normal" title="Delete">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleColor" colorSpace="calibratedRGB" red="1" green="0" blue="0" alpha="1"/>
                                                     </state>
+                                                    <constraints>
+                                                        <constraint id="1540" firstItem="1467" firstAttribute="height" constant="30"/>
+                                                    </constraints>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint id="1537" firstItem="1467" firstAttribute="leading" secondItem="1462" secondAttribute="leading" constant="20"/>
+                                                <constraint id="1538" firstItem="1462" firstAttribute="trailing" secondItem="1467" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="1539" firstItem="1467" firstAttribute="centerY" secondItem="1462" secondAttribute="centerY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1182,8 +1197,16 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Item Detail" id="1385">
-                        <barButtonItem key="leftBarButtonItem" id="1399" systemItem="cancel"/>
-                        <barButtonItem key="rightBarButtonItem" id="1400" systemItem="save"/>
+                        <barButtonItem key="leftBarButtonItem" id="1399" systemItem="cancel">
+                            <connections>
+                                <action selector="btnCancel_UpInside:" destination="1384" id="1560"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="1400" systemItem="save">
+                            <connections>
+                                <action selector="btnSave_UpInside:" destination="1384" id="1559"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="txtName" destination="1423" id="name-outlet-1423"/>
@@ -1194,6 +1217,7 @@
                         <outlet property="btnSave" destination="1400" id="name-outlet-1400"/>
                         <outlet property="btnCancel" destination="1399" id="name-outlet-1399"/>
                         <outlet property="btnDelete" destination="1467" id="name-outlet-1467"/>
+                        <outlet property="swTaxable" destination="1536" id="name-outlet-1536"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1391" userLabel="First Responder" sceneMemberID="firstResponder"/>
