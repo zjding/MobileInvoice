@@ -197,15 +197,15 @@ namespace MobileInvoice.ios
 
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
 		{
-			(this.NavigationController as NewClientNavigationController).Close();
+			//(this.NavigationController as NewClientNavigationController).Close();
 
-			//if (!bNavigationPush)
-			//{
-			//	DismissViewController(true, null);
-			//	//callingController.DismissViewController(true, null);
-			//}
-			//else
-			//	this.NavigationController.PopViewController(true);
+			if (!bNavigationPush)
+			{
+				DismissViewController(true, null);
+				//callingController.DismissViewController(true, null);
+			}
+			else
+				this.NavigationController.PopViewController(true);
 		}
 
 		async Task<bool> AddClient(Client _client)
@@ -318,9 +318,6 @@ namespace MobileInvoice.ios
 			DismissViewController(true, null);
 		}
 
-		partial void btnButton_UpInside(UIButton sender)
-		{
-			DismissViewController(true, null);
-		}
+
 	}
 }

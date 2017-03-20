@@ -33,12 +33,14 @@ namespace MobileInvoice.ios
 			// Add Actions
 			actionSheetAlert.AddAction(UIAlertAction.Create("New Invoice", UIAlertActionStyle.Default, (action) => {
 				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
+				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+				this.PresentViewController(invoiceViewNavigationController, true, null);
 				//InvoiceViewController invoiceVC = (InvoiceViewController)storyBoard.InstantiateViewController("estimationVC");r
 				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
 				//this.PresentViewController(invoiceVC, true, null);
 
-				NewClientNavigationController invoiceViewNavigationController = (NewClientNavigationController)storyBoard.InstantiateViewController("NewClientNavigationController");
-				this.PresentViewController(invoiceViewNavigationController, true, null);
+				//NewClientNavigationController invoiceViewNavigationController = (NewClientNavigationController)storyBoard.InstantiateViewController("NewClientNavigationController");
+				//this.PresentViewController(invoiceViewNavigationController, true, null);
 
 				//InvoiceViewController estimationVC = new InvoiceViewController();			
 				//this.PresentViewController(estimationVC, true, null);

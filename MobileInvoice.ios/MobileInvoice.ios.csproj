@@ -184,8 +184,12 @@
     </Compile>
     <Compile Include="Components\LoadingOverlay.cs" />
     <Compile Include="Helper\Helper.cs" />
-    <Compile Include="NewClientNavigationController.cs" />
-    <Compile Include="NewClientNavigationController.designer.cs">
+    <Compile Include="Controller\ItemDetailController.cs" />
+    <Compile Include="Controller\ItemDetailController.designer.cs">
+      <DependentUpon>ItemDetailController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\NewClientNavigationController.cs" />
+    <Compile Include="Controller\NewClientNavigationController.designer.cs">
       <DependentUpon>NewClientNavigationController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -215,6 +219,8 @@
     <BundleResource Include="Images\User Group-25.png" />
     <BundleResource Include="Images\Delete-50.png" />
     <BundleResource Include="Images\Delete-25.png" />
+    <BundleResource Include="Images\Job-50.png" />
+    <BundleResource Include="Images\Job-25.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
