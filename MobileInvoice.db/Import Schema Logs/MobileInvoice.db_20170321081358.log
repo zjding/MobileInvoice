@@ -1,0 +1,81 @@
+3/21/2017 3:13:58 PM	This log contains information about the import schema operation into project 'MobileInvoice.db' on computer 'DESKTOP-ABEPKAT' by user 'Jason Ding'.
+3/21/2017 3:13:59 PM	Import of database schema has started.
+3/21/2017 3:14:11 PM	Gathering logins
+3/21/2017 3:16:31 PM	Gathering database credentials
+3/21/2017 3:16:31 PM	Gathering database options
+3/21/2017 3:16:31 PM	Gathering users
+3/21/2017 3:16:31 PM	Gathering roles
+3/21/2017 3:16:31 PM	Gathering application roles
+3/21/2017 3:16:31 PM	Gathering role memberships
+3/21/2017 3:16:31 PM	Gathering filegroups
+3/21/2017 3:16:31 PM	Gathering full-text catalogs
+3/21/2017 3:16:31 PM	Gathering assemblies
+3/21/2017 3:16:31 PM	Gathering certificates
+3/21/2017 3:16:31 PM	Gathering symmetric keys
+3/21/2017 3:16:31 PM	Gathering encrypted symmetric keys
+3/21/2017 3:16:31 PM	Gathering schemas
+3/21/2017 3:16:31 PM	Gathering XML schema collections
+3/21/2017 3:16:31 PM	Gathering user-defined data types
+3/21/2017 3:16:31 PM	Gathering user-defined types
+3/21/2017 3:16:31 PM	Gathering table types
+3/21/2017 3:16:31 PM	Gathering unique keys for table types
+3/21/2017 3:16:31 PM	Gathering primary keys for table types
+3/21/2017 3:16:31 PM	Gathering indexes for table types
+3/21/2017 3:16:31 PM	Gathering check constraints for table types
+3/21/2017 3:16:31 PM	Gathering default constraints for table types
+3/21/2017 3:16:31 PM	Gathering partition functions
+3/21/2017 3:16:31 PM	Gathering partition schemes
+3/21/2017 3:16:31 PM	Gathering functions
+3/21/2017 3:16:31 PM	Gathering encrypted functions
+3/21/2017 3:16:31 PM	Gathering aggregates
+3/21/2017 3:16:31 PM	Gathering procedures
+3/21/2017 3:16:31 PM	Gathering encrypted procedures
+3/21/2017 3:16:31 PM	Gathering tables
+3/21/2017 3:16:32 PM	Gathering primary keys
+3/21/2017 3:16:32 PM	Gathering unique constraints
+3/21/2017 3:16:32 PM	Gathering foreign keys
+3/21/2017 3:16:32 PM	Gathering default constraints
+3/21/2017 3:16:32 PM	Gathering check constraints
+3/21/2017 3:16:32 PM	Gathering views
+3/21/2017 3:16:32 PM	Gathering encrypted views
+3/21/2017 3:16:32 PM	Gathering indexes
+3/21/2017 3:16:32 PM	Gathering statistics
+3/21/2017 3:16:32 PM	Gathering full-text index stoplists
+3/21/2017 3:16:32 PM	Gathering search property lists
+3/21/2017 3:16:32 PM	Gathering search properties
+3/21/2017 3:16:32 PM	Gathering full-text indexes
+3/21/2017 3:16:32 PM	Gathering column store indexes
+3/21/2017 3:16:32 PM	Gathering spatial indexes
+3/21/2017 3:16:32 PM	Gathering XML indexes
+3/21/2017 3:16:32 PM	Gathering Selective XML indexes
+3/21/2017 3:16:32 PM	Gathering encrypted triggers
+3/21/2017 3:16:33 PM	Gathering triggers
+3/21/2017 3:16:33 PM	Gathering encrypted and clr ddl triggers
+3/21/2017 3:16:33 PM	Gathering ddl triggers
+3/21/2017 3:16:33 PM	Gathering synonyms
+3/21/2017 3:16:33 PM	Gathering defaults
+3/21/2017 3:16:33 PM	Gathering data constraint uddt bindings
+3/21/2017 3:16:33 PM	Gathering rules
+3/21/2017 3:16:33 PM	Gathering data constraint uddt bindings
+3/21/2017 3:16:33 PM	Gathering message types
+3/21/2017 3:16:33 PM	Gathering queues
+3/21/2017 3:16:33 PM	Gathering contracts
+3/21/2017 3:16:33 PM	Gathering services
+3/21/2017 3:16:33 PM	Gathering event notifications
+3/21/2017 3:16:33 PM	Gathering remote service bindings
+3/21/2017 3:16:33 PM	Gathering broker priorities
+3/21/2017 3:16:33 PM	Gathering signatures
+3/21/2017 3:16:33 PM	Gathering data compression options
+3/21/2017 3:16:33 PM	Gathering sequence types
+3/21/2017 3:16:34 PM	Gathering security policies
+3/21/2017 3:16:34 PM	Gather column encryption keys
+3/21/2017 3:16:34 PM	Gathering column master keys
+3/21/2017 3:16:34 PM	Gathering external data sources
+3/21/2017 3:16:34 PM	Gathering external tables
+3/21/2017 3:16:34 PM	Gathering extended properties
+3/21/2017 3:16:39 PM	Gathering logins
+3/21/2017 3:16:42 PM	Scanning project for duplicate elements
+3/21/2017 3:16:42 PM	Finished duplicate element processing
+3/21/2017 3:16:43 PM	Finished importing database.
+3/21/2017 3:16:43 PM	A summary of the import was saved to the following location: C:\Users\Jason Ding\Documents\Visual Studio 2015\Projects\MobileInvoice\MobileInvoice.db\Import Schema Logs\MobileInvoice.db_20170321081358.log
+3/21/2017 3:16:43 PM	Click Finish to continue...
