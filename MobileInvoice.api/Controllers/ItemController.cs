@@ -36,7 +36,7 @@ namespace MobileInvoice.api.Controllers
                 Item item = new Item();
                 item.Id = Convert.ToInt32(reader["Id"]);
                 item.Name = reader["Name"] != DBNull.Value ? Convert.ToString(reader["Name"]) : string.Empty;
-                item.Price = reader["Price"] != DBNull.Value ? Convert.ToDecimal(reader["Price"]) : 0;
+                item.UnitPrice = reader["UnitPrice"] != DBNull.Value ? Convert.ToDecimal(reader["UnitPrice"]) : 0;
                 item.Quantity = reader["Quantity"] != DBNull.Value ? Convert.ToInt16(reader["Quantity"]) : 0;
                 item.bTaxable = reader["Taxable"] != DBNull.Value ? Convert.ToBoolean(reader["Taxable"]) : false;
                 item.Note = reader["Note"] != DBNull.Value ? Convert.ToString(reader["Note"]) : string.Empty;
@@ -53,8 +53,8 @@ namespace MobileInvoice.api.Controllers
         [HttpPost]
         public HttpResponseMessage AddItem(Item item)
         {
-            string commandString = @"INSERT INTO Item (Name, Price, Quantity, Taxable, Note) 
-                                     Values(@Name, @Price, @Quantity, @Taxable, @Note)";
+            string commandString = @"INSERT INTO Item (Name, UnitPrice, Quantity, Taxable, Note) 
+                                     Values(@Name, @UnitPrice, @Quantity, @Taxable, @Note)";
 
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Constant.connectionString;
@@ -64,7 +64,7 @@ namespace MobileInvoice.api.Controllers
             command.Connection = connection;
 
             command.Parameters.AddWithValue("@Name", item.Name);
-            command.Parameters.AddWithValue("@Price", item.Price);
+            command.Parameters.AddWithValue("@UnitPrice", item.UnitPrice);
             command.Parameters.AddWithValue("@Quantity", item.Quantity);
             //command.Parameters.AddWithValue("@DiscountType", item.DiscountType);
             //command.Parameters.AddWithValue("@DiscountAmount", item.DiscountAmount);
