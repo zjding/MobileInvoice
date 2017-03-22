@@ -18,7 +18,7 @@ namespace MobileInvoice.api.Controllers
         {
             List<Item> items = new List<Item>();
 
-            string commandString = @"Select * from Item";
+            string commandString = @"Select * from InvoiceItem";
 
             SqlDataReader reader = null;
             SqlConnection connection = new SqlConnection();
@@ -53,7 +53,7 @@ namespace MobileInvoice.api.Controllers
         [HttpPost]
         public HttpResponseMessage AddItem(Item item)
         {
-            string commandString = @"INSERT INTO Item (Name, UnitPrice, Quantity, Taxable, Note) 
+            string commandString = @"INSERT INTO InvoiceItem (Name, UnitPrice, Quantity, Taxable, Note) 
                                      Values(@Name, @UnitPrice, @Quantity, @Taxable, @Note)";
 
             SqlConnection connection = new SqlConnection();
