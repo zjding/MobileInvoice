@@ -1173,6 +1173,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAVE TO ITEM LIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1586" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="20" y="11" width="144" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="11"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="1589" firstItem="1586" firstAttribute="width" constant="144"/>
+                                                        <constraint id="1590" firstItem="1586" firstAttribute="height" constant="21"/>
+                                                    </constraints>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="1587" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="353" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" colorSpace="calibratedRGB" red="0.14901960784313725" green="0.41176470588235292" blue="0.68627450980392157" alpha="1"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint id="1588" firstItem="1586" firstAttribute="leading" secondItem="1462" secondAttribute="leading" constant="20"/>
+                                                <constraint id="1591" firstItem="1586" firstAttribute="centerY" secondItem="1462" secondAttribute="centerY"/>
+                                                <constraint id="1595" firstItem="1462" firstAttribute="trailing" secondItem="1587" secondAttribute="trailing" constant="10"/>
+                                                <constraint id="1596" firstItem="1587" firstAttribute="centerY" secondItem="1462" secondAttribute="centerY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="  " id="1579">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1580">
+                                        <rect key="frame" x="0.0" y="1008" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1580" id="1581">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1467" translatesAutoresizingMaskIntoConstraints="NO">
                                                     <rect key="frame" x="20" y="7" width="374" height="30"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
@@ -1181,14 +1215,14 @@
                                                         <color key="titleColor" colorSpace="calibratedRGB" red="1" green="0" blue="0" alpha="1"/>
                                                     </state>
                                                     <constraints>
-                                                        <constraint id="1540" firstItem="1467" firstAttribute="height" constant="30"/>
+                                                        <constraint id="1618" firstItem="1467" firstAttribute="height" constant="30"/>
                                                     </constraints>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint id="1537" firstItem="1467" firstAttribute="leading" secondItem="1462" secondAttribute="leading" constant="20"/>
-                                                <constraint id="1538" firstItem="1462" firstAttribute="trailing" secondItem="1467" secondAttribute="trailing" constant="20"/>
-                                                <constraint id="1539" firstItem="1467" firstAttribute="centerY" secondItem="1462" secondAttribute="centerY"/>
+                                                <constraint id="1615" firstItem="1467" firstAttribute="leading" secondItem="1581" secondAttribute="leading" constant="20"/>
+                                                <constraint id="1616" firstItem="1581" firstAttribute="trailing" secondItem="1467" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="1617" firstItem="1467" firstAttribute="centerY" secondItem="1581" secondAttribute="centerY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1216,8 +1250,9 @@
                         <outlet property="txtNote" destination="1445" id="name-outlet-1445"/>
                         <outlet property="btnSave" destination="1400" id="name-outlet-1400"/>
                         <outlet property="btnCancel" destination="1399" id="name-outlet-1399"/>
-                        <outlet property="btnDelete" destination="1467" id="name-outlet-1467"/>
                         <outlet property="swTaxable" destination="1536" id="name-outlet-1536"/>
+                        <outlet property="btnDelete" destination="1467" id="name-outlet-1467"/>
+                        <outlet property="swSave" destination="1587" id="name-outlet-1587"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1391" userLabel="First Responder" sceneMemberID="firstResponder"/>

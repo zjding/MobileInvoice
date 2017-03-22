@@ -32,6 +32,10 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch swSave { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISwitch swTaxable { get; set; }
 
         [Outlet]
@@ -78,6 +82,11 @@ namespace MobileInvoice.ios
             if (imgItems != null) {
                 imgItems.Dispose ();
                 imgItems = null;
+            }
+
+            if (swSave != null) {
+                swSave.Dispose ();
+                swSave = null;
             }
 
             if (swTaxable != null) {
