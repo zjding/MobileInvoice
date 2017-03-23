@@ -222,6 +222,13 @@
     <BundleResource Include="Images\Delete-25.png" />
     <BundleResource Include="Images\Job-50.png" />
     <BundleResource Include="Images\Job-25.png" />
+    <BundleResource Include="Images\Import-50.png" />
+    <BundleResource Include="Images\Import-30.png" />
+    <BundleResource Include="Images\Checkmark-25.png" />
+    <BundleResource Include="Images\Delete-20.png" />
+    <BundleResource Include="Images\Checkmark-20.png" />
+    <BundleResource Include="Images\Delete-18.png" />
+    <BundleResource Include="Images\Delete-16.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
