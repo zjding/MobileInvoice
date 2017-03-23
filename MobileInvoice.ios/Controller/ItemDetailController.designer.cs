@@ -40,7 +40,7 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtName { get; set; }
+        MobileInvoice.ios.FloatLabeledTextField txtName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,11 +48,15 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtQuantity { get; set; }
+        MobileInvoice.ios.FloatLabeledTextField txtQuantity { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtUnitCost { get; set; }
+        MobileInvoice.ios.FloatLabeledTextField txtUnitCost { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView vwUnder1 { get; set; }
 
         [Action ("btnCancel_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -112,6 +116,11 @@ namespace MobileInvoice.ios
             if (txtUnitCost != null) {
                 txtUnitCost.Dispose ();
                 txtUnitCost = null;
+            }
+
+            if (vwUnder1 != null) {
+                vwUnder1.Dispose ();
+                vwUnder1 = null;
             }
         }
     }

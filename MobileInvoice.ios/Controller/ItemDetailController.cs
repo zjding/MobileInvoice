@@ -27,6 +27,9 @@ namespace MobileInvoice.ios
 
 			TableView.AllowsSelection = false;
 
+			txtUnitCost.Frame = new CGRect(txtUnitCost.Frame.X, txtUnitCost.Frame.Y, (TableView.Frame.Width-36) / 2.0f, txtUnitCost.Frame.Height);
+			txtQuantity.Frame = new CGRect(txtUnitCost.Frame.X + txtUnitCost.Frame.Width, txtQuantity.Frame.Y, (TableView.Frame.Width - 36) / 2.0f, txtQuantity.Frame.Height);
+
 			AddDoneButtonToKeyboard(txtName);
 			AddDoneButtonToKeyboard(txtNote);
 			AddDoneButtonToKeyboard(txtQuantity);

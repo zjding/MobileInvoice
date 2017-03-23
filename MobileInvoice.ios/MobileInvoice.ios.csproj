@@ -192,6 +192,7 @@
     <Compile Include="Controller\NewClientNavigationController.designer.cs">
       <DependentUpon>NewClientNavigationController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\FloatLabeledTextField.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
