@@ -16,7 +16,7 @@ namespace MobileInvoice.ios
 
 			this.InsertEmptyTabItem("", 2);
 
-			var img = UIImage.FromFile("Images/Add-50.png");
+			var img = UIImage.FromFile("Images/Add Filled-50.png");
 			this.AddRaisedButton(img, null);
 		}
 
