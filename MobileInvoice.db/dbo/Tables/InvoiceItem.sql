@@ -7,6 +7,9 @@
     [DiscountAmount] DECIMAL (18, 2) NULL,
     [Taxable]        BIT             NULL,
     [Note]           NVARCHAR (1000) NULL,
+    [InvoiceId]      BIGINT          NULL,
     CONSTRAINT [PK_Item] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 

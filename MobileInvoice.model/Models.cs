@@ -29,19 +29,31 @@ namespace MobileInvoice.model
 		public string Note { get; set; }
 	}
 
+    public class Attachment
+    {
+        public int Id { get; set; }
+        public string ImageName { get; set; }
+        public string Note { get; set; }
+    }
+
 	public class Invoice
 	{
 		public int Id { get; set; }
-		public DateTime IssueDT { get; set; }
+        public string Name { get; set; }
+		public DateTime IssueDate { get; set; }
 		public string DueTerm { get; set; }
-		public DateTime DueDT { get; set; }
+		public DateTime DueDate { get; set; }
 		public Client Client { get; set; }
 		public List<Item> Items { get; set; }
+        public string Note { get; set; }
+        public List<Attachment> Attachments { get; set; }
+        public string Signature { get; set; }
 
 		public Invoice()
 		{
 			Client = new Client();
 			Items = new List<Item>();
+            Attachments = new List<Attachment>();
 		}
 	}
 }
