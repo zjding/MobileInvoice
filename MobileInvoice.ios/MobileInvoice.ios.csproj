@@ -193,6 +193,10 @@
       <DependentUpon>NewClientNavigationController.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\FloatLabeledTextField.cs" />
+    <Compile Include="Cell\InvoiceItemCell.cs" />
+    <Compile Include="Cell\InvoiceItemCell.designer.cs">
+      <DependentUpon>InvoiceItemCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />

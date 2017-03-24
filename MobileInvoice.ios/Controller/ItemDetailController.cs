@@ -13,6 +13,9 @@ namespace MobileInvoice.ios
     public partial class ItemDetailController : UITableViewController
     {
 		public Item item = new Item();
+		public InvoiceViewController callingController;
+
+		public bool bNewMode;
 
         public ItemDetailController (IntPtr handle) : base (handle)
         {
@@ -46,6 +49,14 @@ namespace MobileInvoice.ios
 			header.TextLabel.TextColor = UIColor.LightGray;
 			//header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12)
 			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
+		}
+
+		public override nint NumberOfSections(UITableView tableView)
+		{
+			if (bNewMode)
+				return 4;
+			else
+				return 5;
 		}
 
 		void AddDoneButtonToKeyboard(UITextField textField)
@@ -98,6 +109,8 @@ namespace MobileInvoice.ios
 			BuildItem();
 
 			await AddInvoiceItem(item);
+
+			callingController.invoice.Items.Add(item);
 
 			loadingOverlay.Hide();
 

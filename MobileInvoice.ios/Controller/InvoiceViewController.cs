@@ -2,6 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 using MobileInvoice.model;
+using System.Globalization;
 
 namespace MobileInvoice.ios
 {
@@ -66,7 +67,7 @@ namespace MobileInvoice.ios
 			else if (section == 1)
 				return 1;
 			else if (section == 2)
-				return 1;
+				return invoice.Items.Count + 1;
 
 			return 0;
 		}
@@ -111,12 +112,23 @@ namespace MobileInvoice.ios
 			}
 			else 
 			{
-				InvoiceAddItemCell cell = this.TableView.DequeueReusableCell("InvoiceAddItemCellIdentifier") as InvoiceAddItemCell;
+				if (indexPath.Row == 0)
+				{
+					InvoiceAddItemCell cell = this.TableView.DequeueReusableCell("InvoiceAddItemCellIdentifier") as InvoiceAddItemCell;
 
-				//cell.TextLabel.Text = "Client";
-				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
+					return cell;
+				}
+				else
+				{
+					InvoiceItemCell cell = this.TableView.DequeueReusableCell("InvoiceItemCellIdentifier") as InvoiceItemCell;
 
-				return cell;
+					cell.lblNum.Text = indexPath.Row.ToString();
+					cell.lblItemName.Text = invoice.Items[indexPath.Row - 1].Name;
+					cell.lblUnitPrice.Text = invoice.Items[indexPath.Row - 1].UnitPrice.ToString("C", CultureInfo.CurrentCulture) + " x " + invoice.Items[indexPath.Row - 1].Quantity.ToString();
+					cell.lblTotalPrice.Text = (invoice.Items[indexPath.Row - 1].UnitPrice * invoice.Items[indexPath.Row - 1].Quantity).ToString("C", CultureInfo.CurrentCulture);
+
+					return cell;
+				}
 
 			}
 		}
@@ -128,6 +140,12 @@ namespace MobileInvoice.ios
 				ClientsController clientsCtl = segue.DestinationViewController as ClientsController;
 				clientsCtl.bPickClientMode = true;
 				clientsCtl.callingController = this;
+			}
+			else if (segue.Identifier == "Invoice_To_NewItem_Segue")
+			{
+				ItemDetailController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as ItemDetailController;
+				destCtrl.callingController = this;
+				destCtrl.bNewMode = true;
 			}
 
 			base.PrepareForSegue(segue, sender);
