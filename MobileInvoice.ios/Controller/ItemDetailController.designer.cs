@@ -28,10 +28,6 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView imgItems { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISwitch swSave { get; set; }
 
         [Outlet]
@@ -81,11 +77,6 @@ namespace MobileInvoice.ios
             if (btnSave != null) {
                 btnSave.Dispose ();
                 btnSave = null;
-            }
-
-            if (imgItems != null) {
-                imgItems.Dispose ();
-                imgItems = null;
             }
 
             if (swSave != null) {
