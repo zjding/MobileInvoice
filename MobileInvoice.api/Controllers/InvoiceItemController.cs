@@ -9,14 +9,14 @@ using System.Web.Http;
 
 namespace MobileInvoice.api.Controllers
 {
-    public class ItemController : ApiController
+    public class InvoiceItemController : ApiController
     {
         private string m_connectionString = @"Server=tcp:webapitry120161228015023.database.windows.net,1433;Initial Catalog=WebApiTry120161228015023;Persist Security Info=False;User ID=zjding;Password=G4indigo;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-        [Route("api/Item/GetItems")]
-        public List<Item> Get()
+        [Route("api/InvoiceItem/GetItems")]
+        public List<InvoiceItem> Get()
         {
-            List<Item> items = new List<Item>();
+            List<InvoiceItem> items = new List<InvoiceItem>();
 
             string commandString = @"Select * from InvoiceItem";
 
@@ -33,7 +33,7 @@ namespace MobileInvoice.api.Controllers
 
             while (reader.Read())
             {
-                Item item = new Item();
+                InvoiceItem item = new InvoiceItem();
                 item.Id = Convert.ToInt32(reader["Id"]);
                 item.Name = reader["Name"] != DBNull.Value ? Convert.ToString(reader["Name"]) : string.Empty;
                 item.UnitPrice = reader["UnitPrice"] != DBNull.Value ? Convert.ToDecimal(reader["UnitPrice"]) : 0;
@@ -51,7 +51,7 @@ namespace MobileInvoice.api.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage AddItem(Item item)
+        public HttpResponseMessage AddInvoiceItem(InvoiceItem item)
         {
             string commandString = @"INSERT INTO InvoiceItem (Name, UnitPrice, Quantity, Taxable, Note) 
                                      Values(@Name, @UnitPrice, @Quantity, @Taxable, @Note)";

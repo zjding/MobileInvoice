@@ -17,8 +17,8 @@ namespace MobileInvoice.model
 		public string PostCode { get; set; }
 	}
 
-	public class Item
-	{
+	public class InvoiceItem
+    {
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public decimal UnitPrice { get; set; }
@@ -44,7 +44,7 @@ namespace MobileInvoice.model
 		public string DueTerm { get; set; }
 		public DateTime DueDate { get; set; }
 		public Client Client { get; set; }
-		public List<Item> Items { get; set; }
+		public List<InvoiceItem> Items { get; set; }
         public string Note { get; set; }
         public List<Attachment> Attachments { get; set; }
         public string Signature { get; set; }
@@ -52,8 +52,15 @@ namespace MobileInvoice.model
 		public Invoice()
 		{
 			Client = new Client();
-			Items = new List<Item>();
+			Items = new List<InvoiceItem>();
             Attachments = new List<Attachment>();
 		}
 	}
+
+    public class Item
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal UnitPrice { get; set; }
+    }
 }
