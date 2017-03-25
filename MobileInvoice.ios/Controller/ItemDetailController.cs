@@ -12,7 +12,7 @@ namespace MobileInvoice.ios
 {
     public partial class ItemDetailController : UITableViewController
     {
-		public Item item = new Item();
+		public InvoiceItem item = new InvoiceItem();
 		public InvoiceViewController callingController;
 
 		public bool bNewMode;
@@ -122,7 +122,7 @@ namespace MobileInvoice.ios
 			DismissViewController(true, null);
 		}
 
-		async Task<bool> AddInvoiceItem(Item _item)
+		async Task<bool> AddInvoiceItem(InvoiceItem _item)
 		{
 			string jsonItem = JsonConvert.SerializeObject(_item);
 

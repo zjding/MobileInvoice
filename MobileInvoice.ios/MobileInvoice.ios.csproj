@@ -18,7 +18,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Zhijun Ding (DSAE68B3D5)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>31549</IOSDebuggerPort>
@@ -27,6 +27,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>5135f4c2-f9bd-42e7-85ed-a27eb5cc3d98</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -64,7 +65,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: zjding@outlook.com (MXXU27ZFBP)</CodesignKey>
+    <CodesignKey>iPhone Developer: Zhijun Ding (DSAE68B3D5)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -75,7 +76,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>17088826-e625-4e71-a287-367b1ba20d7b</CodesignProvision>
+    <CodesignProvision>5135f4c2-f9bd-42e7-85ed-a27eb5cc3d98</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -201,8 +202,8 @@
     <Compile Include="Controller\ItemsController.designer.cs">
       <DependentUpon>ItemsController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemCell.cs" />
-    <Compile Include="ItemCell.designer.cs">
+    <Compile Include="Cell\ItemCell.cs" />
+    <Compile Include="Cell\ItemCell.designer.cs">
       <DependentUpon>ItemCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
