@@ -143,7 +143,7 @@ namespace MobileInvoice.ios
 			}
 			else if (segue.Identifier == "Invoice_To_NewItem_Segue")
 			{
-				ItemDetailController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as ItemDetailController;
+				InvoiceItemDetailController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as InvoiceItemDetailController;
 				destCtrl.callingController = this;
 				destCtrl.bNewMode = true;
 			}

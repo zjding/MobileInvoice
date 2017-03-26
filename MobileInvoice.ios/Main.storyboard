@@ -1094,7 +1094,7 @@
         </scene>
         <scene sceneID="1383">
             <objects>
-                <tableViewController id="1384" sceneMemberID="viewController" customClass="ItemDetailController">
+                <tableViewController id="1384" sceneMemberID="viewController" customClass="InvoiceItemDetailController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1386">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1128,7 +1128,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue id="1936" destination="1836" kind="show"/>
+                                                        <segue id="1936" destination="1836" kind="show" identifier="InvoiceItem_to_ItemList_Segue"/>
                                                     </connections>
                                                     <constraints>
                                                         <constraint id="1915" firstItem="1844" firstAttribute="height" constant="30"/>

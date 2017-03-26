@@ -206,6 +206,10 @@
     <Compile Include="Cell\ItemCell.designer.cs">
       <DependentUpon>ItemCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\InvoiceItemDetailController.cs" />
+    <Compile Include="Controller\InvoiceItemDetailController.designer.cs">
+      <DependentUpon>InvoiceItemDetailController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />

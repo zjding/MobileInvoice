@@ -13,6 +13,7 @@ namespace MobileInvoice.ios
     public partial class ItemsController : UITableViewController
     {
 		public List<Item> itemList = new List<Item>();
+		public InvoiceItemDetailController callingController;
 
         public ItemsController (IntPtr handle) : base (handle)
         {
@@ -71,6 +72,16 @@ namespace MobileInvoice.ios
 			cell.lblUnitPrice.Text = itemList[indexPath.Row].UnitPrice.ToString("C", CultureInfo.CurrentCulture);
 
 			return cell;
+		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+			Item _item = itemList[indexPath.Row];
+
+			callingController.invoiceItem.Name = _item.Name;
+			callingController.invoiceItem.UnitPrice = _item.UnitPrice;
+
+			NavigationController.PopViewController(true);
 		}
     }
 }
