@@ -57,17 +57,19 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 3;
+			return 4;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
-			if (section == 0)
+			if (section == 0)       // date
 				return 1;
-			else if (section == 1)
+			else if (section == 1)  // client name
 				return 1;
-			else if (section == 2)
+			else if (section == 2)  // items
 				return invoice.Items.Count + 1;
+			else if (section == 3)  // totall
+				return 5;
 
 			return 0;
 		}
@@ -110,7 +112,7 @@ namespace MobileInvoice.ios
 				return cell;
 
 			}
-			else 
+			else if (indexPath.Section == 2)
 			{
 				if (indexPath.Row == 0)
 				{
@@ -130,6 +132,34 @@ namespace MobileInvoice.ios
 					return cell;
 				}
 
+			}
+			else  // total
+			{
+				if (indexPath.Row == 0)
+				{
+					InvoiceSubtotalCell cell = this.TableView.DequeueReusableCell("InvoiceSubtotalCell") as InvoiceSubtotalCell;
+					return cell;
+				}
+				else if (indexPath.Row == 1)
+				{
+					InvoiceTaxCell cell = this.TableView.DequeueReusableCell("InvoiceTaxCell") as InvoiceTaxCell;
+					return cell;
+				}
+				else if (indexPath.Row == 2)
+				{
+					InvoiceDiscountCell cell = this.TableView.DequeueReusableCell("InvoiceDiscountCell") as InvoiceDiscountCell;
+					return cell;
+				}
+				else if (indexPath.Row == 3)
+				{
+					InvoicePaidCell cell = this.TableView.DequeueReusableCell("InvoicePaidCell") as InvoicePaidCell;
+					return cell;
+				}
+				else
+				{
+					InvoiceBalanceCell cell = this.TableView.DequeueReusableCell("InvoiceBalanceCell") as InvoiceBalanceCell;
+					return cell;
+				}
 			}
 		}
 

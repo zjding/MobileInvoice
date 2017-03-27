@@ -201,20 +201,17 @@
                                                 <constraint id="519" firstItem="508" firstAttribute="width" constant="140"/>
                                             </constraints>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="520" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="255" y="7" width="139" height="30"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="520" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="255" y="7" width="122" height="30"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                             <state key="normal" title="Due in 30 days">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                                             </state>
-                                            <constraints>
-                                                <constraint id="523" firstItem="520" firstAttribute="height" constant="30"/>
-                                                <constraint id="524" firstItem="520" firstAttribute="width" constant="139"/>
-                                            </constraints>
                                             <connections>
                                                 <action selector="btnDueTerm_UpInside:" destination="367" id="525" eventType="touchUpInside"/>
                                             </connections>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -222,8 +219,6 @@
                                         <constraint id="457" firstItem="455" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
                                         <constraint id="516" firstItem="508" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="65"/>
                                         <constraint id="517" firstItem="508" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
-                                        <constraint id="521" firstItem="368" firstAttribute="trailing" secondItem="520" secondAttribute="trailing" constant="20"/>
-                                        <constraint id="522" firstItem="520" firstAttribute="centerY" secondItem="368" secondAttribute="centerY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -331,24 +326,21 @@
                                                 <constraint id="1807" firstItem="1798" firstAttribute="height" constant="21"/>
                                             </constraints>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$46.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1799" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="310" y="11" width="84" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$46.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1799" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="293" y="11" width="84" height="21"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                             <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                             <nil key="highlightedColor"/>
-                                            <constraints>
-                                                <constraint id="1810" firstItem="1799" firstAttribute="height" constant="21"/>
-                                                <constraint id="1811" firstItem="1799" firstAttribute="width" constant="84"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1812" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="20" y="11" width="29" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1812" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="20" y="11" width="25" height="25"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                            <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                            <color key="textColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1"/>
                                             <nil key="highlightedColor"/>
                                             <constraints>
-                                                <constraint id="1814" firstItem="1812" firstAttribute="height" constant="21"/>
-                                                <constraint id="1815" firstItem="1812" firstAttribute="width" constant="29"/>
+                                                <constraint id="1982" firstItem="1812" firstAttribute="height" constant="25"/>
+                                                <constraint id="1983" firstItem="1812" firstAttribute="width" constant="25"/>
                                             </constraints>
                                         </label>
                                     </subviews>
@@ -357,10 +349,8 @@
                                         <constraint id="1801" firstItem="1797" firstAttribute="top" secondItem="384" secondAttribute="top" constant="2"/>
                                         <constraint id="1804" firstItem="1798" firstAttribute="leading" secondItem="384" secondAttribute="leading" constant="65"/>
                                         <constraint id="1805" firstItem="1798" firstAttribute="bottom" secondItem="384" secondAttribute="bottom"/>
-                                        <constraint id="1808" firstItem="384" firstAttribute="trailing" secondItem="1799" secondAttribute="trailing" constant="20"/>
-                                        <constraint id="1809" firstItem="1799" firstAttribute="centerY" secondItem="384" secondAttribute="centerY"/>
-                                        <constraint id="1813" firstItem="1812" firstAttribute="leading" secondItem="384" secondAttribute="leading" constant="20"/>
-                                        <constraint id="1816" firstItem="1812" firstAttribute="centerY" secondItem="384" secondAttribute="centerY"/>
+                                        <constraint id="1980" firstItem="1812" firstAttribute="leading" secondItem="384" secondAttribute="leading" constant="20"/>
+                                        <constraint id="1981" firstItem="1812" firstAttribute="centerY" secondItem="384" secondAttribute="centerY" constant="1"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -370,45 +360,130 @@
                                     <outlet property="lblTotalPrice" destination="1799" id="name-outlet-1799"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="385">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="385" customClass="InvoiceSubtotalCell" reuseIdentifier="InvoiceSubtotalCell">
                                 <rect key="frame" x="0.0" y="204" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="385" id="386">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1988" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="100" y="11" width="92" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$46.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1989" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="315" y="11" width="62" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="387">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="387" accessoryType="disclosureIndicator" customClass="InvoiceDiscountCell" reuseIdentifier="InvoiceDiscountCell">
                                 <rect key="frame" x="0.0" y="248" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="387" id="388">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1990" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="100" y="11" width="81" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$5.60" minimumFontSize="17" id="1999" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" textAlignment="right">
+                                            <rect key="frame" x="279" y="7" width="97" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                        </textField>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="389">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="389" accessoryType="disclosureIndicator" customClass="InvoiceTaxCell" reuseIdentifier="InvoiceTaxCell">
                                 <rect key="frame" x="0.0" y="292" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="389" id="390">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tax (10%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1992" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="100" y="11" width="93" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3.40" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1993" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="313" y="11" width="63" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="391">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="391" accessoryType="disclosureIndicator" customClass="InvoicePaidCell" reuseIdentifier="InvoicePaidCell">
                                 <rect key="frame" x="0.0" y="336" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="391" id="392">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1994" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="100" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$5.60" minimumFontSize="17" id="2000" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" textAlignment="right">
+                                            <rect key="frame" x="313" y="7" width="63" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                        </textField>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="393">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="393" customClass="InvoiceBalanceCell" reuseIdentifier="InvoiceBalanceCell">
                                 <rect key="frame" x="0.0" y="380" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="393" id="394">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance Due" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2001" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="98" y="11" width="105" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$45.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2002" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="304" y="11" width="71" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.4" green="0.4" blue="0.4" alpha="1"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="395">
                                 <rect key="frame" x="0.0" y="424" width="414" height="44"/>
@@ -455,6 +530,7 @@
                             <outlet property="dataSource" destination="362" id="365"/>
                             <outlet property="delegate" destination="362" id="366"/>
                         </connections>
+                        <color key="separatorColor" colorSpace="calibratedRGB" red="0.8" green="0.8" blue="0.8" alpha="1"/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Invoice #1" id="363">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="377" image="Images/Delete-25.png">
@@ -463,6 +539,12 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="378" systemItem="action"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Invoice #1" minimumFontSize="17" id="2026" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center">
+                            <rect key="frame" x="122" y="11" width="170" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </navigationItem>
                     <connections>
                         <outlet property="btnClose" destination="377" id="name-outlet-377"/>
