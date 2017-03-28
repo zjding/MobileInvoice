@@ -28,8 +28,6 @@ namespace MobileInvoice.ios
 				//TextColor = UIColor.White
 			}, UIControlState.Normal);
 
-
-
 			return true;
 		}
 

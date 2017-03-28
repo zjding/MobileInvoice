@@ -28,25 +28,15 @@ namespace MobileInvoice.ios
 		public override void onRaisedButton_TouchUpInside(object sender, EventArgs e)
 		{
 			// Create a new Alert Controller
-			UIAlertController actionSheetAlert = UIAlertController.Create("Create a new item", "Select an type from below", UIAlertControllerStyle.ActionSheet);
+			UIAlertController actionSheetAlert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
 
 			// Add Actions
 			actionSheetAlert.AddAction(UIAlertAction.Create("New Invoice", UIAlertActionStyle.Default, (action) => {
 				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
 				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
 				this.PresentViewController(invoiceViewNavigationController, true, null);
-				//InvoiceViewController invoiceVC = (InvoiceViewController)storyBoard.InstantiateViewController("estimationVC");r
-				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-				//this.PresentViewController(invoiceVC, true, null);
 
-				//NewClientNavigationController invoiceViewNavigationController = (NewClientNavigationController)storyBoard.InstantiateViewController("NewClientNavigationController");
-				//this.PresentViewController(invoiceViewNavigationController, true, null);
-
-				//InvoiceViewController estimationVC = new InvoiceViewController();			
-				//this.PresentViewController(estimationVC, true, null);
 			}));
-
-
 
 			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>
 			{
@@ -63,6 +53,8 @@ namespace MobileInvoice.ios
 			}));
 
 			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
+
+			actionSheetAlert.View.TintColor = UIColor.FromRGB(26, 188, 156);
 
 			// Required for iPad - You must specify a source for the Action Sheet since it is
 			// displayed as a popover

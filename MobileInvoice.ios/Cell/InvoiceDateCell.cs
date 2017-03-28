@@ -19,7 +19,7 @@ namespace MobileInvoice.ios
 		{
 			var modalPicker = new ModalPickerViewController(ModalPickerType.Date, "Select a Date", this.callingController)
 			{
-				HeaderBackgroundColor = new UIColor(red: .13f, green: .56f, blue: .99f, alpha: 1.0f),
+				HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
 				HeaderTextColor = UIColor.White,
 				TransitioningDelegate = new ModalPickerTransitionDelegate(),
 				ModalPresentationStyle = UIModalPresentationStyle.Custom
@@ -58,7 +58,7 @@ namespace MobileInvoice.ios
 
 			var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select a Date", this.callingController)
 			{
-				HeaderBackgroundColor = new UIColor(red: 0.00f, green: 0.46f, blue: 0.98f, alpha: 1.0f),
+				HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
 				HeaderTextColor = UIColor.White,
 				TransitioningDelegate = new ModalPickerTransitionDelegate(),
 				ModalPresentationStyle = UIModalPresentationStyle.Custom

@@ -26,7 +26,7 @@ namespace MobileInvoice.ios
 
 			var header = headerView as UITableViewHeaderFooterView;
 
-			header.TextLabel.TextColor = UIColor.DarkGray;
+			header.TextLabel.TextColor = UIColor.LightGray;
 			//header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12);
 			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
 		}
@@ -41,7 +41,7 @@ namespace MobileInvoice.ios
 				return "ITEMS";
 
 			if (section == 4)
-				return "Attachments";
+				return "ATTACHMENTS";
 
 			if (section == 6)
 				return " ";
@@ -57,7 +57,7 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 4;
+			return 5;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
@@ -70,6 +70,8 @@ namespace MobileInvoice.ios
 				return invoice.Items.Count + 1;
 			else if (section == 3)  // totall
 				return 5;
+			else if (section == 4)  // attachmentl
+				return 1;
 
 			return 0;
 		}
@@ -133,7 +135,7 @@ namespace MobileInvoice.ios
 				}
 
 			}
-			else  // total
+			else if (indexPath.Section == 3) // total
 			{
 				if (indexPath.Row == 0)
 				{
@@ -160,6 +162,11 @@ namespace MobileInvoice.ios
 					InvoiceBalanceCell cell = this.TableView.DequeueReusableCell("InvoiceBalanceCell") as InvoiceBalanceCell;
 					return cell;
 				}
+			}
+			else
+			{
+				InvoiceAddAttachmentCell cell = this.TableView.DequeueReusableCell("InvoiceAddAttachmentCell") as InvoiceAddAttachmentCell;
+				return cell;
 			}
 		}
 
