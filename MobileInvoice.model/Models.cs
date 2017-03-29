@@ -33,7 +33,7 @@ namespace MobileInvoice.model
     {
         public int Id { get; set; }
         public string ImageName { get; set; }
-        public string Note { get; set; }
+        public string Description { get; set; }
     }
 
 	public class Invoice

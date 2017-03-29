@@ -87,6 +87,20 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="Microsoft.Data.Edm">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.2\lib\netstandard1.1\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Spatial">
+      <HintPath>..\packages\System.Spatial.5.8.2\lib\netstandard1.1\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.2\lib\netstandard1.1\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.8.1.1\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -133,6 +147,7 @@
     <Folder Include="Controller\" />
     <Folder Include="Cell\" />
     <Folder Include="Helper\" />
+    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -234,6 +249,12 @@
     <Compile Include="InvoiceAddAttachmentCell.designer.cs">
       <DependentUpon>InvoiceAddAttachmentCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceAttachmentDetailController.cs" />
+    <Compile Include="InvoiceAttachmentDetailController.designer.cs">
+      <DependentUpon>InvoiceAttachmentDetailController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ImageManager.cs" />
+    <Compile Include="Model\Attachment.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
@@ -279,6 +300,8 @@
     <BundleResource Include="Images\Edit-15-grey.png" />
     <BundleResource Include="Images\Edit-10-grey.png" />
     <BundleResource Include="Images\Edit-13-grey.png" />
+    <BundleResource Include="Images\Image File-100.png" />
+    <BundleResource Include="Images\Image File-100-lightgrey.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
