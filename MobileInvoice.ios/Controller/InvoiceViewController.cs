@@ -184,6 +184,12 @@ namespace MobileInvoice.ios
 				destCtrl.callingController = this;
 				destCtrl.bNewMode = true;
 			}
+			else if (segue.Identifier == "Invoice_to_AddAttachment_Segue")
+			{
+				InvoiceAttachmentDetailController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as InvoiceAttachmentDetailController;
+				destCtrl.callingController = this;
+				destCtrl.bNew = true;
+			}
 
 			base.PrepareForSegue(segue, sender);
 		}

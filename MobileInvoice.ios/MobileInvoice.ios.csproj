@@ -225,36 +225,36 @@
     <Compile Include="Controller\InvoiceItemDetailController.designer.cs">
       <DependentUpon>InvoiceItemDetailController.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceSubtotalCell.cs" />
-    <Compile Include="InvoiceSubtotalCell.designer.cs">
-      <DependentUpon>InvoiceSubtotalCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceDiscountCell.cs" />
-    <Compile Include="InvoiceDiscountCell.designer.cs">
-      <DependentUpon>InvoiceDiscountCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceTaxCell.cs" />
-    <Compile Include="InvoiceTaxCell.designer.cs">
-      <DependentUpon>InvoiceTaxCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoicePaidCell.cs" />
-    <Compile Include="InvoicePaidCell.designer.cs">
-      <DependentUpon>InvoicePaidCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceBalanceCell.cs" />
-    <Compile Include="InvoiceBalanceCell.designer.cs">
-      <DependentUpon>InvoiceBalanceCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceAddAttachmentCell.cs" />
-    <Compile Include="InvoiceAddAttachmentCell.designer.cs">
-      <DependentUpon>InvoiceAddAttachmentCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceAttachmentDetailController.cs" />
-    <Compile Include="InvoiceAttachmentDetailController.designer.cs">
-      <DependentUpon>InvoiceAttachmentDetailController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Components\ImageManager.cs" />
     <Compile Include="Model\Attachment.cs" />
+    <Compile Include="Controller\InvoiceAttachmentDetailController.cs" />
+    <Compile Include="Controller\InvoiceAttachmentDetailController.designer.cs">
+      <DependentUpon>InvoiceAttachmentDetailController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceAddAttachmentCell.cs" />
+    <Compile Include="Cell\InvoiceAddAttachmentCell.designer.cs">
+      <DependentUpon>InvoiceAddAttachmentCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceBalanceCell.cs" />
+    <Compile Include="Cell\InvoiceBalanceCell.designer.cs">
+      <DependentUpon>InvoiceBalanceCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceDiscountCell.cs" />
+    <Compile Include="Cell\InvoiceDiscountCell.designer.cs">
+      <DependentUpon>InvoiceDiscountCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoicePaidCell.cs" />
+    <Compile Include="Cell\InvoicePaidCell.designer.cs">
+      <DependentUpon>InvoicePaidCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceSubtotalCell.cs" />
+    <Compile Include="Cell\InvoiceSubtotalCell.designer.cs">
+      <DependentUpon>InvoiceSubtotalCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceTaxCell.cs" />
+    <Compile Include="Cell\InvoiceTaxCell.designer.cs">
+      <DependentUpon>InvoiceTaxCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
