@@ -49,6 +49,11 @@ namespace MobileInvoice.ios
 			return WebAPI_URL + "/api/InvoiceItem/GetItems";
 		}
 
+		public static string AddAttachmentURL()
+		{
+			return WebAPI_URL + "/api/Attachment/AddAttachment";
+		}
+
 		public static void InsertInOrder(string stringToInsert, ref List<string> list)
 		{
 

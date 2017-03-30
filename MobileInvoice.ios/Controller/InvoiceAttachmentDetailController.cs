@@ -1,6 +1,9 @@
 using Foundation;
 using System;
 using UIKit;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace MobileInvoice.ios
 {
@@ -11,7 +14,7 @@ namespace MobileInvoice.ios
 
 		public bool bNew;
 
-		public Attachment attachment;
+		public Attachment attachment = new Attachment();
 
 		public InvoiceViewController callingController;
 
@@ -133,9 +136,66 @@ namespace MobileInvoice.ios
 
 			var name = await ImageManager.UploadImage(imgStream);
 
-			loadingOverlay.Hide();
+			if (bNew)
+			{
+				attachment.ImageName = name;
+				attachment.Description = txtDescription.Text;
 
-			callingController.DismissViewController(true, null);
+				string jsonString = JsonConvert.SerializeObject(attachment);
+
+				HttpClient httpClient = new HttpClient();
+
+				var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+				var result = await httpClient.PostAsync(Helper.AddAttachmentURL(), content);
+
+				var contents = await result.Content.ReadAsStringAsync();
+
+				string returnMessage = contents.ToString();
+
+				loadingOverlay.Hide();
+
+				callingController.DismissViewController(true, null);
+			}
+
+			else
+			{
+				await ImageManager.DeleteImage(attachment.ImageName);
+
+				var newName = await ImageManager.UploadImage(imgStream);
+
+				Attachment updatedAttachment = new Attachment();
+				updatedAttachment.Id = attachment.Id;
+				updatedAttachment.ImageName = newName;
+				updatedAttachment.Description = txtDescription.Text;
+
+				//attachment.imageName = name;
+				//attachment.image = this.imgAttachment.Image;
+				//attachment.description = this.txtDescription.Text;
+
+				string jsonString = JsonConvert.SerializeObject(updatedAttachment);
+
+				HttpClient httpClient = new HttpClient();
+
+				var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+				var result = await httpClient.PutAsync("http://webapitry120161228015023.azurewebsites.net/api/Attachment/PutAttachment", content);
+
+				var contents = await result.Content.ReadAsStringAsync();
+
+				string returnMessage = contents.ToString();
+
+
+				if (returnMessage == "\"Updated attachment successfully\"")
+				{
+					//int i = callingController.attachments.FindIndex(a => a.id == att.id);
+					//callingController.attachments.RemoveAt(i);
+					//callingController.attachments.Insert(i, attachment);
+					loadingOverlay.Hide();
+					this.NavigationController.PopViewController(true);
+				}
+			}
+			
 		}
 
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
