@@ -66,9 +66,22 @@ namespace MobileInvoice.api.Controllers
 
             int rowInserted = command.ExecuteNonQuery();
 
+            commandString = @"  SELECT  TOP 1 Id 
+                                FROM    Attachment 
+                                WHERE   ImageName = @imageName
+                                AND     Description = @description
+                                ORDER BY Id desc";
+
+            command.CommandText = commandString;
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@imageName", attachment.ImageName);
+            command.Parameters.AddWithValue("@description", attachment.Description);
+
+            string attachmentId = command.ExecuteScalar().ToString();
+
             connection.Close();
 
-            return Request.CreateResponse(HttpStatusCode.Created, "Added attachment successfully");
+            return Request.CreateResponse(HttpStatusCode.Created, attachmentId);
         }
 
         [HttpPut]

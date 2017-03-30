@@ -2,8 +2,11 @@
     [Id]          BIGINT         IDENTITY (1, 1) NOT NULL,
     [ImageName]   NVARCHAR (50)  NULL,
     [Description] NVARCHAR (500) NULL,
+    [InvoiceId]   BIGINT         NULL,
     CONSTRAINT [PK_Attachment] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
 
 
