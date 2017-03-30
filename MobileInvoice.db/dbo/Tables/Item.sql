@@ -1,11 +1,13 @@
 ﻿CREATE TABLE [dbo].[Item] (
-    [Id]                  BIGINT          NOT NULL,
+    [Id]                  BIGINT          IDENTITY (1, 1) NOT NULL,
     [Name]                NVARCHAR (100)  NULL,
     [UnitPrice]           DECIMAL (19, 4) NULL,
     [CreatedDateTime]     DATETIME        NULL,
     [LastUpdatedDateTime] DATETIME        NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
+    CONSTRAINT [PK__Table__3214EC0747BFAB87] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
 
 
