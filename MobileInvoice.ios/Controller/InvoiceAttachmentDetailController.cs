@@ -189,13 +189,11 @@ namespace MobileInvoice.ios
 
 				var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-				var result = await httpClient.PutAsync("http://webapitry120161228015023.azurewebsites.net/api/Attachment/PutAttachment", content);
+				var result = await httpClient.PutAsync(Helper.UpdateAttachmentURL(), content);
 
 				var contents = await result.Content.ReadAsStringAsync();
 
 				string returnMessage = contents.ToString();
-
-
 
 
 				if (returnMessage == "\"Updated attachment successfully\"")
