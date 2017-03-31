@@ -4,6 +4,8 @@ using UIKit;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
+using MobileInvoice.model;
 
 namespace MobileInvoice.ios
 {
@@ -131,7 +133,7 @@ namespace MobileInvoice.ios
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
 
-			var resizedImage = ImageManager.ResizeImage(this.imgImage.Image, 1000, 1000);
+			UIImage resizedImage = ImageManager.ResizeImage(this.imgImage.Image, 1000, 1000);
 			var imgStream = resizedImage.AsJPEG(0.75f).AsStream();
 
 			var name = await ImageManager.UploadImage(imgStream);
@@ -152,6 +154,14 @@ namespace MobileInvoice.ios
 				var contents = await result.Content.ReadAsStringAsync();
 
 				string returnMessage = contents.ToString();
+
+				var num = Regex.Match(returnMessage, "\\d+").Value;
+
+				attachment.Id = Convert.ToInt32(num);
+
+				callingController.invoice.Attachments.Add(attachment);
+				callingController.attachmentImages.Add(resizedImage);
+				//callingController.attachmentImages.Add(resizedImage);e
 
 				loadingOverlay.Hide();
 
@@ -184,6 +194,8 @@ namespace MobileInvoice.ios
 				var contents = await result.Content.ReadAsStringAsync();
 
 				string returnMessage = contents.ToString();
+
+
 
 
 				if (returnMessage == "\"Updated attachment successfully\"")

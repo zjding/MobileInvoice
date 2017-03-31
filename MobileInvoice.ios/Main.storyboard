@@ -332,14 +332,14 @@
                                                 <constraint id="1807" firstItem="1798" firstAttribute="height" constant="21"/>
                                             </constraints>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$46.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1799" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$46.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1799" translatesAutoresizingMaskIntoConstraints="NO">
                                             <rect key="frame" x="293" y="11" width="84" height="21"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                             <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                                             <nil key="highlightedColor"/>
                                             <constraints>
-                                                <constraint id="2051" firstItem="1799" firstAttribute="width" constant="84"/>
-                                                <constraint id="2052" firstItem="1799" firstAttribute="height" constant="21"/>
+                                                <constraint id="2497" firstItem="1799" firstAttribute="width" constant="84"/>
+                                                <constraint id="2498" firstItem="1799" firstAttribute="height" constant="21"/>
                                             </constraints>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1812" translatesAutoresizingMaskIntoConstraints="NO">
@@ -360,8 +360,8 @@
                                         <constraint id="1805" firstItem="1798" firstAttribute="bottom" secondItem="384" secondAttribute="bottom"/>
                                         <constraint id="1980" firstItem="1812" firstAttribute="leading" secondItem="384" secondAttribute="leading" constant="20"/>
                                         <constraint id="1981" firstItem="1812" firstAttribute="centerY" secondItem="384" secondAttribute="centerY" constant="1"/>
-                                        <constraint id="2050" firstItem="384" firstAttribute="trailing" secondItem="1799" secondAttribute="trailing" constant="37"/>
-                                        <constraint id="2053" firstItem="1799" firstAttribute="centerY" secondItem="384" secondAttribute="centerY"/>
+                                        <constraint id="2495" firstItem="1799" firstAttribute="trailing" secondItem="384" secondAttribute="trailing" constant="1"/>
+                                        <constraint id="2496" firstItem="1799" firstAttribute="centerY" secondItem="384" secondAttribute="centerY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -585,28 +585,43 @@
                                     <segue id="2378" destination="2258" kind="presentation" identifier="Invoice_to_AddAttachment_Segue"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="397" accessoryType="disclosureIndicator">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="397" accessoryType="disclosureIndicator" customClass="InvoiceAttachmentCell" reuseIdentifier="InvoiceAttachmentCell">
                                 <rect key="frame" x="0.0" y="468" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="397" id="398">
                                     <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2129" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2129" translatesAutoresizingMaskIntoConstraints="NO">
                                             <rect key="frame" x="65" y="4" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint id="2487" firstItem="2129" firstAttribute="width" constant="36"/>
+                                                <constraint id="2488" firstItem="2129" firstAttribute="height" constant="36"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anotation 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2153" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anotation 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2153" translatesAutoresizingMaskIntoConstraints="NO">
                                             <rect key="frame" x="109" y="11" width="267" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                             <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                                             <nil key="highlightedColor"/>
+                                            <constraints>
+                                                <constraint id="2492" firstItem="2153" firstAttribute="height" constant="21"/>
+                                            </constraints>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint id="2130" firstItem="2129" firstAttribute="centerY" secondItem="398" secondAttribute="centerY"/>
+                                        <constraint id="2485" firstItem="2129" firstAttribute="leading" secondItem="398" secondAttribute="leading" constant="65"/>
+                                        <constraint id="2486" firstItem="2129" firstAttribute="centerY" secondItem="398" secondAttribute="centerY"/>
+                                        <constraint id="2489" firstItem="2153" firstAttribute="leading" secondItem="2129" secondAttribute="trailing" constant="8"/>
+                                        <constraint id="2490" firstItem="2153" firstAttribute="trailing" secondItem="398" secondAttribute="trailing"/>
+                                        <constraint id="2491" firstItem="2153" firstAttribute="centerY" secondItem="398" secondAttribute="centerY"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgAttachment" destination="2129" id="name-outlet-2129"/>
+                                    <outlet property="lblDescription" destination="2153" id="name-outlet-2153"/>
+                                    <segue id="2711" destination="2249" kind="show"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="399">
                                 <rect key="frame" x="0.0" y="512" width="414" height="44"/>

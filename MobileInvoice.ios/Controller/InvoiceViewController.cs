@@ -3,12 +3,14 @@ using System;
 using UIKit;
 using MobileInvoice.model;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace MobileInvoice.ios
 {
     public partial class InvoiceViewController : UITableViewController
     {
 		public Invoice invoice = new Invoice();
+		public List<UIImage> attachmentImages = new List<UIImage>();
 
         public InvoiceViewController (IntPtr handle) : base (handle)
         {
@@ -71,7 +73,7 @@ namespace MobileInvoice.ios
 			else if (section == 3)  // totall
 				return 5;
 			else if (section == 4)  // attachmentl
-				return 1;
+				return invoice.Attachments.Count + 1;
 
 			return 0;
 		}
@@ -165,8 +167,18 @@ namespace MobileInvoice.ios
 			}
 			else
 			{
-				InvoiceAddAttachmentCell cell = this.TableView.DequeueReusableCell("InvoiceAddAttachmentCell") as InvoiceAddAttachmentCell;
-				return cell;
+				if (indexPath.Row == 0)
+				{
+					InvoiceAddAttachmentCell cell = this.TableView.DequeueReusableCell("InvoiceAddAttachmentCell") as InvoiceAddAttachmentCell;
+					return cell;
+				}
+				else
+				{
+					InvoiceAttachmentCell cell = this.TableView.DequeueReusableCell("InvoiceAttachmentCell") as InvoiceAttachmentCell;
+					cell.imgAttachment.Image = attachmentImages[indexPath.Row - 1];
+					cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
+					return cell;
+				}
 			}
 		}
 

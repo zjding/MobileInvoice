@@ -255,6 +255,10 @@
     <Compile Include="Cell\InvoiceTaxCell.designer.cs">
       <DependentUpon>InvoiceTaxCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceAttachmentCell.cs" />
+    <Compile Include="InvoiceAttachmentCell.designer.cs">
+      <DependentUpon>InvoiceAttachmentCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
