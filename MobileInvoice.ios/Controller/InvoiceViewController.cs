@@ -11,6 +11,7 @@ namespace MobileInvoice.ios
     {
 		public Invoice invoice = new Invoice();
 		public List<UIImage> attachmentImages = new List<UIImage>();
+		public int iCurrentSelected;
 
         public InvoiceViewController (IntPtr handle) : base (handle)
         {
@@ -202,8 +203,27 @@ namespace MobileInvoice.ios
 				destCtrl.callingController = this;
 				destCtrl.bNew = true;
 			}
+			else if (segue.Identifier == "Invoice_To_AttachmentDetail_Segue")
+			{
+				InvoiceAttachmentDetailController destCtrl = segue.DestinationViewController as InvoiceAttachmentDetailController;
+				destCtrl.callingController = this;
+				destCtrl.bNew = false;
+				destCtrl.iAttachment = 0;
+				destCtrl.attachment = invoice.Attachments[iCurrentSelected - 1];
+				destCtrl.image = attachmentImages[iCurrentSelected - 1];
+			}
 
 			base.PrepareForSegue(segue, sender);
+		}
+
+		public override NSIndexPath WillSelectRow(UITableView tableView, NSIndexPath indexPath)
+		{
+			if (indexPath.Section == 4 && indexPath.Row <= invoice.Attachments.Count) // attachment
+			{
+				iCurrentSelected = indexPath.Row;
+			}
+
+			return indexPath;
 		}
 
 		partial void btnClose_UpInside(UIBarButtonItem sender)

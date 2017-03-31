@@ -15,8 +15,9 @@ namespace MobileInvoice.ios
 		UIImagePickerController photoPicker;
 
 		public bool bNew;
-
+		public int iAttachment;
 		public Attachment attachment = new Attachment();
+		public UIImage image;
 
 		public InvoiceViewController callingController;
 
@@ -42,6 +43,13 @@ namespace MobileInvoice.ios
 			photoPicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
 
 			AddDoneButtonToKeyboard(txtDescription);
+
+			if (!bNew)
+			{
+				imgImage.Image = image;
+				imgImage.ContentMode = UIViewContentMode.ScaleToFill;
+				txtDescription.Text = attachment.Description;
+			}
 		}
 
 		private async void camera_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
@@ -210,7 +218,18 @@ namespace MobileInvoice.ios
 
 		partial void btnCancel_UpInside(UIBarButtonItem sender)
 		{
-			callingController.DismissViewController(true, null);
+			if (bNew)
+				callingController.DismissViewController(true, null);
+			else
+				this.NavigationController.PopViewController(true);
+		}
+
+		public override nint NumberOfSections(UITableView tableView)
+		{
+			if (bNew)
+				return 2;
+			else
+				return 3;
 		}
 	}
 }

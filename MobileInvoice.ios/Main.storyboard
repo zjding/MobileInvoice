@@ -620,7 +620,7 @@
                                 <connections>
                                     <outlet property="imgAttachment" destination="2129" id="name-outlet-2129"/>
                                     <outlet property="lblDescription" destination="2153" id="name-outlet-2153"/>
-                                    <segue id="2711" destination="2249" kind="show"/>
+                                    <segue id="2711" destination="2249" kind="show" identifier="Invoice_To_AttachmentDetail_Segue"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="399">
