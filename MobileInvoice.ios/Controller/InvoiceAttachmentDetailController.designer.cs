@@ -42,6 +42,10 @@ namespace MobileInvoice.ios
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btnCancel_UpInside (UIKit.UIBarButtonItem sender);
 
+        [Action ("btnDelete_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnDelete_UpInside (UIKit.UIButton sender);
+
         [Action ("btnImage_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btnImage_UpInside (UIKit.UIButton sender);

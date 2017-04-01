@@ -231,5 +231,28 @@ namespace MobileInvoice.ios
 			else
 				return 3;
 		}
+
+		async partial void btnDelete_UpInside(UIButton sender)
+		{
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
+
+			HttpClient httpClient = new HttpClient();
+
+			var result = await httpClient.DeleteAsync(Helper.DeleteAttachmentURL() + attachment.Id.ToString());
+
+			result.EnsureSuccessStatusCode();
+
+			await ImageManager.DeleteImage(attachment.ImageName);
+
+			loadingOverlay.Hide();
+
+			if (result.IsSuccessStatusCode)
+			{
+				int i = callingController.invoice.Attachments.FindIndex(a => a.Id == attachment.Id);
+				callingController.invoice.Attachments.RemoveAt(i);
+				this.NavigationController.PopViewController(true);
+			}
+		}
 	}
 }

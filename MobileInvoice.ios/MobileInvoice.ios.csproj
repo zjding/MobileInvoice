@@ -306,6 +306,12 @@
     <BundleResource Include="Images\Edit-13-grey.png" />
     <BundleResource Include="Images\Image File-100.png" />
     <BundleResource Include="Images\Image File-100-lightgrey.png" />
+    <BundleResource Include="Images\Comments-50.png" />
+    <BundleResource Include="Images\Comments-25.png" />
+    <BundleResource Include="Images\US Dollar-50.png" />
+    <BundleResource Include="Images\US Dollar-25.png" />
+    <BundleResource Include="Images\Signature-50.png" />
+    <BundleResource Include="Images\Signature-25.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
