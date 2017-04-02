@@ -255,9 +255,17 @@
     <Compile Include="Cell\InvoiceTaxCell.designer.cs">
       <DependentUpon>InvoiceTaxCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceAttachmentCell.cs" />
-    <Compile Include="InvoiceAttachmentCell.designer.cs">
+    <Compile Include="Cell\InvoiceAttachmentCell.cs" />
+    <Compile Include="Cell\InvoiceAttachmentCell.designer.cs">
       <DependentUpon>InvoiceAttachmentCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\InvoiceNoteController.cs" />
+    <Compile Include="Controller\InvoiceNoteController.designer.cs">
+      <DependentUpon>InvoiceNoteController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\InvoiceNoteCell.cs" />
+    <Compile Include="Cell\InvoiceNoteCell.designer.cs">
+      <DependentUpon>InvoiceNoteCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

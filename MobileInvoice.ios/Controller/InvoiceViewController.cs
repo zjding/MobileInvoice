@@ -50,17 +50,15 @@ namespace MobileInvoice.ios
 				return " ";
 
 			if (section == 5)
-				return "Note";
+				return "NOTE";
 
-			if (section == 7)
-				return " ";
 
 			return base.TitleForHeader(tableView, section);
 		}
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 5;
+			return 6;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
@@ -75,6 +73,8 @@ namespace MobileInvoice.ios
 				return 5;
 			else if (section == 4)  // attachmentl
 				return invoice.Attachments.Count + 1;
+			else if (section == 5)	// note
+				return 1;
 
 			return 0;
 		}
@@ -90,8 +90,6 @@ namespace MobileInvoice.ios
 			if (section == 4)
 				return " ";
 
-			if (section == 7)
-				return " ";
 
 			return base.TitleForFooter(tableView, section);
 		}
@@ -166,7 +164,7 @@ namespace MobileInvoice.ios
 					return cell;
 				}
 			}
-			else
+			else if (indexPath.Section == 4) // attachment
 			{
 				if (indexPath.Row == 0)
 				{
@@ -180,6 +178,13 @@ namespace MobileInvoice.ios
 					cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
 					return cell;
 				}
+			}
+			else
+			{
+				InvoiceNoteCell cell = this.TableView.DequeueReusableCell("InvoiceNoteCell") as InvoiceNoteCell;
+				//cell.imgAttachment.Image = attachmentImages[indexPath.Row - 1];
+				//cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
+				return cell;
 			}
 		}
 
