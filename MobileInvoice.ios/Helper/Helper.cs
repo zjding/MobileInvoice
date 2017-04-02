@@ -7,7 +7,8 @@ namespace MobileInvoice.ios
 {
 	public static class Helper
 	{
-		static string WebAPI_URL = "http://webapitry120161228015023.azurewebsites.net";
+		//static string WebAPI_URL = "http://webapitry120161228015023.azurewebsites.net";
+        static string WebAPI_URL = "http://localhost:51704";
 
 		public static string GetClientsURL()
 		{
