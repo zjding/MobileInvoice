@@ -18,15 +18,28 @@ namespace MobileInvoice.ios
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnClose { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem btnMore { get; set; }
+
         [Action ("btnClose_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btnClose_UpInside (UIKit.UIBarButtonItem sender);
+
+        [Action ("btnMore_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnMore_UpInside (UIKit.UIBarButtonItem sender);
 
         void ReleaseDesignerOutlets ()
         {
             if (btnClose != null) {
                 btnClose.Dispose ();
                 btnClose = null;
+            }
+
+            if (btnMore != null) {
+                btnMore.Dispose ();
+                btnMore = null;
             }
         }
     }

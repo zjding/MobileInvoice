@@ -235,5 +235,41 @@ namespace MobileInvoice.ios
 		{
 			DismissViewController(true, null);
 		}
+
+		partial void btnMore_UpInside(UIBarButtonItem sender)
+		{
+			UIAlertController actionSheetAlert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
+
+			// Add Actions
+			actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, (action) =>
+			{
+				SaveInvoice();
+			}));
+
+//			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>
+//			{
+//				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
+//				//InvoiceViewController invoiceVC = (InvoiceViewController)storyBoard.InstantiateViewController("estimationVC");r
+//				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+//				//this.PresentViewController(invoiceVC, true, null);
+//
+//				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+//				this.PresentViewController(invoiceViewNavigationController, true, null);
+
+//				//InvoiceViewController estimationVC = new InvoiceViewController();			
+//				//this.PresentViewController(estimationVC, true, null);
+//			}));
+
+			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
+
+			actionSheetAlert.View.TintColor = UIColor.FromRGB(26, 188, 156);
+
+			this.PresentViewController(actionSheetAlert, true, null);
+		}
+
+		void SaveInvoice()
+		{
+
+		}
 	}
 }

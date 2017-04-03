@@ -320,6 +320,9 @@
     <BundleResource Include="Images\US Dollar-25.png" />
     <BundleResource Include="Images\Signature-50.png" />
     <BundleResource Include="Images\Signature-25.png" />
+    <BundleResource Include="Images\More-50.png" />
+    <BundleResource Include="Images\More-20.png" />
+    <BundleResource Include="Images\More-25.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">

@@ -710,12 +710,16 @@
                         <color key="separatorColor" colorSpace="calibratedRGB" red="0.8" green="0.8" blue="0.8" alpha="1"/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Invoice #1" id="363">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="377" image="Images/Delete-20.png">
+                        <barButtonItem key="leftBarButtonItem" id="377" image="Images/Delete-20.png">
                             <connections>
                                 <action selector="btnClose_UpInside:" destination="362" id="1303"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="378" systemItem="action"/>
+                        <barButtonItem key="rightBarButtonItem" id="378" image="Images/More-25.png">
+                            <connections>
+                                <action selector="btnMore_UpInside:" destination="362" id="2882"/>
+                            </connections>
+                        </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Invoice #1" minimumFontSize="17" id="2026" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center">
                             <rect key="frame" x="122" y="11" width="170" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -726,6 +730,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnClose" destination="377" id="name-outlet-377"/>
+                        <outlet property="btnMore" destination="378" id="name-outlet-378"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="369" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1921,6 +1926,9 @@
         <image name="Images/US Dollar-25.png" width="25" height="25"/>
         <image name="Images/Signature-50.png" width="50" height="50"/>
         <image name="Images/Signature-25.png" width="25" height="25"/>
+        <image name="Images/More-50.png" width="50" height="50"/>
+        <image name="Images/More-20.png" width="20" height="20"/>
+        <image name="Images/More-25.png" width="25" height="25"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.18823529411764706" green="0.69019607843137254" blue="0.52941176470588236" alpha="1"/>
 </document>
