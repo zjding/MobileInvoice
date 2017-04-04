@@ -4,6 +4,11 @@ using UIKit;
 using MobileInvoice.model;
 using System.Globalization;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace MobileInvoice.ios
 {
@@ -217,6 +222,12 @@ namespace MobileInvoice.ios
 				destCtrl.attachment = invoice.Attachments[iCurrentSelected - 1];
 				destCtrl.image = attachmentImages[iCurrentSelected - 1];
 			}
+			else if (segue.Identifier == "Invoice_To_Note_Segue")
+			{
+ 				InvoiceNoteController destCtrl = segue.DestinationViewController as InvoiceNoteController;
+				destCtrl.callingController = this;
+				destCtrl.note = invoice.Note;
+			}
 
 			base.PrepareForSegue(segue, sender);
 		}
@@ -241,9 +252,11 @@ namespace MobileInvoice.ios
 			UIAlertController actionSheetAlert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
 
 			// Add Actions
-			actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, (action) =>
+			actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, async (action) =>
 			{
-				SaveInvoice();
+				BuildInvoice();
+				int id = await SaveInvoice();
+				invoice.Id = id;
 			}));
 
 //			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>
@@ -267,9 +280,42 @@ namespace MobileInvoice.ios
 			this.PresentViewController(actionSheetAlert, true, null);
 		}
 
-		void SaveInvoice()
+		private void BuildInvoice()
 		{
+			invoice.Name = txtInvoiceName.Text;
 
+			// date
+			NSIndexPath indexPath = NSIndexPath.FromRowSection(0, 0);
+
+			InvoiceDateCell dateCell = TableView.CellAt(indexPath) as InvoiceDateCell;
+			if (!string.IsNullOrEmpty(dateCell.btnIssueDate.Title(UIControlState.Normal)))
+				invoice.IssueDate = Convert.ToDateTime(dateCell.btnIssueDate.Title(UIControlState.Normal));
+			if (!string.IsNullOrEmpty(dateCell.btnDueTerm.Title(UIControlState.Normal)))
+				invoice.DueTerm = dateCell.btnDueTerm.Title(UIControlState.Normal);
+
+			// note 
+			indexPath = NSIndexPath.FromRowSection(0, 5);
+			InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
+			invoice.Note = noteCell.lblNote.Text;
+		}
+
+		async private Task<int> SaveInvoice()
+		{
+			string jsonString = JsonConvert.SerializeObject(invoice);
+
+			HttpClient httpClient = new HttpClient();
+
+			var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+			var result = await httpClient.PostAsync(Helper.AddInvoiceURL(), content);
+
+			var contents = await result.Content.ReadAsStringAsync();
+
+			string returnMessage = contents.ToString();
+
+			var num = Regex.Match(returnMessage, "\\d+").Value;
+
+			return Convert.ToInt32(num);
 		}
 	}
 }

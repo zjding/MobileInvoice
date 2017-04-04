@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Foundation;
 using MobileInvoice.model;
 using UIKit;
 
@@ -64,6 +65,11 @@ namespace MobileInvoice.ios
 			return WebAPI_URL + "/api/Attachment/Delete/";
 		}
 
+		public static string AddInvoiceURL()
+		{
+			return WebAPI_URL + "/api/Invoice/AddInvoice";
+		}
+
 		public static void InsertInOrder(string stringToInsert, ref List<string> list)
 		{
 
@@ -102,6 +108,19 @@ namespace MobileInvoice.ios
 
 		}
 
+		public static DateTime NSDateToDateTime(NSDate date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+			return reference.AddSeconds(date.SecondsSinceReferenceDate);
+		}
 
+		public static NSDate DateTimeToNSDate(DateTime date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+			return NSDate.FromTimeIntervalSinceReferenceDate(
+				(date - reference).TotalSeconds);
+		}
 	}
 }

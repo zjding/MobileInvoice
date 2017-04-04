@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace MobileInvoice.ios
 {
@@ -158,6 +159,10 @@ namespace MobileInvoice.ios
 
 			if (bNewMode)
 			{
+				int id = await AddClient(client);
+
+				client.Id = id;
+
 				if (callingController.clientDictionary.ContainsKey(key))
 				{
 					List<Client> _tempList = callingController.clientDictionary[key];
@@ -174,8 +179,6 @@ namespace MobileInvoice.ios
 				}
 
 				callingController.clientList.Add(client);
-
-				await AddClient(client);
 			}
 			else
 			{
@@ -208,7 +211,7 @@ namespace MobileInvoice.ios
 				this.NavigationController.PopViewController(true);
 		}
 
-		async Task<bool> AddClient(Client _client)
+		async Task<int> AddClient(Client _client)
 		{
 			string jsonClient = JsonConvert.SerializeObject(_client);
 
@@ -222,11 +225,11 @@ namespace MobileInvoice.ios
 
 			string returnMessage = contents.ToString();
 
-			if (returnMessage == "\"Added client successfully\"")
-				return true;
-			else
-				return false;
-				
+			var num = Regex.Match(returnMessage, "\\d+").Value;
+
+			int id = Convert.ToInt32(num);
+
+			return id;
 		}
 
 		async Task<bool> DeleteClient(Client _client)

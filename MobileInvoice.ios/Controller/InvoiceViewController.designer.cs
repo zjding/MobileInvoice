@@ -22,6 +22,10 @@ namespace MobileInvoice.ios
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnMore { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtInvoiceName { get; set; }
+
         [Action ("btnClose_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btnClose_UpInside (UIKit.UIBarButtonItem sender);
@@ -40,6 +44,11 @@ namespace MobileInvoice.ios
             if (btnMore != null) {
                 btnMore.Dispose ();
                 btnMore = null;
+            }
+
+            if (txtInvoiceName != null) {
+                txtInvoiceName.Dispose ();
+                txtInvoiceName = null;
             }
         }
     }

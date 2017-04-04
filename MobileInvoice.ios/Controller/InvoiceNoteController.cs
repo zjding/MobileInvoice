@@ -6,6 +6,9 @@ namespace MobileInvoice.ios
 {
     public partial class InvoiceNoteController : UITableViewController
     {
+		public InvoiceViewController callingController;
+		public string note;
+
         public InvoiceNoteController (IntPtr handle) : base (handle)
         {
         }

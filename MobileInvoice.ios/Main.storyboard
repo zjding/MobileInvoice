@@ -731,6 +731,7 @@
                     <connections>
                         <outlet property="btnClose" destination="377" id="name-outlet-377"/>
                         <outlet property="btnMore" destination="378" id="name-outlet-378"/>
+                        <outlet property="txtInvoiceName" destination="2026" id="name-outlet-2026"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="369" userLabel="First Responder" sceneMemberID="firstResponder"/>
