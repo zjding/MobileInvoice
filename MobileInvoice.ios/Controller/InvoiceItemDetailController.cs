@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MobileInvoice.ios
 {
@@ -16,6 +17,7 @@ namespace MobileInvoice.ios
 		public InvoiceViewController callingController;
 
 		public bool bNewMode;
+		public bool bBackFromItemsController = false;
 
         public InvoiceItemDetailController (IntPtr handle) : base (handle)
         {
@@ -27,6 +29,9 @@ namespace MobileInvoice.ios
 
 			txtName.Text = invoiceItem.Name;
 			txtUnitCost.Text = invoiceItem.UnitPrice.ToString();
+
+			if (bBackFromItemsController || !bNewMode)
+				swSave.On = false;
 		}
 
 		public override void ViewDidLoad()
@@ -143,6 +148,10 @@ namespace MobileInvoice.ios
 			var contents = await result.Content.ReadAsStringAsync();
 
 			string returnMessage = contents.ToString();
+
+			var num = Regex.Match(returnMessage, "\\d+").Value;
+
+			invoiceItem.Id = Convert.ToInt32(num);
 
 			if (this.swSave.On)
 			{

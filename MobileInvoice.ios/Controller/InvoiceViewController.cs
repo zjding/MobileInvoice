@@ -293,6 +293,12 @@ namespace MobileInvoice.ios
 			if (!string.IsNullOrEmpty(dateCell.btnDueTerm.Title(UIControlState.Normal)))
 				invoice.DueTerm = dateCell.btnDueTerm.Title(UIControlState.Normal);
 
+			if (invoice.DueTerm.Contains("receipt"))
+				invoice.DueDate = invoice.IssueDate;
+			else
+				invoice.DueDate = invoice.IssueDate.AddDays(int.Parse(Regex.Match(invoice.DueTerm, "\\d+").Value));
+
+
 			// note 
 			indexPath = NSIndexPath.FromRowSection(0, 5);
 			InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
