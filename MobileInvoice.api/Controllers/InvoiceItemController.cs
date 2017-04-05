@@ -75,9 +75,20 @@ namespace MobileInvoice.api.Controllers
 
             int rowInserted = command.ExecuteNonQuery();
 
+            commandString = @"  SELECT  TOP 1 Id 
+                                FROM    InvoiceItem 
+                                WHERE   Name = @name
+                                ORDER BY Id desc";
+
+            command.CommandText = commandString;
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@name", item.Name);
+
+            string itemId = command.ExecuteScalar().ToString();
+
             connection.Close();
 
-            return Request.CreateResponse(HttpStatusCode.Created, "Added item successfully");
+            return Request.CreateResponse(HttpStatusCode.Created, itemId);
         }
     }
 }
