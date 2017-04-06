@@ -48,6 +48,7 @@ namespace MobileInvoice.model
         public string Note { get; set; }
         public List<Attachment> Attachments { get; set; }
         public string Signature { get; set; }
+        public decimal Total { get; set; }
 
 		public Invoice()
 		{

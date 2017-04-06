@@ -7,6 +7,9 @@
     [ClientId]  BIGINT          NULL,
     [Note]      NVARCHAR (1000) NULL,
     [Signature] NVARCHAR (50)   NULL,
+    [Total]     DECIMAL (19, 4) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 

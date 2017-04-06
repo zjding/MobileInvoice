@@ -11,6 +11,40 @@ namespace MobileInvoice.api.Controllers
 {
     public class InvoiceController : ApiController
     {
+        [Route("api/Invoice/GetInvoices")]
+        public List<Invoice> Get()
+        {
+            List<Invoice> invoices = new List<Invoice>();
+
+            string commandString = @"SELECT * FROM Invoice";
+
+            SqlDataReader reader = null;
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Constant.connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = commandString;
+            command.Connection = connection;
+
+            connection.Open();
+            reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Invoice invoice = new Invoice();
+                invoice.Id = Convert.ToInt16(reader["Id"]);
+                invoice.Name = Convert.ToString(reader["ImageName"]);
+                invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
+                invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
+
+                invoices.Add(invoice);
+            }
+
+            connection.Close();
+
+            return invoices;
+        }
+
         [HttpPost]
         public HttpResponseMessage AddInvoice(Invoice invoice)
         {
