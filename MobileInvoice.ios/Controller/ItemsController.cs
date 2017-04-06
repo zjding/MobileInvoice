@@ -80,6 +80,7 @@ namespace MobileInvoice.ios
 
 			callingController.invoiceItem.Name = _item.Name;
 			callingController.invoiceItem.UnitPrice = _item.UnitPrice;
+			callingController.bBackFromItemsController = true;
 
 			NavigationController.PopViewController(true);
 		}
