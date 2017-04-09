@@ -36,6 +36,7 @@ namespace MobileInvoice.api.Controllers
                 invoice.Name = Convert.ToString(reader["ImageName"]);
                 invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
                 invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
+                invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
 
                 invoices.Add(invoice);
             }
