@@ -267,6 +267,12 @@
     <Compile Include="Cell\InvoiceNoteCell.designer.cs">
       <DependentUpon>InvoiceNoteCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\DropdownMenuConfiguration.cs" />
+    <Compile Include="Components\DropdownMenuView.cs" />
+    <Compile Include="InvoiceListController.cs" />
+    <Compile Include="InvoiceListController.designer.cs">
+      <DependentUpon>InvoiceListController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
@@ -323,6 +329,15 @@
     <BundleResource Include="Images\More-50.png" />
     <BundleResource Include="Images\More-20.png" />
     <BundleResource Include="Images\More-25.png" />
+    <BundleResource Include="Resources\arrow_down_icon.png" />
+    <BundleResource Include="Resources\arrow_down_icon%402x.png" />
+    <BundleResource Include="Resources\arrow_down_icon%403x.png" />
+    <BundleResource Include="Resources\checkmark_icon.png" />
+    <BundleResource Include="Resources\checkmark_icon%402x.png" />
+    <BundleResource Include="Resources\checkmark_icon%403x.png" />
+    <BundleResource Include="Images\Search-20-white.png" />
+    <BundleResource Include="Images\Checkmark-20-white.png" />
+    <BundleResource Include="Images\Date Span-20-white.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">

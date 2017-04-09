@@ -105,7 +105,7 @@
         </scene>
         <scene sceneID="45">
             <objects>
-                <tableViewController id="46" sceneMemberID="viewController">
+                <tableViewController id="46" sceneMemberID="viewController" customClass="InvoiceListController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="48">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,7 +125,16 @@
                             <outlet property="delegate" destination="46" id="50"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="47"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="47">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="2931" image="Images/Search-20-white.png">
+                                <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="2948" image="Images/Date Span-20-white.png">
+                                <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,6 +146,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="57">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="46" kind="relationship" relationship="rootViewController" id="56"/>
@@ -1930,6 +1942,11 @@
         <image name="Images/More-50.png" width="50" height="50"/>
         <image name="Images/More-20.png" width="20" height="20"/>
         <image name="Images/More-25.png" width="25" height="25"/>
+        <image name="arrow_down_icon.png" width="12" height="7"/>
+        <image name="checkmark_icon.png" width="40" height="40"/>
+        <image name="Images/Search-20-white.png" width="20" height="20"/>
+        <image name="Images/Checkmark-20-white.png" width="20" height="20"/>
+        <image name="Images/Date Span-20-white.png" width="20" height="20"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.18823529411764706" green="0.69019607843137254" blue="0.52941176470588236" alpha="1"/>
 </document>
