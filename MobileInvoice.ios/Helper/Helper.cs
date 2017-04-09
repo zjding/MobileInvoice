@@ -65,6 +65,11 @@ namespace MobileInvoice.ios
 			return WebAPI_URL + "/api/Attachment/Delete/";
 		}
 
+		public static string GetInvoicesURL()
+		{
+			return WebAPI_URL + "/api/Invoice/GetInvoices";
+		}
+
 		public static string AddInvoiceURL()
 		{
 			return WebAPI_URL + "/api/Invoice/AddInvoice";

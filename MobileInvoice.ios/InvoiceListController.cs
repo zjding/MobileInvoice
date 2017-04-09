@@ -3,11 +3,18 @@ using System;
 using UIKit;
 using CoreGraphics;
 using System.Linq;
+using System.Collections.Generic;
+using MobileInvoice.model;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace MobileInvoice.ios
 {
     public partial class InvoiceListController : UITableViewController
     {
+		public List<Invoice> invoiceList; 
+
         public InvoiceListController (IntPtr handle) : base (handle)
         {
         }
@@ -64,6 +71,18 @@ namespace MobileInvoice.ios
 
 
 			this.NavigationItem.TitleView = menuView;
+		}
+
+		async Task<int> LoadInvoices()
+		{
+
+			HttpClient httpClient = new HttpClient();
+
+			string result = await httpClient.GetStringAsync(Helper.GetInvoicesURL());
+
+			invoiceList = JsonConvert.DeserializeObject<List<Invoice>>(result);
+
+			return invoiceList.Count;
 		}
     }
 }
