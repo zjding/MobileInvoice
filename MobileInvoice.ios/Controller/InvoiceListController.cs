@@ -44,6 +44,15 @@ namespace MobileInvoice.ios
 		{
 			InvoiceListCell cell = this.TableView.DequeueReusableCell("InvoiceListCell") as InvoiceListCell;
 
+			if (indexPath.Row == 0)
+				cell.status = "d";
+			else if (indexPath.Row == 1)
+				cell.status = "s";
+			else if (indexPath.Row == 2)
+				cell.status = "p";
+			else
+				cell.status = "o";
+
 			return cell;
 		}
 

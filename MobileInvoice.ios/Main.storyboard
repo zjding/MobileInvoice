@@ -185,6 +185,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblStatus" destination="2977" id="name-outlet-2977"/>
+                                    <outlet property="lblTotal" destination="2975" id="name-outlet-2975"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3030">

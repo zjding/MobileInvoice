@@ -269,13 +269,13 @@
     </Compile>
     <Compile Include="Components\DropdownMenuConfiguration.cs" />
     <Compile Include="Components\DropdownMenuView.cs" />
-    <Compile Include="InvoiceListController.cs" />
-    <Compile Include="InvoiceListController.designer.cs">
-      <DependentUpon>InvoiceListController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceListCell.cs" />
-    <Compile Include="InvoiceListCell.designer.cs">
+    <Compile Include="Cell\InvoiceListCell.cs" />
+    <Compile Include="Cell\InvoiceListCell.designer.cs">
       <DependentUpon>InvoiceListCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\InvoiceListController.cs" />
+    <Compile Include="Controller\InvoiceListController.designer.cs">
+      <DependentUpon>InvoiceListController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
