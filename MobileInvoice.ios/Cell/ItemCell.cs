@@ -9,5 +9,7 @@ namespace MobileInvoice.ios
         public ItemCell (IntPtr handle) : base (handle)
         {
         }
+
+
     }
 }

@@ -13,19 +13,38 @@ namespace MobileInvoice.ios
 {
     public partial class InvoiceListController : UITableViewController
     {
-		public List<Invoice> invoiceList; 
+		public List<Invoice> invoiceList = new List<Invoice>();
 
         public InvoiceListController (IntPtr handle) : base (handle)
         {
         }
 
-		public override void ViewDidLoad()
+		async public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
 			SetupMenuView();
 
+			await LoadInvoices();
 
+			TableView.ReloadData();
+		}
+
+		public override nint NumberOfSections(UITableView tableView)
+		{
+			return 1;
+		}
+
+		public override nint RowsInSection(UITableView tableView, nint section)
+		{
+			return invoiceList.Count;
+		}
+
+		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+		{
+			InvoiceListCell cell = this.TableView.DequeueReusableCell("InvoiceListCell") as InvoiceListCell;
+
+			return cell;
 		}
 
 		private void SetupMenuView()

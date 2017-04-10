@@ -14,8 +14,16 @@ namespace MobileInvoice.ios
     [Register ("InvoiceListCell")]
     partial class InvoiceListCell
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblStatus { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (lblStatus != null) {
+                lblStatus.Dispose ();
+                lblStatus = null;
+            }
         }
     }
 }
