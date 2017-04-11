@@ -16,6 +16,18 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblClientName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblDueDate { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblInvoiceName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblStatus { get; set; }
 
         [Outlet]
@@ -24,6 +36,21 @@ namespace MobileInvoice.ios
 
         void ReleaseDesignerOutlets ()
         {
+            if (lblClientName != null) {
+                lblClientName.Dispose ();
+                lblClientName = null;
+            }
+
+            if (lblDueDate != null) {
+                lblDueDate.Dispose ();
+                lblDueDate = null;
+            }
+
+            if (lblInvoiceName != null) {
+                lblInvoiceName.Dispose ();
+                lblInvoiceName = null;
+            }
+
             if (lblStatus != null) {
                 lblStatus.Dispose ();
                 lblStatus = null;

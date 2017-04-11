@@ -23,6 +23,8 @@ namespace MobileInvoice.ios
 		{
 			base.ViewDidLoad();
 
+			TableView.TableFooterView = new UIView();
+
 			SetupMenuView();
 
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
@@ -49,21 +51,14 @@ namespace MobileInvoice.ios
 		{
 			InvoiceListCell cell = this.TableView.DequeueReusableCell("InvoiceListCell") as InvoiceListCell;
 
-			if (indexPath.Row == 0)
-				cell.status = "d";
-			else if (indexPath.Row == 1)
-				cell.status = "s";
-			else if (indexPath.Row == 2)
-				cell.status = "p";
-			else
-				cell.status = "o";
+
 
 			return cell;
 		}
 
 		private void SetupMenuView()
 		{
-			var items = new string[] { "All", "Unpaid", "Paid", "Overdue" };
+			var items = new string[] { "All", "Draft", "Sent", "Paid", "Overdue" };
 
 			this.NavigationController.NavigationBar.Translucent = false;
 			this.NavigationController.NavigationBar.BarTintColor = new UIColor(
