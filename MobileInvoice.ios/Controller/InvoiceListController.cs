@@ -97,8 +97,14 @@ namespace MobileInvoice.ios
 			menuView.MaskBackgroundOpacity = (nfloat)0.3;
 			menuView.BounceOffset = 5;
 
+			menuView.MenuSelected += Menu_Selected;
 
 			this.NavigationItem.TitleView = menuView;
+		}
+
+		void Menu_Selected(object sender, ItemSelectedEventArgs e)
+		{
+			
 		}
 
 		async Task<int> LoadInvoices()
