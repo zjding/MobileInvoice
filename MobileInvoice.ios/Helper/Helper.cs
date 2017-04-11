@@ -70,6 +70,11 @@ namespace MobileInvoice.ios
 			return WebAPI_URL + "/api/Invoice/GetInvoices";
 		}
 
+		public static string GetInvoicesByStatusURL()
+		{
+			return WebAPI_URL + "/api/Invoice/GetInvoicesByStatus";
+		}
+
 		public static string AddInvoiceURL()
 		{
 			return WebAPI_URL + "/api/Invoice/AddInvoice";

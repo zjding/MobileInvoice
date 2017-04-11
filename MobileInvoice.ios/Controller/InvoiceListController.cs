@@ -25,7 +25,12 @@ namespace MobileInvoice.ios
 
 			SetupMenuView();
 
-			await LoadInvoices();
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
+
+			await LoadInvoices("a");
+
+			loadingOverlay.Hide();
 
 			TableView.ReloadData();
 		}
@@ -102,17 +107,39 @@ namespace MobileInvoice.ios
 			this.NavigationItem.TitleView = menuView;
 		}
 
-		void Menu_Selected(object sender, ItemSelectedEventArgs e)
+		async void Menu_Selected(object sender, ItemSelectedEventArgs e)
 		{
-			
+			string status = "";
+
+			if (e.Item.ToString() == "All")
+				status = "a";
+			else if (e.Item.ToString() == "Draft")
+				status = "d";
+			else if (e.Item.ToString() == "Sent")
+				status = "s";
+			else if (e.Item.ToString() == "Paid")
+				status = "p";
+			else if (e.Item.ToString() == "Overdue")
+				status = "o";
+
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
+
+			await LoadInvoices(status);
+
+			loadingOverlay.Hide();
+
+			TableView.ReloadData();
 		}
 
-		async Task<int> LoadInvoices()
+		async Task<int> LoadInvoices(string status)
 		{
 
 			HttpClient httpClient = new HttpClient();
 
-			string result = await httpClient.GetStringAsync(Helper.GetInvoicesURL());
+			string result = await httpClient.GetStringAsync(Helper.GetInvoicesByStatusURL()+ "/" + status + "/");
+
+			invoiceList.Clear();
 
 			invoiceList = JsonConvert.DeserializeObject<List<Invoice>>(result);
 
