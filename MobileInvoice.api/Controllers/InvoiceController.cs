@@ -54,14 +54,14 @@ namespace MobileInvoice.api.Controllers
             string commandString;
 
             if (status != "a")
-                commandString = @"  select  i.Id, i.Name, i.IssueDate, i.DueDate, i.Total, 
-                                            i.Status, c.Name
+                commandString = @"  select  i.Id, i.Name as InvoiceName, i.IssueDate, i.DueDate, i.Total, 
+                                            i.Status, c.Name as ClientName
                                     from Invoice i, Client c
                                     where i.ClientId = c.Id
                                     and i.Status ='" + status + "'";
             else
-                commandString = @"select  i.Id, i.Name, i.IssueDate, i.DueDate, i.Total, 
-                                            i.Status, c.Name
+                commandString = @"select  i.Id, i.Name as InvoiceName, i.IssueDate, i.DueDate, i.Total, 
+                                            i.Status, c.Name as ClientName
                                     from Invoice i, Client c
                                     where i.ClientId = c.Id";
 
@@ -80,9 +80,9 @@ namespace MobileInvoice.api.Controllers
             {
                 Invoice invoice = new Invoice();
                 invoice.Id = Convert.ToInt16(reader["Id"]);
-                invoice.Name = Convert.ToString(reader["Name"]);
+                invoice.Name = Convert.ToString(reader["InvoiceName"]);
                 invoice.Status = Convert.ToString(reader["Status"]);
-                invoice.ClientName = Convert.ToString(reader["Name"]);
+                invoice.ClientName = Convert.ToString(reader["ClientName"]);
                 invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
                 invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
                 //invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
