@@ -8,6 +8,7 @@ using MobileInvoice.model;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace MobileInvoice.ios
 {
@@ -51,7 +52,13 @@ namespace MobileInvoice.ios
 		{
 			InvoiceListCell cell = this.TableView.DequeueReusableCell("InvoiceListCell") as InvoiceListCell;
 
+			Invoice _invoice = invoiceList[indexPath.Row];
 
+			cell.lblClientName.Text = _invoice.ClientName;
+			cell.lblInvoiceName.Text = _invoice.Name;
+			cell.lblTotal.Text = _invoice.Total.ToString("C", CultureInfo.CurrentCulture);
+			cell.lblDueDate.Text = _invoice.DueDate.ToShortDateString();
+			cell.status = _invoice.Status;
 
 			return cell;
 		}
