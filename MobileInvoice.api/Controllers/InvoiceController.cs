@@ -74,6 +74,7 @@ namespace MobileInvoice.api.Controllers
                 Invoice invoice = new Invoice();
                 invoice.Id = Convert.ToInt16(reader["Id"]);
                 invoice.Name = Convert.ToString(reader["Name"]);
+                invoice.Status = Convert.ToString(reader["Status"]);
                 //invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
                 //invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
                 //invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
