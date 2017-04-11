@@ -54,9 +54,16 @@ namespace MobileInvoice.api.Controllers
             string commandString;
 
             if (status != "a")
-                commandString = @"SELECT * FROM Invoice where Status = '" + status + "'";
+                commandString = @"  select  i.Id, i.Name, i.IssueDate, i.DueDate, i.Total, 
+                                            i.Status, c.Name
+                                    from Invoice i, Client c
+                                    where i.ClientId = c.Id
+                                    and i.Status ='" + status + "'";
             else
-                commandString = @"SELECT * FROM Invoice";
+                commandString = @"select  i.Id, i.Name, i.IssueDate, i.DueDate, i.Total, 
+                                            i.Status, c.Name
+                                    from Invoice i, Client c
+                                    where i.ClientId = c.Id";
 
             SqlDataReader reader = null;
             SqlConnection connection = new SqlConnection();
@@ -75,8 +82,9 @@ namespace MobileInvoice.api.Controllers
                 invoice.Id = Convert.ToInt16(reader["Id"]);
                 invoice.Name = Convert.ToString(reader["Name"]);
                 invoice.Status = Convert.ToString(reader["Status"]);
-                //invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
-                //invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
+                invoice.ClientName = Convert.ToString(reader["Name"]);
+                invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
+                invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
                 //invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
 
                 invoices.Add(invoice);

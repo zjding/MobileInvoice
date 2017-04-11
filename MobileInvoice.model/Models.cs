@@ -44,6 +44,7 @@ namespace MobileInvoice.model
 		public string DueTerm { get; set; }
 		public DateTime DueDate { get; set; }
 		public Client Client { get; set; }
+        public string ClientName { get; set; }
 		public List<InvoiceItem> Items { get; set; }
         public string Note { get; set; }
         public List<Attachment> Attachments { get; set; }
