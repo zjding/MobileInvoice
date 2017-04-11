@@ -33,10 +33,45 @@ namespace MobileInvoice.api.Controllers
             {
                 Invoice invoice = new Invoice();
                 invoice.Id = Convert.ToInt16(reader["Id"]);
-                invoice.Name = Convert.ToString(reader["ImageName"]);
-                invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
-                invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
-                invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
+                invoice.Name = Convert.ToString(reader["Name"]);
+                //invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
+                //invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
+                //invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
+
+                invoices.Add(invoice);
+            }
+
+            connection.Close();
+
+            return invoices;
+        }
+
+        [Route("api/Invoice/GetInvoicesByStatus/{status}")]
+        public List<Invoice> Get(string status)
+        {
+            List<Invoice> invoices = new List<Invoice>();
+
+            string commandString = @"SELECT * FROM Invoice where Status = '" + status + "'";
+
+            SqlDataReader reader = null;
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Constant.connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = commandString;
+            command.Connection = connection;
+
+            connection.Open();
+            reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Invoice invoice = new Invoice();
+                invoice.Id = Convert.ToInt16(reader["Id"]);
+                invoice.Name = Convert.ToString(reader["Name"]);
+                //invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
+                //invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
+                //invoice.Status = reader["Status"] != DBNull.Value ? Convert.ToString(reader["Status"]) : "";
 
                 invoices.Add(invoice);
             }
