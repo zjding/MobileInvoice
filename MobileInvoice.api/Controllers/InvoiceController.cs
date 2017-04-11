@@ -51,7 +51,12 @@ namespace MobileInvoice.api.Controllers
         {
             List<Invoice> invoices = new List<Invoice>();
 
-            string commandString = @"SELECT * FROM Invoice where Status = '" + status + "'";
+            string commandString;
+
+            if (status != "a")
+                commandString = @"SELECT * FROM Invoice where Status = '" + status + "'";
+            else
+                commandString = @"SELECT * FROM Invoice";
 
             SqlDataReader reader = null;
             SqlConnection connection = new SqlConnection();
