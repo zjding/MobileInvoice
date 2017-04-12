@@ -15,6 +15,7 @@ namespace MobileInvoice.ios
     public partial class InvoiceListController : UITableViewController
     {
 		public List<Invoice> invoiceList = new List<Invoice>();
+		public UISearchController searchController;
 
         public InvoiceListController (IntPtr handle) : base (handle)
         {
@@ -27,6 +28,8 @@ namespace MobileInvoice.ios
 			TableView.TableFooterView = new UIView();
 
 			SetupMenuView();
+
+			this.ExtendedLayoutIncludesOpaqueBars = true;
 
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
@@ -147,5 +150,45 @@ namespace MobileInvoice.ios
 
 			return invoiceList.Count;
 		}
-    }
+
+		partial void btnSearch_UpInside(UIBarButtonItem sender)
+		{
+			if (searchController == null)
+			{
+				searchController = new UISearchController((UIViewController)null);
+
+				searchController.DimsBackgroundDuringPresentation = false;
+				DefinesPresentationContext = true;
+
+				UISearchBar searchBar = searchController.SearchBar;
+				//searchBar = new UISearchBar();
+				searchBar.Placeholder = "Enter Search Text";
+				searchBar.SizeToFit();
+				searchBar.AutocorrectionType = UITextAutocorrectionType.No;
+				searchBar.AutocapitalizationType = UITextAutocapitalizationType.None;
+				searchBar.BarTintColor = UIColor.White;
+
+				foreach (var view in searchBar.Subviews)
+				{
+					foreach (var subview in view.Subviews)
+					{
+						if (subview is UITextField)
+						{
+							(subview as UITextField).BackgroundColor = UIColor.FromRGB(247, 247, 247);
+						}
+					}
+				}
+
+				TableView.TableHeaderView = searchBar;
+			}
+			else
+			{
+				searchController.Active = false;
+
+				searchController.RemoveFromParentViewController();
+				searchController = null;
+				TableView.TableHeaderView = null;
+			}
+		}
+	}
 }

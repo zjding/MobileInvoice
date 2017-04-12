@@ -14,8 +14,20 @@ namespace MobileInvoice.ios
     [Register ("InvoiceListController")]
     partial class InvoiceListController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem btnSearch { get; set; }
+
+        [Action ("btnSearch_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnSearch_UpInside (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (btnSearch != null) {
+                btnSearch.Dispose ();
+                btnSearch = null;
+            }
         }
     }
 }
