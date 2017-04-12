@@ -256,5 +256,10 @@ namespace MobileInvoice.ios
 
 			PresentViewController(modalPicker, true, null);
 		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+			//base.RowSelected(tableView, indexPath);
+		}
 	}
 }

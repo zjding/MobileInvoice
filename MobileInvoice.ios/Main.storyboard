@@ -189,6 +189,7 @@
                                     <outlet property="lblClientName" destination="2973" id="name-outlet-2973"/>
                                     <outlet property="lblInvoiceName" destination="2974" id="name-outlet-2974"/>
                                     <outlet property="lblDueDate" destination="2976" id="name-outlet-2976"/>
+                                    <segue id="3140" destination="362" kind="show"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3030">
