@@ -16,7 +16,15 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem btnCalendar { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnSearch { get; set; }
+
+        [Action ("btnCalendar_UpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btnCalendar_UpInside (UIKit.UIBarButtonItem sender);
 
         [Action ("btnSearch_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -24,6 +32,11 @@ namespace MobileInvoice.ios
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnCalendar != null) {
+                btnCalendar.Dispose ();
+                btnCalendar = null;
+            }
+
             if (btnSearch != null) {
                 btnSearch.Dispose ();
                 btnSearch = null;

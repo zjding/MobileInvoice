@@ -9,13 +9,19 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Globalization;
+using SharpMobileCode.ModalPicker;
 
 namespace MobileInvoice.ios
 {
     public partial class InvoiceListController : UITableViewController
     {
 		public List<Invoice> invoiceList = new List<Invoice>();
+		public List<Invoice> filteredInvoiceList = new List<Invoice>();
+
 		public UISearchController searchController;
+		public UISearchBar searchBar;
+
+		public bool bSearching = false;
 
         public InvoiceListController (IntPtr handle) : base (handle)
         {
@@ -48,14 +54,22 @@ namespace MobileInvoice.ios
 
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
-			return invoiceList.Count;
+			if (!bSearching)
+				return invoiceList.Count;
+			else
+				return filteredInvoiceList.Count;
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			InvoiceListCell cell = this.TableView.DequeueReusableCell("InvoiceListCell") as InvoiceListCell;
 
-			Invoice _invoice = invoiceList[indexPath.Row];
+			Invoice _invoice;
+
+			if (!bSearching)
+				_invoice = invoiceList[indexPath.Row];
+			else
+				_invoice = filteredInvoiceList[indexPath.Row];
 
 			cell.lblClientName.Text = _invoice.ClientName;
 			cell.lblInvoiceName.Text = _invoice.Name;
@@ -160,7 +174,7 @@ namespace MobileInvoice.ios
 				searchController.DimsBackgroundDuringPresentation = false;
 				DefinesPresentationContext = true;
 
-				UISearchBar searchBar = searchController.SearchBar;
+				searchBar = searchController.SearchBar;
 				//searchBar = new UISearchBar();
 				searchBar.Placeholder = "Enter Search Text";
 				searchBar.SizeToFit();
@@ -179,6 +193,10 @@ namespace MobileInvoice.ios
 					}
 				}
 
+				searchBar.TextChanged += SearchBar_TextChanged;
+				searchBar.CancelButtonClicked += SearchBar_CancelButtonClicked;
+				//searchBar.OnEditingStarted += SearchBar_OnEditingStarted;
+
 				TableView.TableHeaderView = searchBar;
 			}
 			else
@@ -189,6 +207,54 @@ namespace MobileInvoice.ios
 				searchController = null;
 				TableView.TableHeaderView = null;
 			}
+		}
+
+		void SearchBar_TextChanged(object sender, UISearchBarTextChangedEventArgs e)
+		{
+			if (searchBar.Text.Length == 0)
+			{
+				bSearching = false;
+				TableView.ReloadData();
+			}
+			else
+			{
+				bSearching = true;
+
+				filteredInvoiceList = invoiceList.FindAll(c => 	c.Name.ToUpper().Contains(searchBar.Text.ToUpper()) || 
+				                                          c.ClientName.ToUpper().Contains(searchBar.Text.ToUpper()) 
+				                                         );
+				TableView.ReloadData();
+			}
+		}
+
+		void SearchBar_CancelButtonClicked(object sender, EventArgs e)
+		{
+			bSearching = false;
+			TableView.ReloadData();
+		}
+
+		partial void btnCalendar_UpInside(UIBarButtonItem sender)
+		{
+			var yearList = new List<string>();
+			yearList.Add("2017");
+			yearList.Add("2016");
+
+			var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select a Year", this)
+			{
+				HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
+				HeaderTextColor = UIColor.White,
+				TransitioningDelegate = new ModalPickerTransitionDelegate(),
+				ModalPresentationStyle = UIModalPresentationStyle.Custom
+			};
+
+			modalPicker.PickerView.Model = new CustomPickerModel(yearList);
+
+			modalPicker.OnModalPickerDismissed += (s, ea) =>
+			{
+				
+			};
+
+			PresentViewController(modalPicker, true, null);
 		}
 	}
 }

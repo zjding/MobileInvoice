@@ -231,11 +231,15 @@
                             </barButtonItem>
                             <barButtonItem title="Item" id="2948" image="Images/Date Span-20-white.png">
                                 <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                <connections>
+                                    <action selector="btnCalendar_UpInside:" destination="46" id="3081"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="btnSearch" destination="2931" id="name-outlet-2931"/>
+                        <outlet property="btnCalendar" destination="2948" id="name-outlet-2948"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53" userLabel="First Responder" sceneMemberID="firstResponder"/>
