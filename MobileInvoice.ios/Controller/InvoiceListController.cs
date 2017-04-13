@@ -1,4 +1,4 @@
-using Foundation;
+﻿using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
@@ -45,6 +45,51 @@ namespace MobileInvoice.ios
 			loadingOverlay.Hide();
 
 			TableView.ReloadData();
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			this.NavigationController.NavigationBar.BarTintColor = new UIColor(
+				(nfloat)(55.0 / 255.0),
+				(nfloat)(187 / 255.0),
+				(nfloat)(153 / 255.0),
+				(nfloat)1.0
+			);
+
+			//(this.TabBarController as InvoiceTabBarController).AddPlusButton();
+
+			var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
+			button.Hidden = false;
+			//CGRect frame = button.Frame;
+			//frame.X = this.View.Frame.Size.Width / 2 - button.Frame.Size.Width / 2;
+			//button.Frame = frame;
+
+
+
+		}
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+
+			//(this.TabBarController as InvoiceTabBarController).AddPlusButton();
+
+			//(this.TabBarController as InvoiceTabBarController).BringButtonToFront();
+
+			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 2;
+
+			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 1;
+
+		}
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			base.ViewWillDisappear(animated);
+
+			var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
+			button.Hidden = true;	
 		}
 
 		public override nint NumberOfSections(UITableView tableView)
@@ -165,49 +210,50 @@ namespace MobileInvoice.ios
 			return invoiceList.Count;
 		}
 
-		partial void btnSearch_UpInside(UIBarButtonItem sender)
-		{
-			if (searchController == null)
-			{
-				searchController = new UISearchController((UIViewController)null);
 
-				searchController.DimsBackgroundDuringPresentation = false;
-				DefinesPresentationContext = true;
+		//partial void btnSearch_UpInside(UIBarButtonItem sender)
+		//{
+		//	if (searchController == null)
+		//	{
+		//		searchController = new UISearchController((UIViewController)null);
 
-				searchBar = searchController.SearchBar;
-				//searchBar = new UISearchBar();
-				searchBar.Placeholder = "Enter Search Text";
-				searchBar.SizeToFit();
-				searchBar.AutocorrectionType = UITextAutocorrectionType.No;
-				searchBar.AutocapitalizationType = UITextAutocapitalizationType.None;
-				searchBar.BarTintColor = UIColor.White;
+		//		searchController.DimsBackgroundDuringPresentation = false;
+		//		DefinesPresentationContext = true;
 
-				foreach (var view in searchBar.Subviews)
-				{
-					foreach (var subview in view.Subviews)
-					{
-						if (subview is UITextField)
-						{
-							(subview as UITextField).BackgroundColor = UIColor.FromRGB(247, 247, 247);
-						}
-					}
-				}
+		//		searchBar = searchController.SearchBar;
+		//		//searchBar = new UISearchBar();
+		//		searchBar.Placeholder = "Enter Search Text";
+		//		searchBar.SizeToFit();
+		//		searchBar.AutocorrectionType = UITextAutocorrectionType.No;
+		//		searchBar.AutocapitalizationType = UITextAutocapitalizationType.None;
+		//		searchBar.BarTintColor = UIColor.White;
 
-				searchBar.TextChanged += SearchBar_TextChanged;
-				searchBar.CancelButtonClicked += SearchBar_CancelButtonClicked;
-				//searchBar.OnEditingStarted += SearchBar_OnEditingStarted;
+		//		foreach (var view in searchBar.Subviews)
+		//		{
+		//			foreach (var subview in view.Subviews)
+		//			{
+		//				if (subview is UITextField)
+		//				{
+		//					(subview as UITextField).BackgroundColor = UIColor.FromRGB(247, 247, 247);
+		//				}
+		//			}
+		//		}
 
-				TableView.TableHeaderView = searchBar;
-			}
-			else
-			{
-				searchController.Active = false;
+		//		searchBar.TextChanged += SearchBar_TextChanged;
+		//		searchBar.CancelButtonClicked += SearchBar_CancelButtonClicked;
+		//		//searchBar.OnEditingStarted += SearchBar_OnEditingStarted;
 
-				searchController.RemoveFromParentViewController();
-				searchController = null;
-				TableView.TableHeaderView = null;
-			}
-		}
+		//		TableView.TableHeaderView = searchBar;
+		//	}
+		//	else
+		//	{
+		//		searchController.Active = false;
+
+		//		searchController.RemoveFromParentViewController();
+		//		searchController = null;
+		//		TableView.TableHeaderView = null;
+		//	}
+		//}
 
 		void SearchBar_TextChanged(object sender, UISearchBarTextChangedEventArgs e)
 		{
@@ -233,33 +279,53 @@ namespace MobileInvoice.ios
 			TableView.ReloadData();
 		}
 
-		partial void btnCalendar_UpInside(UIBarButtonItem sender)
-		{
-			var yearList = new List<string>();
-			yearList.Add("2017");
-			yearList.Add("2016");
 
-			var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select a Year", this)
-			{
-				HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
-				HeaderTextColor = UIColor.White,
-				TransitioningDelegate = new ModalPickerTransitionDelegate(),
-				ModalPresentationStyle = UIModalPresentationStyle.Custom
-			};
 
-			modalPicker.PickerView.Model = new CustomPickerModel(yearList);
+		//partial void btnCalendar_UpInside(UIBarButtonItem sender)
+		//{
+		//	var yearList = new List<string>();
+		//	yearList.Add("2017");
+		//	yearList.Add("2016");
 
-			modalPicker.OnModalPickerDismissed += (s, ea) =>
-			{
+		//	var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select a Year", this)
+		//	{
+		//		HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
+		//		HeaderTextColor = UIColor.White,
+		//		TransitioningDelegate = new ModalPickerTransitionDelegate(),
+		//		ModalPresentationStyle = UIModalPresentationStyle.Custom
+		//	};
+
+		//	modalPicker.PickerView.Model = new CustomPickerModel(yearList);
+
+		//	modalPicker.OnModalPickerDismissed += (s, ea) =>
+		//	{
 				
-			};
+		//	};
 
-			PresentViewController(modalPicker, true, null);
-		}
+		//	PresentViewController(modalPicker, true, null);
+		//}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
 			//base.RowSelected(tableView, indexPath);
+
+
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue(segue, sender);
+
+			if (segue.Identifier == "Segue_InvoiceList_To_Detail")
+			{
+				//var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
+				//button.Hidden = true;			
+				//CGRect frame = button.Frame;
+				//frame.X = -100;
+				//button.Frame = frame;
+
+
+			}
 		}
 	}
 }

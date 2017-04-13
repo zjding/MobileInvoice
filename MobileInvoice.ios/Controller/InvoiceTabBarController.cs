@@ -1,4 +1,4 @@
-using Foundation;
+﻿using Foundation;
 using System;
 using UIKit;
 
@@ -14,15 +14,42 @@ namespace MobileInvoice.ios
 		{
 			base.ViewDidLoad();
 
+			AddPlusButton();
+		}
+
+		public void AddPlusButton()
+		{
 			this.InsertEmptyTabItem("", 2);
 
 			var img = UIImage.FromFile("Images/Add Filled-50.png");
 			this.AddRaisedButton(img, null);
 		}
 
+		public void RemovePlusButton()
+		{
+			this.RemoveEmptyTabItem(2);
+			this.RemoveRaiseButton();
+		}
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+
+			//AddPlusButton();
+		}
+
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
+
+
+		}
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			base.ViewWillDisappear(animated);
+
+			//RemovePlusButton();
 		}
 
 		public override void onRaisedButton_TouchUpInside(object sender, EventArgs e)

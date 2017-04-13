@@ -1,4 +1,4 @@
-using Foundation;
+﻿using Foundation;
 using System;
 using UIKit;
 using MobileInvoice.model;
@@ -12,19 +12,36 @@ using System.Threading.Tasks;
 
 namespace MobileInvoice.ios
 {
-    public partial class InvoiceViewController : UITableViewController
-    {
+	public partial class InvoiceViewController : UITableViewController
+	{
 		public Invoice invoice = new Invoice();
 		public List<UIImage> attachmentImages = new List<UIImage>();
 		public int iCurrentSelected;
 
-        public InvoiceViewController (IntPtr handle) : base (handle)
-        {
-        }
+		public InvoiceViewController(IntPtr handle) : base(handle)
+		{
+		}
+
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			NavigationController.NavigationBar.BarTintColor = UIColor.White;
+
+			UIBarButtonItem backButton = new UIBarButtonItem(UIImage.FromFile("Images/Left-30-green.png"), UIBarButtonItemStyle.Plain,(sender, e) => 			
+			{
+				NavigationController.PopViewController(true);
+			});
+			NavigationItem.LeftBarButtonItem = backButton;
+			NavigationItem.RightBarButtonItem = null;
+
+		}
 
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
+
+			NavigationController.NavigationBar.BarTintColor = UIColor.White;
 
 			TableView.ReloadData();
 		}
@@ -78,7 +95,7 @@ namespace MobileInvoice.ios
 				return 5;
 			else if (section == 4)  // attachmentl
 				return invoice.Attachments.Count + 1;
-			else if (section == 5)	// note
+			else if (section == 5)  // note
 				return 1;
 
 			return 0;
@@ -224,7 +241,7 @@ namespace MobileInvoice.ios
 			}
 			else if (segue.Identifier == "Invoice_To_Note_Segue")
 			{
- 				InvoiceNoteController destCtrl = segue.DestinationViewController as InvoiceNoteController;
+				InvoiceNoteController destCtrl = segue.DestinationViewController as InvoiceNoteController;
 				destCtrl.callingController = this;
 				destCtrl.note = invoice.Note;
 			}
@@ -259,19 +276,19 @@ namespace MobileInvoice.ios
 				invoice.Id = id;
 			}));
 
-//			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>
-//			{
-//				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
-//				//InvoiceViewController invoiceVC = (InvoiceViewController)storyBoard.InstantiateViewController("estimationVC");r
-//				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-//				//this.PresentViewController(invoiceVC, true, null);
-//
-//				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
-//				this.PresentViewController(invoiceViewNavigationController, true, null);
+			//			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>
+			//			{
+			//				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
+			//				//InvoiceViewController invoiceVC = (InvoiceViewController)storyBoard.InstantiateViewController("estimationVC");r
+			//				//invoiceVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+			//				//this.PresentViewController(invoiceVC, true, null);
+			//
+			//				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+			//				this.PresentViewController(invoiceViewNavigationController, true, null);
 
-//				//InvoiceViewController estimationVC = new InvoiceViewController();			
-//				//this.PresentViewController(estimationVC, true, null);
-//			}));
+			//				//InvoiceViewController estimationVC = new InvoiceViewController();			
+			//				//this.PresentViewController(estimationVC, true, null);
+			//			}));
 
 			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
 

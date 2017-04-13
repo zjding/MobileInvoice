@@ -6,6 +6,8 @@ namespace MobileInvoice.ios
 {
 	public class RaisedTabBarController: UITabBarController 
 	{
+		UIButton button; 
+
 		public RaisedTabBarController()
 		{
 		}
@@ -18,6 +20,17 @@ namespace MobileInvoice.ios
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+		}
+
+		public override void ViewDidLayoutSubviews()
+		{
+			button.Center = this.TabBar.Center;
+			button.Layer.ZPosition = 1;
+		}
+
+		public void BringButtonToFront()
+		{
+			this.View.BringSubviewToFront(button);
 		}
 
 		public void InsertEmptyTabItem(string title, int i)
@@ -34,9 +47,16 @@ namespace MobileInvoice.ios
 			this.ViewControllers = viewCtlList.ToArray();
 		}
 
+		public void RemoveEmptyTabItem(int i)
+		{
+			List<UIViewController> viewCtlList = new List<UIViewController>(this.ViewControllers);
+			viewCtlList.RemoveAt(i);
+			this.ViewControllers = viewCtlList.ToArray();
+		}
+
 		public void AddRaisedButton(UIImage buttonImage, UIImage highlightImage)
 		{
-			var button = new UIButton(UIButtonType.Custom);
+			button = new UIButton(UIButtonType.Custom);
 
 			button.AutoresizingMask = UIViewAutoresizing.FlexibleRightMargin |
 				UIViewAutoresizing.FlexibleLeftMargin |
@@ -63,7 +83,17 @@ namespace MobileInvoice.ios
 
 			button.TouchUpInside += onRaisedButton_TouchUpInside;
 
+			button.Tag = 1001;
+			//button.Layer.ZPosition = 1000;
+
+
+
 			this.View.AddSubview(button);
+		}
+
+		public void RemoveRaiseButton()
+		{
+			button.RemoveFromSuperview();
 		}
 
 		public virtual void onRaisedButton_TouchUpInside(object sender, EventArgs e)
