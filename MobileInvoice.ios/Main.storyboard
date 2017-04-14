@@ -224,11 +224,25 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="47">
                         <rightBarButtonItems>
-                            <barButtonItem title=" " id="3305" image="Images/Search-20-white.png" style="plain">
-                                <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            <barButtonItem style="plain" id="3316">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3315" translatesAutoresizingMaskIntoConstraints="NO" key="customView">
+                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                    <state key="normal" image="Images/Search-20-white.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
                             </barButtonItem>
-                            <barButtonItem title=" " id="3306" image="Images/Date Span-20-white.png" style="plain">
-                                <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            <barButtonItem style="plain" id="3318">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3317" translatesAutoresizingMaskIntoConstraints="NO" key="customView">
+                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                    <state key="normal" image="Images/Date Span-20-white.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
