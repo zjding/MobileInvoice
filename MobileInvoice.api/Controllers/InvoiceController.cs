@@ -95,6 +95,107 @@ namespace MobileInvoice.api.Controllers
             return invoices;
         }
 
+        [Route("api/Invoice/GetInvoice/{id}")]
+        public Invoice GetInvoice(string id)
+        {
+            Invoice invoice = new Invoice();
+
+            string commandString = @"SELECT * FROM Invoice WHERE Id = " + id;
+
+            SqlDataReader reader = null;
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Constant.connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = commandString;
+            command.Connection = connection;
+
+            connection.Open();
+            reader = command.ExecuteReader();
+
+            int clientId = 0;
+
+            if (reader.Read())
+            {
+                invoice.Id = Convert.ToInt16(reader["Id"]);
+                invoice.Name = Convert.ToString(reader["Name"]);
+                invoice.IssueDate = Convert.ToDateTime(reader["IssueDate"]);
+                invoice.DueDate = Convert.ToDateTime(reader["DueDate"]);
+                invoice.DueTerm = Convert.ToString(reader["DueTerm"]);
+                invoice.Note = Convert.ToString(reader["Note"]);
+                invoice.Total = reader["Total"] != DBNull.Value ? Convert.ToDecimal(reader["Total"]) : 0;
+                invoice.Status = Convert.ToString(reader["Status"]);
+
+                clientId = Convert.ToInt16(reader["ClientId"]);
+            }
+
+            commandString = @"SELECT * FROM Client WHERE Id = " + clientId.ToString();
+            command.CommandText = commandString;
+
+            reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                Client client = new Client();
+                client.Id = Convert.ToInt16(reader["Id"]);
+                client.Name = Convert.ToString(reader["Name"]);
+                client.Phone = Convert.ToString(reader["Phone"]);
+                client.Email = Convert.ToString(reader["Email"]);
+                client.Street1 = Convert.ToString(reader["Street1"]);
+                client.Street2 = Convert.ToString(reader["Street2"]);
+                client.City = Convert.ToString(reader["City"]);
+                client.State = Convert.ToString(reader["State"]);
+                client.Country = Convert.ToString(reader["Country"]);
+                client.PostCode = Convert.ToString(reader["PostCode"]);
+
+                invoice.Client = client;
+                invoice.ClientName = client.Name;
+            }
+
+            commandString = @"SELECT * FROM InvoiceItem WHERE InvoiceId = " + invoice.Id.ToString();
+            command.CommandText = commandString;
+
+            reader = command.ExecuteReader();
+
+            invoice.Items = new List<InvoiceItem>();
+
+            while (reader.Read())
+            {
+                InvoiceItem item = new InvoiceItem();
+
+                item.Id = Convert.ToInt16(reader["Id"]);
+                item.Name = Convert.ToString(reader["Name"]);
+                item.UnitPrice = reader["UnitPrice"] != DBNull.Value ? Convert.ToDecimal(reader["UnitPrice"]) : 0;
+                item.Quantity = Convert.ToInt16(reader["Quantity"]);
+                item.bTaxable = Convert.ToBoolean(reader["Taxable"]);
+                item.Note = Convert.ToString(reader["Note"]);
+
+                invoice.Items.Add(item);
+            }
+
+            commandString = @"SELECT * FROM Attachment WHERE InvoiceId = " + invoice.Id.ToString();
+            command.CommandText = commandString;
+
+            reader = command.ExecuteReader();
+
+            invoice.Attachments = new List<Attachment>();
+
+            while (reader.Read())
+            {
+                Attachment attachment = new Attachment();
+
+                attachment.Id = Convert.ToInt16(reader["Id"]);
+                attachment.ImageName = Convert.ToString(reader["ImageName"]);
+                attachment.Description = Convert.ToString(reader["Description"]);
+
+                invoice.Attachments.Add(attachment);
+            }
+
+            reader.Close();
+
+            return invoice;
+        }
+
         [HttpPost]
         public HttpResponseMessage AddInvoice(Invoice invoice)
         {
