@@ -13,8 +13,8 @@ using SharpMobileCode.ModalPicker;
 
 namespace MobileInvoice.ios
 {
-    public partial class InvoiceListController : UITableViewController
-    {
+	public partial class InvoiceListController : UITableViewController
+	{
 		public List<Invoice> invoiceList = new List<Invoice>();
 		public List<Invoice> filteredInvoiceList = new List<Invoice>();
 
@@ -23,9 +23,9 @@ namespace MobileInvoice.ios
 
 		public bool bSearching = false;
 
-        public InvoiceListController (IntPtr handle) : base (handle)
-        {
-        }
+		public InvoiceListController(IntPtr handle) : base(handle)
+		{
+		}
 
 		async public override void ViewDidLoad()
 		{
@@ -89,7 +89,7 @@ namespace MobileInvoice.ios
 			base.ViewWillDisappear(animated);
 
 			var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
-			button.Hidden = true;	
+			button.Hidden = true;
 		}
 
 		public override nint NumberOfSections(UITableView tableView)
@@ -201,7 +201,7 @@ namespace MobileInvoice.ios
 
 			HttpClient httpClient = new HttpClient();
 
-			string result = await httpClient.GetStringAsync(Helper.GetInvoicesByStatusURL()+ "/" + status + "/");
+			string result = await httpClient.GetStringAsync(Helper.GetInvoicesByStatusURL() + "/" + status + "/");
 
 			invoiceList.Clear();
 
@@ -210,6 +210,49 @@ namespace MobileInvoice.ios
 			return invoiceList.Count;
 		}
 
+		partial void btnSearch_UpInside(UIButton sender)
+		{
+			if (searchController == null)
+			{
+				searchController = new UISearchController((UIViewController)null);
+
+				searchController.DimsBackgroundDuringPresentation = false;
+				DefinesPresentationContext = true;
+
+				searchBar = searchController.SearchBar;
+				//searchBar = new UISearchBar();
+				searchBar.Placeholder = "Enter Search Text";
+				searchBar.SizeToFit();
+				searchBar.AutocorrectionType = UITextAutocorrectionType.No;
+				searchBar.AutocapitalizationType = UITextAutocapitalizationType.None;
+				searchBar.BarTintColor = UIColor.White;
+
+				foreach (var view in searchBar.Subviews)
+				{
+					foreach (var subview in view.Subviews)
+					{
+						if (subview is UITextField)
+						{
+							(subview as UITextField).BackgroundColor = UIColor.FromRGB(247, 247, 247);
+						}
+					}
+				}
+
+				searchBar.TextChanged += SearchBar_TextChanged;
+				searchBar.CancelButtonClicked += SearchBar_CancelButtonClicked;
+				//searchBar.OnEditingStarted += SearchBar_OnEditingStarted;
+
+				TableView.TableHeaderView = searchBar;
+			}
+			else
+			{
+				searchController.Active = false;
+
+				searchController.RemoveFromParentViewController();
+				searchController = null;
+				TableView.TableHeaderView = null;
+			}
+		}
 
 		//partial void btnSearch_UpInside(UIBarButtonItem sender)
 		//{
@@ -266,9 +309,9 @@ namespace MobileInvoice.ios
 			{
 				bSearching = true;
 
-				filteredInvoiceList = invoiceList.FindAll(c => 	c.Name.ToUpper().Contains(searchBar.Text.ToUpper()) || 
-				                                          c.ClientName.ToUpper().Contains(searchBar.Text.ToUpper()) 
-				                                         );
+				filteredInvoiceList = invoiceList.FindAll(c => c.Name.ToUpper().Contains(searchBar.Text.ToUpper()) ||
+									  c.ClientName.ToUpper().Contains(searchBar.Text.ToUpper())
+									 );
 				TableView.ReloadData();
 			}
 		}
@@ -279,31 +322,29 @@ namespace MobileInvoice.ios
 			TableView.ReloadData();
 		}
 
+		partial void btnCalendar_UpInside(UIButton sender)
+		{
+			var yearList = new List<string>();
+			yearList.Add("2017");
+			yearList.Add("2016");
 
+			var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select a Year", this)
+			{
+				HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
+				HeaderTextColor = UIColor.White,
+				TransitioningDelegate = new ModalPickerTransitionDelegate(),
+				ModalPresentationStyle = UIModalPresentationStyle.Custom
+			};
 
-		//partial void btnCalendar_UpInside(UIBarButtonItem sender)
-		//{
-		//	var yearList = new List<string>();
-		//	yearList.Add("2017");
-		//	yearList.Add("2016");
+			modalPicker.PickerView.Model = new CustomPickerModel(yearList);
 
-		//	var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select a Year", this)
-		//	{
-		//		HeaderBackgroundColor = UIColor.FromRGB(26, 188, 156),
-		//		HeaderTextColor = UIColor.White,
-		//		TransitioningDelegate = new ModalPickerTransitionDelegate(),
-		//		ModalPresentationStyle = UIModalPresentationStyle.Custom
-		//	};
+			modalPicker.OnModalPickerDismissed += (s, ea) =>
+			{
 
-		//	modalPicker.PickerView.Model = new CustomPickerModel(yearList);
+			};
 
-		//	modalPicker.OnModalPickerDismissed += (s, ea) =>
-		//	{
-				
-		//	};
-
-		//	PresentViewController(modalPicker, true, null);
-		//}
+			PresentViewController(modalPicker, true, null);
+		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
