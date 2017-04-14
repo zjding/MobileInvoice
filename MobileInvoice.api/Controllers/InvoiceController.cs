@@ -129,6 +129,8 @@ namespace MobileInvoice.api.Controllers
                 clientId = Convert.ToInt16(reader["ClientId"]);
             }
 
+            reader.Close();
+
             commandString = @"SELECT * FROM Client WHERE Id = " + clientId.ToString();
             command.CommandText = commandString;
 
@@ -152,6 +154,8 @@ namespace MobileInvoice.api.Controllers
                 invoice.ClientName = client.Name;
             }
 
+            reader.Close();
+
             commandString = @"SELECT * FROM InvoiceItem WHERE InvoiceId = " + invoice.Id.ToString();
             command.CommandText = commandString;
 
@@ -172,6 +176,8 @@ namespace MobileInvoice.api.Controllers
 
                 invoice.Items.Add(item);
             }
+
+            reader.Close();
 
             commandString = @"SELECT * FROM Attachment WHERE InvoiceId = " + invoice.Id.ToString();
             command.CommandText = commandString;
