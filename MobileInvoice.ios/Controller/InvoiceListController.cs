@@ -21,6 +21,8 @@ namespace MobileInvoice.ios
 		public UISearchController searchController;
 		public UISearchBar searchBar;
 
+		public int SelectedInvoiceId;
+
 		public bool bSearching = false;
 
 		public InvoiceListController(IntPtr handle) : base(handle)
@@ -210,6 +212,8 @@ namespace MobileInvoice.ios
 			return invoiceList.Count;
 		}
 
+
+
 		partial void btnSearch_UpInside(UIButton sender)
 		{
 			if (searchController == null)
@@ -353,6 +357,13 @@ namespace MobileInvoice.ios
 
 		}
 
+		public override NSIndexPath WillSelectRow(UITableView tableView, NSIndexPath indexPath)
+		{
+			SelectedInvoiceId = invoiceList[indexPath.Row].Id;
+
+			return indexPath;
+		}
+
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue(segue, sender);
@@ -365,6 +376,7 @@ namespace MobileInvoice.ios
 				//frame.X = -100;
 				//button.Frame = frame;
 
+				(segue.DestinationViewController as InvoiceViewController).invoiceId = SelectedInvoiceId;
 
 			}
 		}

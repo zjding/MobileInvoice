@@ -61,6 +61,8 @@ namespace MobileInvoice.ios
 			actionSheetAlert.AddAction(UIAlertAction.Create("New Invoice", UIAlertActionStyle.Default, (action) => {
 				UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
 				UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+				InvoiceViewController invoiceViewController = invoiceViewNavigationController.ViewControllers[0] as InvoiceViewController;
+				invoiceViewController.bNewMode = true;
 				this.PresentViewController(invoiceViewNavigationController, true, null);
 
 			}));

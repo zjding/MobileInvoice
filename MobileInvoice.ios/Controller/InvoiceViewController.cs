@@ -17,24 +17,58 @@ namespace MobileInvoice.ios
 		public Invoice invoice = new Invoice();
 		public List<UIImage> attachmentImages = new List<UIImage>();
 		public int iCurrentSelected;
+		public int invoiceId = -1;
+		public bool bNewMode = false;
 
 		public InvoiceViewController(IntPtr handle) : base(handle)
 		{
 		}
 
-		public override void ViewDidLoad()
+		async public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
-			NavigationController.NavigationBar.BarTintColor = UIColor.White;
-
-			UIBarButtonItem backButton = new UIBarButtonItem(UIImage.FromFile("Images/Left-30-green.png"), UIBarButtonItemStyle.Plain,(sender, e) => 			
+			if (!bNewMode)
 			{
-				NavigationController.PopViewController(true);
-			});
-			NavigationItem.LeftBarButtonItem = backButton;
-			NavigationItem.RightBarButtonItem = null;
+				NavigationController.NavigationBar.BarTintColor = UIColor.White;
 
+				UIBarButtonItem backButton = new UIBarButtonItem(UIImage.FromFile("Images/Left-30-green.png"), UIBarButtonItemStyle.Plain, (sender, e) =>
+				 {
+					 NavigationController.PopViewController(true);
+				 });
+				NavigationItem.LeftBarButtonItem = backButton;
+				NavigationItem.RightBarButtonItem = null;
+
+				LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+				this.View.Add(loadingOverlay);
+
+				invoice = await LoadInvoice(invoiceId);
+
+				attachmentImages.Clear();
+
+				foreach (Attachment att in invoice.Attachments)
+				{
+
+					var bytes = Task.Run(() => ImageManager.GetImage(att.ImageName)).Result;
+					var data = NSData.FromArray(bytes);
+					attachmentImages.Add(UIImage.LoadFromData(data));
+				}
+
+				loadingOverlay.Hide();
+
+				TableView.ReloadData();
+			}
+		}
+
+		async Task<Invoice> LoadInvoice(int id)
+		{
+			HttpClient httpClient = new HttpClient();
+
+			string result = await httpClient.GetStringAsync(Helper.GetInvoiceByIdURL() + "/" + id.ToString() + "/");
+
+			Invoice _invoice = JsonConvert.DeserializeObject<Invoice>(result);
+
+			return _invoice;
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -201,13 +235,18 @@ namespace MobileInvoice.ios
 					return cell;
 				}
 			}
-			else
+			else if (indexPath.Section == 5)
 			{
-				InvoiceNoteCell cell = this.TableView.DequeueReusableCell("InvoiceNoteCell") as InvoiceNoteCell;
-				//cell.imgAttachment.Image = attachmentImages[indexPath.Row - 1];
-				//cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
-				return cell;
+				if (indexPath.Row == 0)
+				{
+					InvoiceNoteCell cell = this.TableView.DequeueReusableCell("InvoiceNoteCell") as InvoiceNoteCell;
+					//cell.imgAttachment.Image = attachmentImages[indexPath.Row - 1];
+					//cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
+					return cell;
+				}
 			}
+
+			return null;
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
