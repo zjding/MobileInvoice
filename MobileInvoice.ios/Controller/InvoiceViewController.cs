@@ -114,7 +114,7 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 6;
+			return 7;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
@@ -130,6 +130,8 @@ namespace MobileInvoice.ios
 			else if (section == 4)  // attachmentl
 				return invoice.Attachments.Count + 1;
 			else if (section == 5)  // note
+				return 1;
+			else if (section == 6) // signature
 				return 1;
 
 			return 0;
@@ -235,7 +237,7 @@ namespace MobileInvoice.ios
 					return cell;
 				}
 			}
-			else if (indexPath.Section == 5)
+			else if (indexPath.Section == 5) // note
 			{
 				if (indexPath.Row == 0)
 				{
@@ -244,6 +246,12 @@ namespace MobileInvoice.ios
 					//cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
 					return cell;
 				}
+			}
+			else if (indexPath.Section == 6)
+			{
+				InvoiceSignatureCell cell = this.TableView.DequeueReusableCell("InvoiceSignatureCell") as InvoiceSignatureCell;
+
+				return cell;
 			}
 
 			return null;
@@ -310,9 +318,16 @@ namespace MobileInvoice.ios
 			// Add Actions
 			actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, async (action) =>
 			{
+				LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+				this.View.Add(loadingOverlay);
+
 				BuildInvoice();
 				int id = await SaveInvoice();
 				invoice.Id = id;
+
+				loadingOverlay.Hide();
+
+				DismissViewController(true, null);
 			}));
 
 			//			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>

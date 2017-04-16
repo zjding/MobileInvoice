@@ -277,6 +277,14 @@
     <Compile Include="Controller\InvoiceListController.designer.cs">
       <DependentUpon>InvoiceListController.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceSignatureCell.cs" />
+    <Compile Include="InvoiceSignatureCell.designer.cs">
+      <DependentUpon>InvoiceSignatureCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceSignatureController.cs" />
+    <Compile Include="InvoiceSignatureController.designer.cs">
+      <DependentUpon>InvoiceSignatureController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
@@ -351,6 +359,10 @@
     <ProjectReference Include="..\MobileInvoice.model\MobileInvoice.model.csproj">
       <Project>{2705A23F-97EB-435D-8E2B-F8EC32921C99}</Project>
       <Name>MobileInvoice.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SignaturePad.iOS\SignaturePad.iOS.csproj">
+      <Project>{BEF71536-787B-431F-AC7F-A6469710D11F}</Project>
+      <Name>SignaturePad.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

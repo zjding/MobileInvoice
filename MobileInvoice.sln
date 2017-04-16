@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileInvoice.api", "Mobile
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MobileInvoice.db", "MobileInvoice.db\MobileInvoice.db.sqlproj", "{17320E48-72AB-47E0-A501-083FD69E6163}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignaturePad.iOS", "SignaturePad.iOS\SignaturePad.iOS.csproj", "{BEF71536-787B-431F-AC7F-A6469710D11F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,18 @@ Global
 		{17320E48-72AB-47E0-A501-083FD69E6163}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{17320E48-72AB-47E0-A501-083FD69E6163}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{17320E48-72AB-47E0-A501-083FD69E6163}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Release|iPhone.Build.0 = Release|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{BEF71536-787B-431F-AC7F-A6469710D11F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -39,17 +39,17 @@ namespace MobileInvoice.ios
 
 			this.ExtendedLayoutIncludesOpaqueBars = true;
 
-			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
-			this.View.Add(loadingOverlay);
+			//LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			//this.View.Add(loadingOverlay);
 
-			await LoadInvoices("a");
+			//await LoadInvoices("a");
 
-			loadingOverlay.Hide();
+			//loadingOverlay.Hide();
 
-			TableView.ReloadData();
+			//TableView.ReloadData();
 		}
 
-		public override void ViewWillAppear(bool animated)
+		async public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
 
@@ -68,7 +68,14 @@ namespace MobileInvoice.ios
 			//frame.X = this.View.Frame.Size.Width / 2 - button.Frame.Size.Width / 2;
 			//button.Frame = frame;
 
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
 
+			await LoadInvoices("a");
+
+			loadingOverlay.Hide();
+
+			TableView.ReloadData();
 
 		}
 
