@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using CloudKit;
+using Foundation;
 using UIKit;
 
 namespace MobileInvoice.ios
@@ -16,6 +17,9 @@ namespace MobileInvoice.ios
 			set;
 		}
 
+		public CKDatabase PublicDatabase { get; set; }
+		public CKDatabase PrivateDatebase { get; set; }
+
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
 
@@ -27,6 +31,9 @@ namespace MobileInvoice.ios
 				Font = UIFont.FromName("AvenirNext-Medium", 16)
 				//TextColor = UIColor.White
 			}, UIControlState.Normal);
+
+			PublicDatabase = CKContainer.DefaultContainer.PublicCloudDatabase;
+			PrivateDatebase = CKContainer.DefaultContainer.PrivateCloudDatabase;
 
 			return true;
 		}

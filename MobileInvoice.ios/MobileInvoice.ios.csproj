@@ -284,6 +284,10 @@
     <Compile Include="InvoiceSignatureController.designer.cs">
       <DependentUpon>InvoiceSignatureController.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceSettingsController.cs" />
+    <Compile Include="InvoiceSettingsController.designer.cs">
+      <DependentUpon>InvoiceSettingsController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
