@@ -22,21 +22,17 @@ namespace MobileInvoice.ios
 
 		partial void btnSave_UpInside(UIButton sender)
 		{
+			
 			var newRecord = new CKRecord(ReferenceItemRecordName);
-			newRecord["FirstName"] = (NSString)"Jason";
-			newRecord["LastName"] = (NSString)"Ding";
+			newRecord["Name"] = (NSString)this.txtName.Text;
 
 			// Save it to the database
 			ThisApp.PublicDatabase.SaveRecord(newRecord, (record, err) => {
+
+					
 			    // Was there an error?
 			    if (err != null) {
-					UIAlertView alert = new UIAlertView()
-					{
-						Title = "",
-						Message = "Save succeed"
-					};
-					alert.AddButton("OK");
-					alert.Show ();
+					
 			    }
 			});
 		}

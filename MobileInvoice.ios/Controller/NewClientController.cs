@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using CloudKit;
 
 namespace MobileInvoice.ios
 {
@@ -21,8 +22,18 @@ namespace MobileInvoice.ios
 		public bool bNewMode = true;
 		public bool bNavigationPush = true;
 
+		CloudManager cloudManager;
+
+		//#region Computed Properties
+		//public AppDelegate ThisApp
+		//{
+		//	get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+		//}
+		//#endregion
+
         public NewClientController (IntPtr handle) : base (handle)
         {
+			cloudManager = new CloudManager();
         }
 
 		public override void ViewDidLoad()
@@ -209,6 +220,27 @@ namespace MobileInvoice.ios
 			}
 			else
 				this.NavigationController.PopViewController(true);
+		}
+
+		async private Task CK_AddClient(Client _client)
+		{
+			string stRecordID = "zjding-" + DateTime.Now.ToString("s");
+			var clientRecordID = new CKRecordID(stRecordID);
+			var clientRecord = new CKRecord("Client", clientRecordID);
+
+			clientRecord["Name"] = (NSString)_client.Name;
+			clientRecord["Phone"] = (NSString)_client.Phone;
+			clientRecord["Email"] = (NSString)_client.Email;
+			clientRecord["Street1"] = (NSString)_client.Street1;
+			clientRecord["Street2"] = (NSString)_client.Street2;
+			clientRecord["City"] = (NSString)_client.City;
+			clientRecord["State"] = (NSString)_client.State;
+			clientRecord["Country"] = (NSString)_client.Country;
+			clientRecord["PostCode"] = (NSString)_client.PostCode;
+t
+
+			await cloudManager.SaveAsync(clientRecord):
+
 		}
 
 		async Task<int> AddClient(Client _client)

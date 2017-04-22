@@ -288,6 +288,7 @@
     <Compile Include="InvoiceSettingsController.designer.cs">
       <DependentUpon>InvoiceSettingsController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CloudManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
