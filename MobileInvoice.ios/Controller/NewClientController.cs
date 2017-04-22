@@ -222,7 +222,7 @@ namespace MobileInvoice.ios
 				this.NavigationController.PopViewController(true);
 		}
 
-		async private Task CK_AddClient(Client _client)
+		async void CK_AddClient(Client _client)
 		{
 			string stRecordID = "zjding-" + DateTime.Now.ToString("s");
 			var clientRecordID = new CKRecordID(stRecordID);
@@ -237,9 +237,9 @@ namespace MobileInvoice.ios
 			clientRecord["State"] = (NSString)_client.State;
 			clientRecord["Country"] = (NSString)_client.Country;
 			clientRecord["PostCode"] = (NSString)_client.PostCode;
-t
 
-			await cloudManager.SaveAsync(clientRecord):
+            await cloudManager.SaveAsync(clientRecord);
+			
 
 		}
 
