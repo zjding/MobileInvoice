@@ -170,9 +170,11 @@ namespace MobileInvoice.ios
 
 			if (bNewMode)
 			{
-				int id = await AddClient(client);
+				//int id = await AddClient(client);
 
-				client.Id = id;
+				await CK_AddClient(client);
+
+				//client.Id = id;
 
 				if (callingController.clientDictionary.ContainsKey(key))
 				{
@@ -222,7 +224,7 @@ namespace MobileInvoice.ios
 				this.NavigationController.PopViewController(true);
 		}
 
-		async void CK_AddClient(Client _client)
+		async Task CK_AddClient(Client _client)
 		{
 			string stRecordID = "zjding-" + DateTime.Now.ToString("s");
 			var clientRecordID = new CKRecordID(stRecordID);

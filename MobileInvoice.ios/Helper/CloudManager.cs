@@ -23,7 +23,7 @@ namespace MobileInvoice.ios
 		{
 			try
 			{
-				await privateDatabase.SaveRecordAsync(record);
+				await publicDatabase.SaveRecordAsync(record);
 			}
 			catch (Exception e)
 			{
