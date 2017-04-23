@@ -14,14 +14,17 @@ namespace MobileInvoice.ios
 {
 	public partial class InvoiceViewController : UITableViewController
 	{
-		public Invoice invoice = new Invoice();
+		public Invoice invoice;
 		public List<UIImage> attachmentImages = new List<UIImage>();
 		public int iCurrentSelected;
 		public int invoiceId = -1;
 		public bool bNewMode = false;
 
+
+
 		public InvoiceViewController(IntPtr handle) : base(handle)
 		{
+			invoice = new Invoice();
 		}
 
 		async public override void ViewDidLoad()

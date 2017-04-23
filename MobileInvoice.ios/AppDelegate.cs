@@ -20,6 +20,8 @@ namespace MobileInvoice.ios
 		public CKDatabase PublicDatabase { get; set; }
 		public CKDatabase PrivateDatebase { get; set; }
 
+		public string UserName = "zjding";
+
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
 

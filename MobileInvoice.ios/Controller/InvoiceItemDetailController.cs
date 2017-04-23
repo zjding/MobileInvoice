@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using CloudKit;
 
 namespace MobileInvoice.ios
 {
@@ -19,8 +20,18 @@ namespace MobileInvoice.ios
 		public bool bNewMode;
 		public bool bBackFromItemsController = false;
 
+		CloudManager cloudManager;
+
+		#region Computed Properties
+		public AppDelegate ThisApp
+		{
+			get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+		}
+		#endregion
+
         public InvoiceItemDetailController (IntPtr handle) : base (handle)
         {
+			cloudManager = new CloudManager();
         }
 
 		public override void ViewWillAppear(bool animated)
@@ -135,23 +146,55 @@ namespace MobileInvoice.ios
 			DismissViewController(true, null);
 		}
 
-		async Task<bool> AddInvoiceItem(InvoiceItem _item)
+		async Task CK_AddInvoiceItem(InvoiceItem _item)
 		{
-			string jsonInvoiceItem = JsonConvert.SerializeObject(_item);
+			string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			CKRecordID invoiceItemRecordID = new CKRecordID(stRecordID);
+			CKRecord invoiceItemRecord = new CKRecord("InvoiceItem", invoiceItemRecordID);
 
-			var strContentInvoiceItem = new StringContent(jsonInvoiceItem, Encoding.UTF8, "application/json");
+			invoiceItemRecord["Name"] = (NSString)_item.Name;
+			invoiceItemRecord["UnitPrice"] = (NSNumber)(double)_item.UnitPrice;
+			invoiceItemRecord["Quantity"] = (NSNumber)(int)_item.Quantity;
+			invoiceItemRecord["bTaxable"] = (NSNumber)(_item.bTaxable ? 1 : 0);
+			invoiceItemRecord["Note"] = (NSString)_item.Note;
 
-			HttpClient httpClient = new HttpClient();
+			//CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordID);
+			//CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
+			//invoiceItemRecord["Invoice"] = invoiceReference;
 
-			var result = await httpClient.PostAsync(Helper.AddInvoiceItemURL(), strContentInvoiceItem);
+			await cloudManager.SaveAsync(invoiceItemRecord);
+		}
 
-			var contents = await result.Content.ReadAsStringAsync();
+		async Task CK_AddItem(Item _item)
+		{
+			string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			CKRecordID itemRecordID = new CKRecordID(stRecordID);
+			CKRecord itemRecord = new CKRecord("Item", itemRecordID);
+			itemRecord["Name"] = (NSString)_item.Name;
+			itemRecord["UnitPrice"] = (NSNumber)(double)_item.UnitPrice;
 
-			string returnMessage = contents.ToString();
+			await cloudManager.SaveAsync(itemRecord);
+		}
 
-			var num = Regex.Match(returnMessage, "\\d+").Value;
+		async Task AddInvoiceItem(InvoiceItem _item)
+		{
+			//string jsonInvoiceItem = JsonConvert.SerializeObject(_item);
 
-			invoiceItem.Id = Convert.ToInt32(num);
+			//var strContentInvoiceItem = new StringContent(jsonInvoiceItem, Encoding.UTF8, "application/json");
+
+			//HttpClient httpClient = new HttpClient();
+
+			//var result = await httpClient.PostAsync(Helper.AddInvoiceItemURL(), strContentInvoiceItem);
+
+			//var contents = await result.Content.ReadAsStringAsync();
+
+			//string returnMessage = contents.ToString();
+
+			//var num = Regex.Match(returnMessage, "\\d+").Value;
+
+			//invoiceItem.Id = Convert.ToInt32(num);
+
+			await CK_AddInvoiceItem(_item);
 
 			if (this.swSave.On)
 			{
@@ -159,19 +202,21 @@ namespace MobileInvoice.ios
 
 				BuildItem(ref item);
 
-				string jsonItem = JsonConvert.SerializeObject(item);
+				//string jsonItem = JsonConvert.SerializeObject(item);
 
-				var strContentItem = new StringContent(jsonItem, Encoding.UTF8, "application/json");
+				//var strContentItem = new StringContent(jsonItem, Encoding.UTF8, "application/json");
 
-				result = await httpClient.PostAsync(Helper.AddItemURL(), strContentItem);
+				//result = await httpClient.PostAsync(Helper.AddItemURL(), strContentItem);
 
-				contents = await result.Content.ReadAsStringAsync();
+				//contents = await result.Content.ReadAsStringAsync();
+
+				await CK_AddItem(item);
 			}
 
-			if (returnMessage == "\"Added item successfully\"")
-				return true;
-			else
-				return false;
+			//if (returnMessage == "\"Added item successfully\"")
+			//	return true;
+			//else
+			//	return false;
 		}
 
 		void BuildItem(ref Item item)

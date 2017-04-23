@@ -24,12 +24,12 @@ namespace MobileInvoice.ios
 
 		CloudManager cloudManager;
 
-		//#region Computed Properties
-		//public AppDelegate ThisApp
-		//{
-		//	get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
-		//}
-		//#endregion
+		#region Computed Properties
+		public AppDelegate ThisApp
+		{
+			get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+		}
+		#endregion
 
         public NewClientController (IntPtr handle) : base (handle)
         {
@@ -226,7 +226,7 @@ namespace MobileInvoice.ios
 
 		async Task CK_AddClient(Client _client)
 		{
-			string stRecordID = "zjding-" + DateTime.Now.ToString("s");
+			string stRecordID = ThisApp.UserName + DateTime.Now.ToString("s");
 			var clientRecordID = new CKRecordID(stRecordID);
 			var clientRecord = new CKRecord("Client", clientRecordID);
 
@@ -239,6 +239,7 @@ namespace MobileInvoice.ios
 			clientRecord["State"] = (NSString)_client.State;
 			clientRecord["Country"] = (NSString)_client.Country;
 			clientRecord["PostCode"] = (NSString)_client.PostCode;
+			clientRecord["User"] = (NSString)ThisApp.UserName;
 
             await cloudManager.SaveAsync(clientRecord);
 			

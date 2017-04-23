@@ -6,6 +6,7 @@ using System.Net.Http;
 using MobileInvoice.model;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using CloudKit;
 
 namespace MobileInvoice.ios
 {
@@ -25,8 +26,11 @@ namespace MobileInvoice.ios
 
 		public InvoiceViewController callingController;
 
+		CloudManager cloudManager;
+
         public ClientsController (IntPtr handle) : base (handle)
         {
+			cloudManager = new CloudManager();
         }
 
 		public override void ViewWillAppear(bool animated)
@@ -84,12 +88,37 @@ namespace MobileInvoice.ios
 
 		async Task<int> LoadClients()
 		{
-			
-			HttpClient httpClient = new HttpClient();
 
-			string result = await httpClient.GetStringAsync(Helper.GetClientsURL());
+			//HttpClient httpClient = new HttpClient();
 
-			clientList = JsonConvert.DeserializeObject<List<Client>>(result);
+			//string result = await httpClient.GetStringAsync(Helper.GetClientsURL());
+
+			//clientList = JsonConvert.DeserializeObject<List<Client>>(result);
+
+			string userName = "zjding";
+
+			NSPredicate predicate = NSPredicate.FromFormat(string.Format("User = '{0}'", userName));
+
+			List<CKRecord> records = await cloudManager.FetchRecordsByTypeAndPredicate("Client", predicate);
+
+			clientList.Clear();
+
+			foreach (CKRecord record in records)
+			{
+				Client client = new Client();
+
+				client.Name = record["Name"].ToString();
+				client.Email = record["Email"].ToString();
+				client.Phone = record["Phone"].ToString();
+				client.Street1 = record["Street1"].ToString();
+				client.Street2 = record["Street2"].ToString();
+				client.City = record["City"].ToString();
+				client.State = record["State"].ToString();
+				client.Country = record["Country"].ToString();
+				client.PostCode = record["PostCode"].ToString();
+
+				clientList.Add(client);
+			}
 
 			foreach (Client client in clientList)
 			{
