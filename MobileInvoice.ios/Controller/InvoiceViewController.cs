@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using CloudKit;
 
 namespace MobileInvoice.ios
 {
@@ -20,11 +21,19 @@ namespace MobileInvoice.ios
 		public int invoiceId = -1;
 		public bool bNewMode = false;
 
+		CloudManager cloudManager;
 
+		#region Computed Properties
+		public AppDelegate ThisApp
+		{
+			get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+		}
+		#endregion
 
 		public InvoiceViewController(IntPtr handle) : base(handle)
 		{
 			invoice = new Invoice();
+			cloudManager = new CloudManager();
 		}
 
 		async public override void ViewDidLoad()
@@ -60,6 +69,16 @@ namespace MobileInvoice.ios
 				loadingOverlay.Hide();
 
 				TableView.ReloadData();
+			}
+			else
+			{
+				string stRecordID = ThisApp.UserName + DateTime.Now.ToString("s");
+				var invoiceRecordID = new CKRecordID(stRecordID);
+				var invoiceRecord = new CKRecord("Invoice", invoiceRecordID);
+
+				await cloudManager.SaveAsync(invoiceRecord);
+
+				invoice.CloudId = stRecordID;
 			}
 		}
 
@@ -325,9 +344,10 @@ namespace MobileInvoice.ios
 				this.View.Add(loadingOverlay);
 
 				BuildInvoice();
-				int id = await SaveInvoice();
-				invoice.Id = id;
+				//int id = await SaveInvoice();
+				//invoice.Id = id;
 
+				await CK_SaveInvoice();
 				loadingOverlay.Hide();
 
 				DismissViewController(true, null);
@@ -377,6 +397,29 @@ namespace MobileInvoice.ios
 			indexPath = NSIndexPath.FromRowSection(0, 5);
 			InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
 			invoice.Note = noteCell.lblNote.Text;
+		}
+
+		async private Task CK_SaveInvoice()
+		{
+			CKRecord _invoice = await cloudManager.FetchRecordById(invoice.CloudId);
+
+			_invoice["Name"] = (NSString)invoice.Name;
+
+			NSMutableArray attachmentReferenceMutableArray = new NSMutableArray();
+
+			foreach (Attachment _attachment in invoice.Attachments)
+			{
+				CKReference attachmentReference = new CKReference(new CKRecordID(_attachment.CloudId), CKReferenceAction.None);
+
+				attachmentReferenceMutableArray.Add(attachmentReference);
+			}
+
+			NSArray attachmentReferenceArray = NSArray.FromObjects(attachmentReferenceMutableArray);
+
+			_invoice["Attachments"] = attachmentReferenceArray;
+
+			await cloudManager.SaveAsync(_invoice);
+
 		}
 
 		async private Task<int> SaveInvoice()

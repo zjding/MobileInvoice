@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace MobileInvoice.model
 {
 	public class Client
@@ -32,6 +33,7 @@ namespace MobileInvoice.model
     public class Attachment
     {
         public int Id { get; set; }
+		public string CloudId { get; set; }
         public string ImageName { get; set; }
         public string Description { get; set; }
     }
@@ -39,6 +41,7 @@ namespace MobileInvoice.model
 	public class Invoice
 	{
 		public int Id { get; set; }
+		public string CloudId { get; set; }
         public string Name { get; set; }
 		public DateTime IssueDate { get; set; }
 		public string DueTerm { get; set; }

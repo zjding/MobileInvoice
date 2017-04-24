@@ -66,6 +66,15 @@ namespace MobileInvoice.ios
 			privateDatabase.AddOperation(queryOperation);
 		}
 
+		async public Task<CKRecord> FetchRecordById(string Id)
+		{
+			var recordId = new CKRecordID(Id);
+
+			CKRecord result = await publicDatabase.FetchRecordAsync(recordId);
+
+			return result;
+		}
+
 		async public Task<List<CKRecord>> FetchRecordsByTypeAndPredicate(string recordType, NSPredicate predicate)
 		{
 			List<CKRecord> records = new List<CKRecord>();

@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using MobileInvoice.model;
+using System.IO;
+using CloudKit;
 
 namespace MobileInvoice.ios
 {
@@ -21,9 +23,18 @@ namespace MobileInvoice.ios
 
 		public InvoiceViewController callingController;
 
+		CloudManager cloudManager;
+
+		#region Computed Properties
+		public AppDelegate ThisApp
+		{
+			get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+		}
+		#endregion
 
         public InvoiceAttachmentDetailController (IntPtr handle) : base (handle)
         {
+			cloudManager = new CloudManager();
         }
 
 		public override void ViewDidLoad()
@@ -142,34 +153,63 @@ namespace MobileInvoice.ios
 			this.View.Add(loadingOverlay);
 
 			UIImage resizedImage = ImageManager.ResizeImage(this.imgImage.Image, 1000, 1000);
-			var imgStream = resizedImage.AsJPEG(0.75f).AsStream();
+			//var imgStream = resizedImage.AsJPEG(0.75f).AsStream();
 
-			var name = await ImageManager.UploadImage(imgStream);
+			//var name = await ImageManager.UploadImage(imgStream);
+
+
 
 			if (bNew)
 			{
-				attachment.ImageName = name;
+				//attachment.ImageName = name;
+				//attachment.Description = txtDescription.Text;
+
+				//string jsonString = JsonConvert.SerializeObject(attachment);
+
+				//HttpClient httpClient = new HttpClient();
+
+				//var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+				//var result = await httpClient.PostAsync(Helper.AddAttachmentURL(), content);
+
+				//var contents = await result.Content.ReadAsStringAsync();
+
+				//string returnMessage = contents.ToString();
+
+				//var num = Regex.Match(returnMessage, "\\d+").Value;
+
+				//attachment.Id = Convert.ToInt32(num);
+
+				//callingController.invoice.Attachments.Add(attachment);
+				//callingController.attachmentImages.Add(resizedImage);
+
+				var tmp = Path.GetTempPath();
+				string path = Path.Combine(tmp, "toUploadFull.tmp");
+
+				NSData imageData = resizedImage.AsJPEG(0.75f);
+				imageData.Save(path, true);
+
+				var url = new NSUrl(path, false);
+
+				string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+				CKRecordID invoiceAttachmentRecordID = new CKRecordID(stRecordID);
+				CKRecord invoiceAttachmentRecord = new CKRecord("InvoiceAttachment", invoiceAttachmentRecordID);
+
+				invoiceAttachmentRecord["Image"] = new CKAsset(url);
+				invoiceAttachmentRecord["Description"] = (NSString)txtDescription.Text;
+
+				string _invoiceRecordId = callingController.invoice.CloudId;
+				CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordId);
+				CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
+				invoiceAttachmentRecord["Invoice"] = invoiceReference;
+
+				await cloudManager.SaveAsync(invoiceAttachmentRecord);
+
+				attachment.CloudId = stRecordID;
 				attachment.Description = txtDescription.Text;
-
-				string jsonString = JsonConvert.SerializeObject(attachment);
-
-				HttpClient httpClient = new HttpClient();
-
-				var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-
-				var result = await httpClient.PostAsync(Helper.AddAttachmentURL(), content);
-
-				var contents = await result.Content.ReadAsStringAsync();
-
-				string returnMessage = contents.ToString();
-
-				var num = Regex.Match(returnMessage, "\\d+").Value;
-
-				attachment.Id = Convert.ToInt32(num);
 
 				callingController.invoice.Attachments.Add(attachment);
 				callingController.attachmentImages.Add(resizedImage);
-				//callingController.attachmentImages.Add(resizedImage);e
 
 				loadingOverlay.Hide();
 
@@ -178,40 +218,40 @@ namespace MobileInvoice.ios
 
 			else
 			{
-				await ImageManager.DeleteImage(attachment.ImageName);
+				//await ImageManager.DeleteImage(attachment.ImageName);
 
-				var newName = await ImageManager.UploadImage(imgStream);
+				//var newName = await ImageManager.UploadImage(imgStream);
 
-				Attachment updatedAttachment = new Attachment();
-				updatedAttachment.Id = attachment.Id;
-				updatedAttachment.ImageName = newName;
-				updatedAttachment.Description = txtDescription.Text;
+				//Attachment updatedAttachment = new Attachment();
+				//updatedAttachment.Id = attachment.Id;
+				//updatedAttachment.ImageName = newName;
+				//updatedAttachment.Description = txtDescription.Text;
 
-				//attachment.imageName = name;
-				//attachment.image = this.imgAttachment.Image;
-				//attachment.description = this.txtDescription.Text;
+				////attachment.imageName = name;
+				////attachment.image = this.imgAttachment.Image;
+				////attachment.description = this.txtDescription.Text;
 
-				string jsonString = JsonConvert.SerializeObject(updatedAttachment);
+				//string jsonString = JsonConvert.SerializeObject(updatedAttachment);
 
-				HttpClient httpClient = new HttpClient();
+				//HttpClient httpClient = new HttpClient();
 
-				var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+				//var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-				var result = await httpClient.PutAsync(Helper.UpdateAttachmentURL(), content);
+				//var result = await httpClient.PutAsync(Helper.UpdateAttachmentURL(), content);
 
-				var contents = await result.Content.ReadAsStringAsync();
+				//var contents = await result.Content.ReadAsStringAsync();
 
-				string returnMessage = contents.ToString();
+				//string returnMessage = contents.ToString();
 
 
-				if (returnMessage == "\"Updated attachment successfully\"")
-				{
-					//int i = callingController.attachments.FindIndex(a => a.id == att.id);
-					//callingController.attachments.RemoveAt(i);
-					//callingController.attachments.Insert(i, attachment);
-					loadingOverlay.Hide();
-					this.NavigationController.PopViewController(true);
-				}
+				//if (returnMessage == "\"Updated attachment successfully\"")
+				//{
+				//	//int i = callingController.attachments.FindIndex(a => a.id == att.id);
+				//	//callingController.attachments.RemoveAt(i);
+				//	//callingController.attachments.Insert(i, attachment);
+				//	loadingOverlay.Hide();
+				//	this.NavigationController.PopViewController(true);
+				//}
 			}
 			
 		}

@@ -10,7 +10,7 @@ using CloudKit;
 
 namespace MobileInvoice.ios
 {
-    public partial class ClientsController : UITableViewController
+	public partial class ClientsController : UITableViewController
     {
 		public List<Client> clientList = new List<Client>();
 		public Dictionary<string, List<Client>> clientDictionary = new Dictionary<string, List<Client>>();
