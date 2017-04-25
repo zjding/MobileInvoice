@@ -7,6 +7,7 @@ namespace MobileInvoice.model
 	public class Client
 	{
 		public int Id { get; set; }
+		public string RecordName { get; set; }
 		public string Name { get; set; }
 		public string Phone { get; set; }
 		public string Email { get; set; }
@@ -21,6 +22,7 @@ namespace MobileInvoice.model
 	public class InvoiceItem
     {
 		public int Id { get; set; }
+		public string RecordName { get; set; }
 		public string Name { get; set; }
 		public decimal UnitPrice { get; set; }
 		public int Quantity { get; set; }
@@ -33,7 +35,7 @@ namespace MobileInvoice.model
     public class Attachment
     {
         public int Id { get; set; }
-		public string CloudId { get; set; }
+		public string RecordName { get; set; }
         public string ImageName { get; set; }
         public string Description { get; set; }
     }
@@ -41,7 +43,7 @@ namespace MobileInvoice.model
 	public class Invoice
 	{
 		public int Id { get; set; }
-		public string CloudId { get; set; }
+		public string RecordName { get; set; }
         public string Name { get; set; }
 		public DateTime IssueDate { get; set; }
 		public string DueTerm { get; set; }
@@ -66,6 +68,7 @@ namespace MobileInvoice.model
     public class Item
     {
         public int Id { get; set; }
+		public string RecordName { get; set; }
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
     }

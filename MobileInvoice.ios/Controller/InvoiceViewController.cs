@@ -72,13 +72,14 @@ namespace MobileInvoice.ios
 			}
 			else
 			{
-				string stRecordID = ThisApp.UserName + DateTime.Now.ToString("s");
-				var invoiceRecordID = new CKRecordID(stRecordID);
+				string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+				var invoiceRecordID = new CKRecordID(stRecordName);
 				var invoiceRecord = new CKRecord("Invoice", invoiceRecordID);
+				invoiceRecord["Name"] = (NSString)"Invoice #1";
 
 				await cloudManager.SaveAsync(invoiceRecord);
 
-				invoice.CloudId = stRecordID;
+				invoice.RecordName = stRecordName;
 			}
 		}
 
@@ -394,29 +395,56 @@ namespace MobileInvoice.ios
 
 
 			// note 
-			indexPath = NSIndexPath.FromRowSection(0, 5);
-			InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
-			invoice.Note = noteCell.lblNote.Text;
+			//indexPath = NSIndexPath.FromRowSection(0, 5);
+			//InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
+			//invoice.Note = noteCell.lblNote.Text;
 		}
 
 		async private Task CK_SaveInvoice()
 		{
-			CKRecord _invoice = await cloudManager.FetchRecordById(invoice.CloudId);
+			CKRecord _invoice = await cloudManager.FetchRecordById(invoice.RecordName);
 
 			_invoice["Name"] = (NSString)invoice.Name;
+			_invoice["IssuedDate"] = Helper.DateTimeToNSDate(invoice.IssueDate);
+			_invoice["DueTerm"] = (NSString)invoice.DueTerm;
+			_invoice["DueDate"] = Helper.DateTimeToNSDate(invoice.DueDate);
 
-			NSMutableArray attachmentReferenceMutableArray = new NSMutableArray();
+			CKReference clientReference = new CKReference(new CKRecordID(invoice.Client.RecordName), CKReferenceAction.None);
+			_invoice["Client"] = clientReference;
 
-			foreach (Attachment _attachment in invoice.Attachments)
-			{
-				CKReference attachmentReference = new CKReference(new CKRecordID(_attachment.CloudId), CKReferenceAction.None);
+			_invoice["Note"] = (NSString)"Thank you";
 
-				attachmentReferenceMutableArray.Add(attachmentReference);
-			}
+			//CKRecord _recordToSave = _invoice;
 
-			NSArray attachmentReferenceArray = NSArray.FromObjects(attachmentReferenceMutableArray);
+			//_recordToSave["Name"] = (NSString)invoice.Name;
 
-			_invoice["Attachments"] = attachmentReferenceArray;
+			//var modifyRecord = new CKModifyRecordsOperation(_recordToSave, null);
+
+			//NSMutableArray attachmentReferenceMutableArray = new NSMutableArray();
+
+			//CKReference[] attachmentReferenceArray = new CKReference[invoice.Attachments.Count];
+
+			//int i = 0;
+
+			//foreach (Attachment _attachment in invoice.Attachments)
+			//{
+				//CKReference attachmentReference = new CKReference(new CKRecordID(_attachment.RecordName), CKReferenceAction.None);
+
+				//attachmentReferenceMutableArray.Add(attachmentReference);
+
+			//	attachmentReferenceArray[i] = new CKReference(new CKRecordID(_attachment.RecordName), CKReferenceAction.None);
+
+			//	i++;
+			//}
+
+			//NSArray attachmentReferenceArray = NSArray.FromObjects(attachmentReferenceMutableArray);
+
+			//_invoice["Attachments"] = attachmentReferenceArray;
+
+
+			//CKReference attachmentReference = new CKReference(new CKRecordID(invoice.Attachments[0].RecordName), CKReferenceAction.None);
+
+			//_invoice["Attachment"] = attachmentReference;
 
 			await cloudManager.SaveAsync(_invoice);
 

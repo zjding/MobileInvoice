@@ -107,6 +107,9 @@ namespace MobileInvoice.ios
 			{
 				Client client = new Client();
 
+				CKRecordID recordId = (CKRecordID)record["recordID"];
+				string recordName = recordId.RecordName;
+				client.RecordName = recordName;
 				client.Name = record["Name"].ToString();
 				client.Email = record["Email"].ToString();
 				client.Phone = record["Phone"].ToString();

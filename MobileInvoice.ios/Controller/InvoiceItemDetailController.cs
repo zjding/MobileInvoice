@@ -148,8 +148,8 @@ namespace MobileInvoice.ios
 
 		async Task CK_AddInvoiceItem(InvoiceItem _item)
 		{
-			string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
-			CKRecordID invoiceItemRecordID = new CKRecordID(stRecordID);
+			string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			CKRecordID invoiceItemRecordID = new CKRecordID(stRecordName);
 			CKRecord invoiceItemRecord = new CKRecord("InvoiceItem", invoiceItemRecordID);
 
 			invoiceItemRecord["Name"] = (NSString)_item.Name;
@@ -158,8 +158,8 @@ namespace MobileInvoice.ios
 			invoiceItemRecord["bTaxable"] = (NSNumber)(_item.bTaxable ? 1 : 0);
 			invoiceItemRecord["Note"] = (NSString)_item.Note;
 
-			string _invoiceRecordId = callingController.invoice.CloudId;
-			CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordId);
+			string _invoiceRecordName = callingController.invoice.RecordName;
+			CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordName);
 			CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
 			invoiceItemRecord["Invoice"] = invoiceReference;
 
@@ -168,8 +168,8 @@ namespace MobileInvoice.ios
 
 		async Task CK_AddItem(Item _item)
 		{
-			string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
-			CKRecordID itemRecordID = new CKRecordID(stRecordID);
+			string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			CKRecordID itemRecordID = new CKRecordID(stRecordName);
 			CKRecord itemRecord = new CKRecord("Item", itemRecordID);
 			itemRecord["Name"] = (NSString)_item.Name;
 			itemRecord["UnitPrice"] = (NSNumber)(double)_item.UnitPrice;

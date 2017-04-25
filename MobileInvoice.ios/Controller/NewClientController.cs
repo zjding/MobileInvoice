@@ -172,7 +172,7 @@ namespace MobileInvoice.ios
 			{
 				//int id = await AddClient(client);
 
-				await CK_AddClient(client);
+				client.RecordName = await CK_AddClient(client);
 
 				//client.Id = id;
 
@@ -223,11 +223,11 @@ namespace MobileInvoice.ios
 			else
 				this.NavigationController.PopViewController(true);
 		}
-
-		async Task CK_AddClient(Client _client)
+		
+		async Task<string> CK_AddClient(Client _client)
 		{
-			string stRecordID = ThisApp.UserName + DateTime.Now.ToString("s");
-			var clientRecordID = new CKRecordID(stRecordID);
+			string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			var clientRecordID = new CKRecordID(stRecordName);
 			var clientRecord = new CKRecord("Client", clientRecordID);
 
 			clientRecord["Name"] = (NSString)_client.Name;
@@ -242,8 +242,8 @@ namespace MobileInvoice.ios
 			clientRecord["User"] = (NSString)ThisApp.UserName;
 
             await cloudManager.SaveAsync(clientRecord);
-			
 
+			return stRecordName;
 		}
 
 		async Task<int> AddClient(Client _client)
