@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Foundation;
 
 using CloudKit;
@@ -66,9 +66,9 @@ namespace MobileInvoice.ios
 			privateDatabase.AddOperation(queryOperation);
 		}
 
-		async public Task<CKRecord> FetchRecordById(string Id)
+		async public Task<CKRecord> FetchRecordByRecordName(string recordName)
 		{
-			var recordId = new CKRecordID(Id);
+			var recordId = new CKRecordID(recordName);
 
 			CKRecord result = await publicDatabase.FetchRecordAsync(recordId);
 

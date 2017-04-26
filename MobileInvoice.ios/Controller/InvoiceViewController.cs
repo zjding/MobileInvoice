@@ -1,4 +1,4 @@
-﻿using Foundation;
+using Foundation;
 using System;
 using UIKit;
 using MobileInvoice.model;
@@ -402,12 +402,15 @@ namespace MobileInvoice.ios
 
 		async private Task CK_SaveInvoice()
 		{
-			CKRecord _invoice = await cloudManager.FetchRecordById(invoice.RecordName);
+			CKRecord _invoice = await cloudManager.FetchRecordByRecordName(invoice.RecordName);
 
+			_invoice["User"] = (NSString)ThisApp.UserName;
 			_invoice["Name"] = (NSString)invoice.Name;
 			_invoice["IssuedDate"] = Helper.DateTimeToNSDate(invoice.IssueDate);
 			_invoice["DueTerm"] = (NSString)invoice.DueTerm;
 			_invoice["DueDate"] = Helper.DateTimeToNSDate(invoice.DueDate);
+
+			_invoice["Total"] = (NSNumber)(double)20.23;
 
 			CKReference clientReference = new CKReference(new CKRecordID(invoice.Client.RecordName), CKReferenceAction.None);
 			_invoice["Client"] = clientReference;

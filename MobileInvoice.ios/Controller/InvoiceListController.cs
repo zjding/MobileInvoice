@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Globalization;
 using SharpMobileCode.ModalPicker;
+using CloudKit;
 
 namespace MobileInvoice.ios
 {
@@ -25,8 +26,18 @@ namespace MobileInvoice.ios
 
 		public bool bSearching = false;
 
+		CloudManager cloudManager;
+
+		#region Computed Properties
+		public AppDelegate ThisApp
+		{
+			get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+		}
+		#endregion
+
 		public InvoiceListController(IntPtr handle) : base(handle)
 		{
+			cloudManager = new CloudManager();
 		}
 
 		async public override void ViewDidLoad()
@@ -39,14 +50,16 @@ namespace MobileInvoice.ios
 
 			this.ExtendedLayoutIncludesOpaqueBars = true;
 
-			//LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
-			//this.View.Add(loadingOverlay);
+			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+			this.View.Add(loadingOverlay);
 
 			//await LoadInvoices("a");
 
-			//loadingOverlay.Hide();
+			await CK_LoadInvoices("a");
 
-			//TableView.ReloadData();
+			loadingOverlay.Hide();
+
+			TableView.ReloadData();
 		}
 
 		async public override void ViewWillAppear(bool animated)
@@ -71,7 +84,9 @@ namespace MobileInvoice.ios
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
 
-			await LoadInvoices("a");
+			//await LoadInvoices("a");
+
+			//await CK_LoadInvoices("a");
 
 			loadingOverlay.Hide();
 
@@ -198,7 +213,9 @@ namespace MobileInvoice.ios
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
 
-			await LoadInvoices(status);
+			//await LoadInvoices(status);
+
+			await CK_LoadInvoices(status);
 
 			loadingOverlay.Hide();
 
@@ -219,7 +236,79 @@ namespace MobileInvoice.ios
 			return invoiceList.Count;
 		}
 
+		async Task<int> CK_LoadInvoices(string status)
+		{
+			NSPredicate predicate = NSPredicate.FromFormat(string.Format("User = '{0}'", ThisApp.UserName));
 
+			List<CKRecord> _invoiceRecords = await cloudManager.FetchRecordsByTypeAndPredicate("Invoice", predicate);
+
+			invoiceList.Clear();
+
+			foreach (CKRecord _invoiceRecord in _invoiceRecords)
+			{
+				Invoice _invoice = new Invoice();
+
+				// invoice record name
+				CKRecordID _invoiceRecordId = (CKRecordID)_invoiceRecord["recordID"];
+				string _invoiceRecordName = _invoiceRecordId.RecordName;
+
+				_invoice.Name = _invoiceRecord["Name"].ToString();
+				_invoice.DueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["DueDate"]));
+				_invoice.Total = Convert.ToDecimal(((NSNumber)(_invoiceRecord["Total"])).FloatValue);
+
+				// client
+				CKReference _clientReference = (CKReference)_invoiceRecord["Client"];
+				string _clientRecordName = _clientReference.RecordId.RecordName;
+
+				CKRecord _cliendRecord = await cloudManager.FetchRecordByRecordName(_clientRecordName);
+
+				Client _client = new Client();
+
+				_client.Name = _cliendRecord["Name"].ToString();
+
+				_invoice.ClientName = _client.Name;
+
+				// invoice item
+				//NSPredicate _invoiceItemSearchPredicate = NSPredicate.FromFormat(string.Format("InvoiceName = '{0}'", _invoiceRecordName));
+				//List<CKRecord> _invoiceItemRecords = await cloudManager.FetchRecordsByTypeAndPredicate("InvoiceItem", predicate);
+
+				//List<InvoiceItem> _invoiceItems = new List<InvoiceItem>();
+
+				//foreach (CKRecord _invoiceItemRecord in _invoiceItemRecords)
+				//{
+				//	InvoiceItem _invoiceItem = new InvoiceItem();
+
+				//	_invoiceItem.RecordName = ((CKRecordID)_invoiceItemRecord["recordID"]).RecordName;
+				//	_invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
+				//	_invoiceItem.UnitPrice = Convert.ToDecimal(_invoiceItemRecord["UnitPrice"]);
+				//	_invoiceItem.Quantity = Convert.ToInt16(_invoiceItemRecord["Quantity"]);
+				//	_invoiceItem.bTaxable = Convert.ToInt16(_invoiceItemRecord["bTaxable"]) == 0 ? false : true;
+				//	_invoiceItem.Note = _invoiceItemRecord["Note"].ToString();
+
+				//	_invoiceItems.Add(_invoiceItem);
+				//}
+
+				//_invoice.Items = _invoiceItems;
+
+				// invoice attachment
+				//NSPredicate _attachmentSearchPredicate = NSPredicate.FromFormat(string.Format("InvoiceName = '{0}'", _invoiceRecordName));
+				//List<CKRecord> _attachmentRecords = await cloudManager.FetchRecordsByTypeAndPredicate("Attachment", predicate);
+
+				//List<Attachment> _attachments = new List<Attachment>();
+
+				//foreach (CKRecord _attachmentRecord in _attachmentRecords)
+				//{
+				//	Attachment _attachment = new Attachment();
+
+				//	_attachment.RecordName = ((CKRecordID)_attachmentRecord["recordID"]).RecordName;
+
+				//}
+
+				invoiceList.Add(_invoice);
+			}
+
+			return invoiceList.Count;
+		}
 
 		partial void btnSearch_UpInside(UIButton sender)
 		{
