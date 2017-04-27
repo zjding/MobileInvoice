@@ -86,7 +86,6 @@ namespace MobileInvoice.ios
 
 				itemList.Add(_item);
 			}
-		p
 		}
 
 		public override nint NumberOfSections(UITableView tableView)
