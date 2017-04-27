@@ -72,7 +72,7 @@ namespace MobileInvoice.ios
 			}
 			else
 			{
-				string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+				string stRecordName = ThisApp.UserName + "-Invoice-" + DateTime.Now.ToString("s");
 				var invoiceRecordID = new CKRecordID(stRecordName);
 				var invoiceRecord = new CKRecord("Invoice", invoiceRecordID);
 				invoiceRecord["Name"] = (NSString)"Invoice #1";

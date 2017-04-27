@@ -12,8 +12,8 @@ using CloudKit;
 
 namespace MobileInvoice.ios
 {
-    public partial class InvoiceItemDetailController : UITableViewController
-    {
+	public partial class InvoiceItemDetailController : UITableViewController
+	{
 		public InvoiceItem invoiceItem = new InvoiceItem();
 		public InvoiceViewController callingController;
 
@@ -29,10 +29,10 @@ namespace MobileInvoice.ios
 		}
 		#endregion
 
-        public InvoiceItemDetailController (IntPtr handle) : base (handle)
-        {
+		public InvoiceItemDetailController(IntPtr handle) : base(handle)
+		{
 			cloudManager = new CloudManager();
-        }
+		}
 
 		public override void ViewWillAppear(bool animated)
 		{
@@ -148,8 +148,8 @@ namespace MobileInvoice.ios
 
 		async Task CK_AddInvoiceItem(InvoiceItem _item)
 		{
-			string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
-			CKRecordID invoiceItemRecordID = new CKRecordID(stRecordName);
+			string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			CKRecordID invoiceItemRecordID = new CKRecordID(stRecordID);
 			CKRecord invoiceItemRecord = new CKRecord("InvoiceItem", invoiceItemRecordID);
 
 			invoiceItemRecord["Name"] = (NSString)_item.Name;
@@ -168,8 +168,8 @@ namespace MobileInvoice.ios
 
 		async Task CK_AddItem(Item _item)
 		{
-			string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
-			CKRecordID itemRecordID = new CKRecordID(stRecordName);
+			string stRecordID = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			CKRecordID itemRecordID = new CKRecordID(stRecordID);
 			CKRecord itemRecord = new CKRecord("Item", itemRecordID);
 			itemRecord["Name"] = (NSString)_item.Name;
 			itemRecord["UnitPrice"] = (NSNumber)(double)_item.UnitPrice;
@@ -245,5 +245,5 @@ namespace MobileInvoice.ios
 
 			base.PrepareForSegue(segue, sender);
 		}
-    }
+	}
 }

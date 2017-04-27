@@ -226,7 +226,7 @@ namespace MobileInvoice.ios
 		
 		async Task<string> CK_AddClient(Client _client)
 		{
-			string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+			string stRecordName = ThisApp.UserName + "-Client-" + DateTime.Now.ToString("s");
 			var clientRecordID = new CKRecordID(stRecordName);
 			var clientRecord = new CKRecord("Client", clientRecordID);
 

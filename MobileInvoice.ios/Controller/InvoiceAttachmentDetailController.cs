@@ -191,7 +191,7 @@ namespace MobileInvoice.ios
 
 				var url = new NSUrl(path, false);
 
-				string stRecordName = ThisApp.UserName + "-" + DateTime.Now.ToString("s");
+				string stRecordName = ThisApp.UserName + "-Attachment-" + DateTime.Now.ToString("s");
 				CKRecordID invoiceAttachmentRecordID = new CKRecordID(stRecordName);
 				CKRecord invoiceAttachmentRecord = new CKRecord("InvoiceAttachment", invoiceAttachmentRecordID);
 
@@ -202,6 +202,8 @@ namespace MobileInvoice.ios
 				CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordName);
 				CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
 				invoiceAttachmentRecord["Invoice"] = invoiceReference;
+
+				invoiceAttachmentRecord["User"] = (NSString)(ThisApp.UserName);
 
 				await cloudManager.SaveAsync(invoiceAttachmentRecord);
 
