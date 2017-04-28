@@ -198,10 +198,10 @@ namespace MobileInvoice.ios
 				invoiceAttachmentRecord["Image"] = new CKAsset(url);
 				invoiceAttachmentRecord["Description"] = (NSString)txtDescription.Text;
 
-				string _invoiceRecordName = callingController.invoice.RecordName;
-				CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordName);
-				CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
-				invoiceAttachmentRecord["Invoice"] = invoiceReference;
+				//string _invoiceRecordName = callingController.invoice.RecordName;
+				//CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordName);
+				//CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
+				//invoiceAttachmentRecord["Invoice"] = invoiceReference;
 
 				invoiceAttachmentRecord["User"] = (NSString)(ThisApp.UserName);
 

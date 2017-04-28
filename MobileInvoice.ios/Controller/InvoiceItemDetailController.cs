@@ -158,10 +158,12 @@ namespace MobileInvoice.ios
 			invoiceItemRecord["bTaxable"] = (NSNumber)(_item.bTaxable ? 1 : 0);
 			invoiceItemRecord["Note"] = (NSString)_item.Note;
 
-			string _invoiceRecordName = callingController.invoice.RecordName;
-			CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordName);
-			CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
-			invoiceItemRecord["Invoice"] = invoiceReference;
+			invoiceItem.RecordName = stRecordID;
+
+			//string _invoiceRecordName = callingController.invoice.RecordName;
+			//CKRecordID invoiceRecordID = new CKRecordID(_invoiceRecordName);
+			//CKReference invoiceReference = new CKReference(invoiceRecordID, CKReferenceAction.DeleteSelf);
+			//invoiceItemRecord["Invoice"] = invoiceReference;
 
 			await cloudManager.SaveAsync(invoiceItemRecord);
 		}

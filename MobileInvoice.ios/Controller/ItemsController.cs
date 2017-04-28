@@ -69,7 +69,7 @@ namespace MobileInvoice.ios
 		{
 			NSPredicate predicate = NSPredicate.FromFormat(string.Format("User = '{0}'", ThisApp.UserName));
 
-			List<CKRecord> records = await cloudManager.FetchRecordsByTypeAndPredicate("Items", predicate);
+			List<CKRecord> records = await cloudManager.FetchRecordsByTypeAndPredicate("Item", predicate);
 
 			itemList.Clear();
 
