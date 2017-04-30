@@ -148,8 +148,8 @@ namespace MobileInvoice.ios
 				_invoiceItem.RecordName = recordName;
 				_invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
 				_invoiceItem.UnitPrice = Convert.ToDecimal(((NSNumber)(_invoiceItemRecord["UnitPrice"])).FloatValue);
-				_invoiceItem.Quantity = Convert.ToInt16(((NSNumber)(_invoiceItemRecord["Quantity"])).Int64Value);
-				_invoiceItem.bTaxable = Convert.ToInt16(((NSNumber)(_invoiceItemRecord["bTaxible"])).Int64Value) == 0 ? false : true;
+				_invoiceItem.Quantity = Convert.ToInt16(((NSNumber)(_invoiceItemRecord["Quantity"])).Int16Value);
+				_invoiceItem.bTaxable = Convert.ToInt16(((NSNumber)(_invoiceItemRecord["bTaxable"])).Int16Value) == 0 ? false : true;
 				_invoiceItem.Note = _invoiceItemRecord["Note"].ToString();
 
 				invoice.Items.Add(_invoiceItem);
@@ -158,7 +158,7 @@ namespace MobileInvoice.ios
 			// attachment
 			invoice.Attachments.Clear();
 
-			records = await cloudManager.FetchRecordsByTypeAndPredicate("Attachment", _predicate);
+			records = await cloudManager.FetchRecordsByTypeAndPredicate("InvoiceAttachment", _predicate);
 
 			foreach (CKRecord _attachmentRecord in records)
 			{
@@ -471,6 +471,10 @@ namespace MobileInvoice.ios
 
 		private void BuildInvoice()
 		{
+			string stRecordName = ThisApp.UserName + "-Invoice-" + DateTime.Now.ToString("s");
+
+			invoice.RecordName = stRecordName;
+
 			invoice.Name = txtInvoiceName.Text;
 
 			// date
@@ -496,14 +500,16 @@ namespace MobileInvoice.ios
 
 		async private Task CK_SaveInvoice()
 		{
-			string stRecordName = ThisApp.UserName + "-Invoice-" + DateTime.Now.ToString("s");
-			var invoiceRecordID = new CKRecordID(stRecordName);
+			var invoiceRecordID = new CKRecordID(invoice.RecordName);
+
 			var invoiceRecord = new CKRecord("Invoice", invoiceRecordID);
+
+			if (!bNewMode)e
+			{
+				invoiceRecord = await cloudManager.FetchRecordByRecordName(invoice.RecordName);
+			}
+
 			invoiceRecord["Name"] = (NSString)invoice.Name;
-
-			invoice.RecordName = stRecordName;
-
-			//CKRecord _invoice = await cloudManager.FetchRecordByRecordName(invoice.RecordName);
 
 			invoiceRecord["User"] = (NSString)ThisApp.UserName;
 			invoiceRecord["Name"] = (NSString)invoice.Name;
@@ -541,40 +547,6 @@ namespace MobileInvoice.ios
 
 				await cloudManager.SaveAsync(_attachmentRecord);
 			}
-
-			//CKRecord _recordToSave = _invoice;
-
-			//_recordToSave["Name"] = (NSString)invoice.Name;
-
-			//var modifyRecord = new CKModifyRecordsOperation(_recordToSave, null);
-
-			//NSMutableArray attachmentReferenceMutableArray = new NSMutableArray();
-
-			//CKReference[] attachmentReferenceArray = new CKReference[invoice.Attachments.Count];
-
-			//int i = 0;
-
-			//foreach (Attachment _attachment in invoice.Attachments)
-			//{
-				//CKReference attachmentReference = new CKReference(new CKRecordID(_attachment.RecordName), CKReferenceAction.None);
-
-				//attachmentReferenceMutableArray.Add(attachmentReference);
-
-			//	attachmentReferenceArray[i] = new CKReference(new CKRecordID(_attachment.RecordName), CKReferenceAction.None);
-
-			//	i++;
-			//}
-
-			//NSArray attachmentReferenceArray = NSArray.FromObjects(attachmentReferenceMutableArray);
-
-			//_invoice["Attachments"] = attachmentReferenceArray;
-
-
-			//CKReference attachmentReference = new CKReference(new CKRecordID(invoice.Attachments[0].RecordName), CKReferenceAction.None);
-
-			//_invoice["Attachment"] = attachmentReference;
-
-
 
 		}
 
