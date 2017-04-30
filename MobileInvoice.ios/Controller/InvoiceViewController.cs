@@ -504,7 +504,7 @@ namespace MobileInvoice.ios
 
 			var invoiceRecord = new CKRecord("Invoice", invoiceRecordID);
 
-			if (!bNewMode)e
+			if (!bNewMode)
 			{
 				invoiceRecord = await cloudManager.FetchRecordByRecordName(invoice.RecordName);
 			}
