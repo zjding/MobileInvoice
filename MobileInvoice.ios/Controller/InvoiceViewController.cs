@@ -168,7 +168,7 @@ namespace MobileInvoice.ios
 				string _recordName = recordId.RecordName;
 				_attachment.RecordName = recordName;
 
-				_attachment.Description = _attachmentRecord["Description"].ToString();t
+				_attachment.Description = _attachmentRecord["Description"].ToString();
 
 				//invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
 				//_invoiceItem.UnitPrice = Convert.ToDecimal(((NSNumber)(_invoiceItemRecord["UnitPrice"])).FloatValue);
