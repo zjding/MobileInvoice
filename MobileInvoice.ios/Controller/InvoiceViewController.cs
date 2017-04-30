@@ -19,7 +19,8 @@ namespace MobileInvoice.ios
 		public List<UIImage> attachmentImages = new List<UIImage>();
 		public int iCurrentSelected;
 		public int invoiceId = -1;
-		public bool bNewMode = false;
+		public string invoiceName = "";
+		public bool bNewMode = true;
 
 		CloudManager cloudManager;
 
@@ -54,17 +55,19 @@ namespace MobileInvoice.ios
 				LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 				this.View.Add(loadingOverlay);
 
-				invoice = await LoadInvoice(invoiceId);
+				//invoice = await LoadInvoice(invoiceId);
 
-				attachmentImages.Clear();
+				await CK_LoadInvoice(invoice.RecordName);
 
-				foreach (Attachment att in invoice.Attachments)
-				{
+				//attachmentImages.Clear();
 
-					var bytes = Task.Run(() => ImageManager.GetImage(att.ImageName)).Result;
-					var data = NSData.FromArray(bytes);
-					attachmentImages.Add(UIImage.LoadFromData(data));
-				}
+				//foreach (Attachment att in invoice.Attachments)
+				//{
+
+				//	var bytes = Task.Run(() => ImageManager.GetImage(att.ImageName)).Result;
+				//	var data = NSData.FromArray(bytes);
+				//	attachmentImages.Add(UIImage.LoadFromData(data));
+				//}
 
 				loadingOverlay.Hide();
 
@@ -92,6 +95,97 @@ namespace MobileInvoice.ios
 			Invoice _invoice = JsonConvert.DeserializeObject<Invoice>(result);
 
 			return _invoice;
+		}
+
+		async Task CK_LoadInvoice(string invoiceName)
+		{
+			CKRecord _invoiceRecord = await cloudManager.FetchRecordByRecordName(invoiceName);
+
+			invoice = new Invoice();
+
+			invoice.RecordName = invoiceName;
+			invoice.Name = _invoiceRecord["Name"].ToString();
+			invoice.DueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["DueDate"]));
+			invoice.DueTerm = _invoiceRecord["DueTerm"].ToString();
+ 			
+			// client
+			CKReference _clientReference = (CKReference)_invoiceRecord["Client"];
+			string _clientRecordName = _clientReference.RecordId.RecordName;
+
+			CKRecord _clientRecord = await cloudManager.FetchRecordByRecordName(_clientRecordName);
+
+			Client _client = new Client();
+
+			CKRecordID recordId = (CKRecordID)_clientRecord["recordID"];
+			string recordName = recordId.RecordName;
+			_client.RecordName = recordName;
+			_client.Name = _clientRecord["Name"].ToString();
+			_client.Email = _clientRecord["Email"].ToString();
+			_client.Phone = _clientRecord["Phone"].ToString();
+			_client.Street1 = _clientRecord["Street1"].ToString();
+			_client.Street2 = _clientRecord["Street2"].ToString();
+			_client.City = _clientRecord["City"].ToString();
+			_client.State = _clientRecord["State"].ToString();
+			_client.Country = _clientRecord["Country"].ToString();
+			_client.PostCode = _clientRecord["PostCode"].ToString();
+
+			invoice.Client = _client;
+			invoice.ClientName = _client.Name;
+
+			// items
+			invoice.Items.Clear();
+
+			CKReference _invoiceReference = new CKReference(new CKRecordID(invoice.RecordName), CKReferenceAction.None);
+			NSPredicate _predicate = NSPredicate.FromFormat("Invoice = %@", _invoiceReference);
+			List<CKRecord> records = await cloudManager.FetchRecordsByTypeAndPredicate("InvoiceItem", _predicate);
+
+			foreach (CKRecord _invoiceItemRecord in records)
+			{
+				InvoiceItem _invoiceItem = new InvoiceItem();
+
+				CKRecordID _recordId = (CKRecordID)_invoiceItemRecord["recordID"];
+				string _recordName = recordId.RecordName;
+				_invoiceItem.RecordName = recordName;
+				_invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
+				_invoiceItem.UnitPrice = Convert.ToDecimal(((NSNumber)(_invoiceItemRecord["UnitPrice"])).FloatValue);
+				_invoiceItem.Quantity = Convert.ToInt16(_invoiceItemRecord["Quantity"]);
+				_invoiceItem.bTaxable = Convert.ToInt16(_invoiceItemRecord["bTaxable"]) == 0 ? false : true;
+				_invoiceItem.Note = _invoiceItemRecord["Note"].ToString();
+
+				invoice.Items.Add(_invoiceItem);
+			}
+
+			// attachment
+			invoice.Attachments.Clear();
+
+			records = await cloudManager.FetchRecordsByTypeAndPredicate("Attachment", _predicate);
+
+			foreach (CKRecord _attachmentRecord in records)
+			{
+				Attachment _attachment = new Attachment();
+
+				CKRecordID _recordId = (CKRecordID)_attachmentRecord["recordID"];
+				string _recordName = recordId.RecordName;
+				_attachment.RecordName = recordName;
+
+				_attachment.Description = _attachmentRecord["Description"].ToString();t
+
+				//invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
+				//_invoiceItem.UnitPrice = Convert.ToDecimal(((NSNumber)(_invoiceItemRecord["UnitPrice"])).FloatValue);
+				//invoiceItem.Quantity = Convert.ToInt16(_invoiceItemRecord["Quantity"]);
+				//				_invoiceItem.bTaxable = Convert.ToInt16(_invoiceItemRecord["bTaxable"]) == 0 ? false : true;
+				//				_invoiceItem.Note = _invoiceItemRecord["Note"].ToString();
+
+				invoice.Attachments.Add(_attachment);
+
+
+
+				CKAsset asset = _attachmentRecord["Image"] as CKAsset;
+				NSData data = NSData.FromUrl(asset.FileUrl);
+				UIImage image = UIImage.LoadFromData(data);
+
+				attachmentImages.Add(image);
+			}
 		}
 
 		public override void ViewWillAppear(bool animated)

@@ -23,6 +23,7 @@ namespace MobileInvoice.ios
 		public UISearchBar searchBar;
 
 		public int SelectedInvoiceId;
+		public string selectedInvoiceName;
 
 		public bool bSearching = false;
 
@@ -253,6 +254,7 @@ namespace MobileInvoice.ios
 				string _invoiceRecordName = _invoiceRecordId.RecordName;
 
 				_invoice.Name = _invoiceRecord["Name"].ToString();
+				_invoice.RecordName = _invoiceRecordName;
 				_invoice.DueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["DueDate"]));
 				_invoice.Total = Convert.ToDecimal(((NSNumber)(_invoiceRecord["Total"])).FloatValue);
 
@@ -457,6 +459,8 @@ namespace MobileInvoice.ios
 		{
 			SelectedInvoiceId = invoiceList[indexPath.Row].Id;
 
+			selectedInvoiceName = invoiceList[indexPath.Row].RecordName;
+
 			return indexPath;
 		}
 
@@ -472,8 +476,8 @@ namespace MobileInvoice.ios
 				//frame.X = -100;
 				//button.Frame = frame;
 
-				(segue.DestinationViewController as InvoiceViewController).invoiceId = SelectedInvoiceId;
-
+				(segue.DestinationViewController as InvoiceViewController).invoice.RecordName = selectedInvoiceName;
+				(segue.DestinationViewController as InvoiceViewController).bNewMode = false;
 			}
 		}
 	}
