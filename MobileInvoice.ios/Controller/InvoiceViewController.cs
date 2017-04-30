@@ -148,8 +148,8 @@ namespace MobileInvoice.ios
 				_invoiceItem.RecordName = recordName;
 				_invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
 				_invoiceItem.UnitPrice = Convert.ToDecimal(((NSNumber)(_invoiceItemRecord["UnitPrice"])).FloatValue);
-				_invoiceItem.Quantity = Convert.ToInt16(_invoiceItemRecord["Quantity"]);
-				_invoiceItem.bTaxable = Convert.ToInt16(_invoiceItemRecord["bTaxable"]) == 0 ? false : true;
+				_invoiceItem.Quantity = Convert.ToInt16(((NSNumber)(_invoiceItemRecord["Quantity"])).Int64Value);
+				_invoiceItem.bTaxable = Convert.ToInt16(((NSNumber)(_invoiceItemRecord["bTaxible"])).Int64Value) == 0 ? false : true;
 				_invoiceItem.Note = _invoiceItemRecord["Note"].ToString();
 
 				invoice.Items.Add(_invoiceItem);
@@ -168,7 +168,7 @@ namespace MobileInvoice.ios
 				string _recordName = recordId.RecordName;
 				_attachment.RecordName = recordName;
 
-				_attachment.Description = _attachmentRecord["Description"].ToString();
+				_attachment.Description = _attachmentRecord["Description"].ToString();t
 
 				//invoiceItem.Name = _invoiceItemRecord["Name"].ToString();
 				//_invoiceItem.UnitPrice = Convert.ToDecimal(((NSNumber)(_invoiceItemRecord["UnitPrice"])).FloatValue);
