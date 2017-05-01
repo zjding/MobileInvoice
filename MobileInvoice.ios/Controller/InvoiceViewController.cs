@@ -46,11 +46,36 @@ namespace MobileInvoice.ios
 				NavigationController.NavigationBar.BarTintColor = UIColor.White;
 
 				UIBarButtonItem backButton = new UIBarButtonItem(UIImage.FromFile("Images/Left-30-green.png"), UIBarButtonItemStyle.Plain, (sender, e) =>
-				 {
-					 NavigationController.PopViewController(true);
-				 });
+				{
+					NavigationController.PopViewController(true);
+				});
 				NavigationItem.LeftBarButtonItem = backButton;
-				NavigationItem.RightBarButtonItem = null;
+
+				UIBarButtonItem moreButton = new UIBarButtonItem(UIImage.FromFile("Images/More-25.png"), UIBarButtonItemStyle.Plain, (sender, e) =>
+ 				{
+					UIAlertController actionSheetAlert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
+
+					// Add Actions
+					actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, async(action) =>
+					{
+						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+						this.View.Add(_loadingOverlay);
+
+						BuildInvoice();
+
+						await CK_SaveInvoice();
+						_loadingOverlay.Hide();
+
+						NavigationController.PopViewController(true);
+					}));
+
+					actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
+
+					actionSheetAlert.View.TintColor = UIColor.FromRGB(26, 188, 156);
+
+					this.PresentViewController(actionSheetAlert, true, null);
+				});
+				NavigationItem.RightBarButtonItem = moreButton;
 
 				LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 				this.View.Add(loadingOverlay);
@@ -471,9 +496,11 @@ namespace MobileInvoice.ios
 
 		private void BuildInvoice()
 		{
-			string stRecordName = ThisApp.UserName + "-Invoice-" + DateTime.Now.ToString("s");
-
-			invoice.RecordName = stRecordName;
+			if (bNewMode)
+			{
+				string stRecordName = ThisApp.UserName + "-Invoice-" + DateTime.Now.ToString("s");
+				invoice.RecordName = stRecordName;
+			}
 
 			invoice.Name = txtInvoiceName.Text;
 
