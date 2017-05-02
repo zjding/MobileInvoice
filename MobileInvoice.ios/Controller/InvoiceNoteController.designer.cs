@@ -16,13 +16,13 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView txtField { get; set; }
+        UIKit.UITextView txtNote { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (txtField != null) {
-                txtField.Dispose ();
-                txtField = null;
+            if (txtNote != null) {
+                txtNote.Dispose ();
+                txtNote = null;
             }
         }
     }

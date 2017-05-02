@@ -78,6 +78,11 @@ namespace MobileInvoice.ios
 
 			var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
 			button.Hidden = false;
+
+			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 2;
+
+			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 1;
+
 			//CGRect frame = button.Frame;
 			//frame.X = this.View.Frame.Size.Width / 2 - button.Frame.Size.Width / 2;
 			//button.Frame = frame;

@@ -2017,7 +2017,7 @@
                         </sections>
                     </tableView>
                     <connections>
-                        <outlet property="txtField" destination="2847" id="name-outlet-2847"/>
+                        <outlet property="txtNote" destination="2847" id="name-outlet-2847"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2768" userLabel="First Responder" sceneMemberID="firstResponder"/>

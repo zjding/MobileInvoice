@@ -51,7 +51,7 @@ namespace MobileInvoice.model
 		public Client Client { get; set; }
         public string ClientName { get; set; }
 		public List<InvoiceItem> Items { get; set; }
-        public string Note { get; set; }
+		public string Note { get; set; }
         public List<Attachment> Attachments { get; set; }
         public string Signature { get; set; }
         public decimal Total { get; set; }
@@ -62,6 +62,7 @@ namespace MobileInvoice.model
 			Client = new Client();
 			Items = new List<InvoiceItem>();
             Attachments = new List<Attachment>();
+
 		}
 	}
 
@@ -72,4 +73,10 @@ namespace MobileInvoice.model
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
     }
+
+	//public class Note
+	//{
+	//	public string RecordName { get; set; }
+	//	public string NoteString { get; set; }
+	//}
 }

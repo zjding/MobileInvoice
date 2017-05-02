@@ -34,6 +34,7 @@ namespace MobileInvoice.ios
 		public InvoiceViewController(IntPtr handle) : base(handle)
 		{
 			invoice = new Invoice();
+
 			cloudManager = new CloudManager();
 		}
 
@@ -94,6 +95,8 @@ namespace MobileInvoice.ios
 				//	attachmentImages.Add(UIImage.LoadFromData(data));
 				//}
 
+				txtInvoiceName.Text = invoice.Name;
+
 				loadingOverlay.Hide();
 
 				TableView.ReloadData();
@@ -108,6 +111,12 @@ namespace MobileInvoice.ios
 				//await cloudManager.SaveAsync(invoiceRecord);
 
 				//invoice.RecordName = stRecordName;
+
+				invoice.Name = this.txtInvoiceName.Text;
+				invoice.IssueDate = DateTime.Now;
+				invoice.DueTerm = "Due in 30 days";
+				invoice.DueDate = DateTime.Now.AddDays(30);
+
 			}
 		}
 
@@ -130,6 +139,7 @@ namespace MobileInvoice.ios
 
 			invoice.RecordName = invoiceName;
 			invoice.Name = _invoiceRecord["Name"].ToString();
+			invoice.IssueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["IssuedDate"]));
 			invoice.DueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["DueDate"]));
 			invoice.DueTerm = _invoiceRecord["DueTerm"].ToString();
  			
@@ -203,14 +213,15 @@ namespace MobileInvoice.ios
 
 				invoice.Attachments.Add(_attachment);
 
-
-
 				CKAsset asset = _attachmentRecord["Image"] as CKAsset;
 				NSData data = NSData.FromUrl(asset.FileUrl);
 				UIImage image = UIImage.LoadFromData(data);
 
 				attachmentImages.Add(image);
 			}
+
+			invoice.Note = _invoiceRecord["Note"].ToString();
+
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -300,8 +311,6 @@ namespace MobileInvoice.ios
 			{
 				InvoiceDateCell cell = this.TableView.DequeueReusableCell("InvoiceDateCellIdentifier") as InvoiceDateCell;
 				cell.callingController = this;
-				//cell.TextLabel.Text = "Client";
-				//cell.DetailTextLabel.Text = client.FirstName + " " + client.LastName;
 
 				return cell;
 			}
@@ -384,8 +393,8 @@ namespace MobileInvoice.ios
 				if (indexPath.Row == 0)
 				{
 					InvoiceNoteCell cell = this.TableView.DequeueReusableCell("InvoiceNoteCell") as InvoiceNoteCell;
-					//cell.imgAttachment.Image = attachmentImages[indexPath.Row - 1];
-					//cell.lblDescription.Text = invoice.Attachments[indexPath.Row - 1].Description;
+					cell.lblNote.Text = invoice.Note;
+					cell.Tag = 1001;
 					return cell;
 				}
 			}
@@ -432,7 +441,6 @@ namespace MobileInvoice.ios
 			{
 				InvoiceNoteController destCtrl = segue.DestinationViewController as InvoiceNoteController;
 				destCtrl.callingController = this;
-				destCtrl.note = invoice.Note;
 			}
 
 			base.PrepareForSegue(segue, sender);
@@ -504,25 +512,29 @@ namespace MobileInvoice.ios
 
 			invoice.Name = txtInvoiceName.Text;
 
-			// date
-			NSIndexPath indexPath = NSIndexPath.FromRowSection(0, 0);
+			//// date
+			//NSIndexPath indexPath = NSIndexPath.FromRowSection(0, 0);
 
-			InvoiceDateCell dateCell = TableView.CellAt(indexPath) as InvoiceDateCell;
-			if (!string.IsNullOrEmpty(dateCell.btnIssueDate.Title(UIControlState.Normal)))
-				invoice.IssueDate = Convert.ToDateTime(dateCell.btnIssueDate.Title(UIControlState.Normal));
-			if (!string.IsNullOrEmpty(dateCell.btnDueTerm.Title(UIControlState.Normal)))
-				invoice.DueTerm = dateCell.btnDueTerm.Title(UIControlState.Normal);
+			//InvoiceDateCell dateCell = TableView.CellAt(indexPath) as InvoiceDateCell;
+			//if (!string.IsNullOrEmpty(dateCell.btnIssueDate.Title(UIControlState.Normal)))
+			//	invoice.IssueDate = Convert.ToDateTime(dateCell.btnIssueDate.Title(UIControlState.Normal));
+			//if (!string.IsNullOrEmpty(dateCell.btnDueTerm.Title(UIControlState.Normal)))
+			//	invoice.DueTerm = dateCell.btnDueTerm.Title(UIControlState.Normal);
 
-			if (invoice.DueTerm.Contains("receipt"))
-				invoice.DueDate = invoice.IssueDate;
-			else
-				invoice.DueDate = invoice.IssueDate.AddDays(int.Parse(Regex.Match(invoice.DueTerm, "\\d+").Value));
+			//if (invoice.DueTerm.Contains("receipt"))
+			//	invoice.DueDate = invoice.IssueDate;
+			//else
+			//	invoice.DueDate = invoice.IssueDate.AddDays(int.Parse(Regex.Match(invoice.DueTerm, "\\d+").Value));
 
 
-			// note 
-			//indexPath = NSIndexPath.FromRowSection(0, 5);
-			//InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
+			//// note 
+			////indexPath = NSIndexPath.FromRowSection(0, 5);
+			////InvoiceNoteCell noteCell = TableView.CellAt(indexPath) as InvoiceNoteCell;
+
+			//InvoiceNoteCell noteCell = TableView.ViewWithTag(1001) as InvoiceNoteCell;
 			//invoice.Note = noteCell.lblNote.Text;
+
+
 		}
 
 		async private Task CK_SaveInvoice()
@@ -549,7 +561,7 @@ namespace MobileInvoice.ios
 			CKReference clientReference = new CKReference(new CKRecordID(invoice.Client.RecordName), CKReferenceAction.None);
 			invoiceRecord["Client"] = clientReference;
 
-			invoiceRecord["Note"] = (NSString)"Thank you";
+			invoiceRecord["Note"] = (NSString)invoice.Note;
 
 			invoiceRecord["Status"] = (NSString)"d";
 

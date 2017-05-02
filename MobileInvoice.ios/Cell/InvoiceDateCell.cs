@@ -14,6 +14,19 @@ namespace MobileInvoice.ios
         {
         }
 
+		public override void LayoutSubviews()
+		{
+			base.LayoutSubviews();
+
+			var dateFormatter = new NSDateFormatter()
+			{
+				DateFormat = "MMMM dd, yyyy"
+			};
+
+			this.btnIssueDate.SetTitle(dateFormatter.ToString(Helper.DateTimeToNSDate(callingController.invoice.IssueDate)), UIControlState.Normal);
+
+			this.btnDueTerm.SetTitle(callingController.invoice.DueTerm, UIControlState.Normal);
+		}
 
 		async partial void btnIssueDate_UpInside(UIButton sender)
 		{
