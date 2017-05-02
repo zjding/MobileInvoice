@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using SharpMobileCode.ModalPicker;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace MobileInvoice.ios
 {
@@ -49,7 +50,10 @@ namespace MobileInvoice.ios
 
 				this.btnIssueDate.SetTitle(dateFormatter.ToString(modalPicker.DatePicker.Date), UIControlState.Normal);
 
-				this.callingController.invoice.DueDate = Helper.NSDateToDateTime(modalPicker.DatePicker.Date);
+				this.callingController.invoice.IssueDate = Helper.NSDateToDateTime(modalPicker.DatePicker.Date);
+				this.callingController.invoice.DueDate = this.callingController.invoice.DueTerm == "Due on receipt" ?
+					this.callingController.invoice.IssueDate :
+					this.callingController.invoice.IssueDate.AddDays(Convert.ToDouble(Regex.Match(this.callingController.invoice.DueTerm, "\\d+").Value));
 			};
 
 			await callingController.PresentViewControllerAsync(modalPicker, true);
@@ -87,6 +91,10 @@ namespace MobileInvoice.ios
 				btnDueTerm.SetTitle(dueDaysList[(int)index] == "Due on receipt" ? "Due on receipt" : "Due on " + dueDaysList[(int)index], UIControlState.Normal);
 
 				this.callingController.invoice.DueTerm = dueDaysList[(int)index];
+
+                this.callingController.invoice.DueDate = this.callingController.invoice.DueTerm == "Due on receipt" ? 
+					this.callingController.invoice.IssueDate
+					this.callingController.invoice.IssueDate.AddDays(Convert.ToDouble(Regex.Match(this.callingController.invoice.DueTerm, "\\d+").Value));
 			};
 
 			await callingController.PresentViewControllerAsync(modalPicker, true);
