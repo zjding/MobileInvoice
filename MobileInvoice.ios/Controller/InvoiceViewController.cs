@@ -224,9 +224,9 @@ namespace MobileInvoice.ios
 			// note
 			invoice.Note = _invoiceRecord["Note"].ToString();
 
-			// signatur
+			// signature
 			if (_invoiceRecord["SignatureName"] != null)
-			{e
+			{
 				invoice.SignatureName = _invoiceRecord["SignatureName"].ToString();
 
 				CKRecord _signatureRecord = await cloudManager.FetchRecordByRecordName(invoice.SignatureName);
