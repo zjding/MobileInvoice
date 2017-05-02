@@ -26,7 +26,7 @@ namespace MobileInvoice.ios
 
 			this.btnIssueDate.SetTitle(dateFormatter.ToString(Helper.DateTimeToNSDate(callingController.invoice.IssueDate)), UIControlState.Normal);
 
-			this.btnDueTerm.SetTitle(callingController.invoice.DueTerm, UIControlState.Normal);
+			this.btnDueTerm.SetTitle(callingController.invoice.DueTerm == "Due on receipt" ? "Due on receipt" : "Due on " + callingController.invoice.DueTerm, UIControlState.Normal);
 		}
 
 		async partial void btnIssueDate_UpInside(UIButton sender)
@@ -93,7 +93,7 @@ namespace MobileInvoice.ios
 				this.callingController.invoice.DueTerm = dueDaysList[(int)index];
 
                 this.callingController.invoice.DueDate = this.callingController.invoice.DueTerm == "Due on receipt" ? 
-					this.callingController.invoice.IssueDate
+					this.callingController.invoice.IssueDate : 
 					this.callingController.invoice.IssueDate.AddDays(Convert.ToDouble(Regex.Match(this.callingController.invoice.DueTerm, "\\d+").Value));
 			};
 
