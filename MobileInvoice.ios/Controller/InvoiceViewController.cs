@@ -268,9 +268,6 @@ namespace MobileInvoice.ios
 			if (section == 4)
 				return "ATTACHMENTS";
 
-			if (section == 6)
-				return " ";
-
 			if (section == 5)
 				return "NOTE";
 
@@ -315,6 +312,9 @@ namespace MobileInvoice.ios
 				return " ";
 
 			if (section == 4)
+				return " ";
+
+			if (section == 5)
 				return " ";
 
 

@@ -64,8 +64,6 @@ namespace MobileInvoice.ios
 
 			callingController.invoice.SignatureName = stRecordName;
 
-			NavigationController.PopViewController(true);
-
 			callingController.DismissViewController(true, null);
 		}
 	}
