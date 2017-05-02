@@ -276,19 +276,19 @@
     <Compile Include="Controller\InvoiceListController.designer.cs">
       <DependentUpon>InvoiceListController.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceSignatureCell.cs" />
-    <Compile Include="InvoiceSignatureCell.designer.cs">
-      <DependentUpon>InvoiceSignatureCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceSignatureController.cs" />
-    <Compile Include="InvoiceSignatureController.designer.cs">
+    <Compile Include="Helper\CloudManager.cs" />
+    <Compile Include="Controller\InvoiceSignatureController.cs" />
+    <Compile Include="Controller\InvoiceSignatureController.designer.cs">
       <DependentUpon>InvoiceSignatureController.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceSettingsController.cs" />
-    <Compile Include="InvoiceSettingsController.designer.cs">
+    <Compile Include="Controller\InvoiceSettingsController.cs" />
+    <Compile Include="Controller\InvoiceSettingsController.designer.cs">
       <DependentUpon>InvoiceSettingsController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\CloudManager.cs" />
+    <Compile Include="Cell\InvoiceSignatureCell.cs" />
+    <Compile Include="Cell\InvoiceSignatureCell.designer.cs">
+      <DependentUpon>InvoiceSignatureCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />

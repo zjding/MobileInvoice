@@ -17,6 +17,7 @@ namespace MobileInvoice.ios
 	{
 		public Invoice invoice;
 		public List<UIImage> attachmentImages = new List<UIImage>();
+		public UIImage signatureImage;
 		public int iCurrentSelected;
 		public int invoiceId = -1;
 		public string invoiceName = "";
@@ -220,8 +221,20 @@ namespace MobileInvoice.ios
 				attachmentImages.Add(image);
 			}
 
+			// note
 			invoice.Note = _invoiceRecord["Note"].ToString();
 
+			// signatur
+			if (_invoiceRecord["SignatureName"] != null)
+			{e
+				invoice.SignatureName = _invoiceRecord["SignatureName"].ToString();
+
+				CKRecord _signatureRecord = await cloudManager.FetchRecordByRecordName(invoice.SignatureName);
+
+				CKAsset _asset = _signatureRecord["Image"] as CKAsset;
+				NSData _data = NSData.FromUrl(_asset.FileUrl);
+				signatureImage = UIImage.LoadFromData(_data);
+			}
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -260,6 +273,9 @@ namespace MobileInvoice.ios
 
 			if (section == 5)
 				return "NOTE";
+
+			if (section == 6)
+				return "SIGNATURE";
 
 
 			return base.TitleForHeader(tableView, section);
@@ -398,9 +414,14 @@ namespace MobileInvoice.ios
 					return cell;
 				}
 			}
-			else if (indexPath.Section == 6)
+			else if (indexPath.Section == 6) // signature
 			{
 				InvoiceSignatureCell cell = this.TableView.DequeueReusableCell("InvoiceSignatureCell") as InvoiceSignatureCell;
+
+				if (signatureImage != null)
+				{
+					cell.imgSignature.Image = signatureImage;
+				}
 
 				return cell;
 			}
@@ -440,6 +461,11 @@ namespace MobileInvoice.ios
 			else if (segue.Identifier == "Invoice_To_Note_Segue")
 			{
 				InvoiceNoteController destCtrl = segue.DestinationViewController as InvoiceNoteController;
+				destCtrl.callingController = this;
+			}
+			else if (segue.Identifier == "Invoice_To_Signature_Segue")
+			{
+				InvoiceSignatureController destCtrl = (segue.DestinationViewController as UINavigationController).ViewControllers[0] as InvoiceSignatureController;
 				destCtrl.callingController = this;
 			}
 
@@ -562,6 +588,8 @@ namespace MobileInvoice.ios
 			invoiceRecord["Client"] = clientReference;
 
 			invoiceRecord["Note"] = (NSString)invoice.Note;
+
+			invoiceRecord["SignatureName"] = (NSString)invoice.SignatureName;
 
 			invoiceRecord["Status"] = (NSString)"d";
 

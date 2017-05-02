@@ -31,6 +31,8 @@ namespace SignaturePad {
 		List<CGPoint> currentPoints;
 		List<CGPoint[]> points;
 
+		public UIImage signatureImage;
+
 		//Used to determine rectangle that needs to be redrawn.
 		nfloat minX, minY, maxX, maxY;
 
@@ -213,7 +215,7 @@ namespace SignaturePad {
 
 		public SignaturePadView ()
 		{
-			Initialize ();
+			//Initialize ();
 		}
 
 		public SignaturePadView (NSCoder coder) : base (coder)
@@ -232,7 +234,7 @@ namespace SignaturePad {
 			Initialize ();
 		}
 
-		void Initialize (bool baseProperties = true)
+		public void Initialize (bool baseProperties = true)
 		{
 			if (baseProperties) {
 				BackgroundColor = UIColor.FromRGB(225, 225, 225);
@@ -252,6 +254,10 @@ namespace SignaturePad {
 			//Add an image that covers the entire signature view, used to display already drawn
 			//elements instead of having to redraw them every time the user touches the screen.
 			imageView = new UIImageView ();
+
+			if (signatureImage != null)
+				imageView.Image = signatureImage;
+			
 			AddSubview (imageView);
 
 			Caption = new UILabel ();

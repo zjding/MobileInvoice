@@ -53,7 +53,7 @@ namespace MobileInvoice.model
 		public List<InvoiceItem> Items { get; set; }
 		public string Note { get; set; }
         public List<Attachment> Attachments { get; set; }
-        public string Signature { get; set; }
+        public string SignatureName { get; set; }
         public decimal Total { get; set; }
         public string Status { get; set; }
 

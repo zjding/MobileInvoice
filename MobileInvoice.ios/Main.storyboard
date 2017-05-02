@@ -825,17 +825,15 @@
                                             <rect key="frame" x="20" y="9" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2760" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                            <rect key="frame" x="65" y="11" width="276" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4524" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                            <rect key="frame" x="65" y="0.0" width="175" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                            <color key="textColor" colorSpace="calibratedRGB" red="0.18823529411764706" green="0.69019607843137254" blue="0.52941176470588236" alpha="1"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue id="4370" destination="4236" kind="presentation"/>
+                                    <segue id="4370" destination="4236" kind="presentation" identifier="Invoice_To_Signature_Segue"/>
+                                    <outlet property="imgSignature" destination="4524" id="name-outlet-4524"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2053,12 +2051,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="4378" customClass="SignaturePadView" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                 <rect key="frame" x="30" y="89" width="347" height="601"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="1" green="1" blue="0" alpha="1"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="StrokeColor">
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </view>
                         </subviews>
                         <constraints>
@@ -2068,9 +2066,23 @@
                             <constraint id="4386" firstItem="4243" firstAttribute="top" secondItem="4378" secondAttribute="bottom" constant="46"/>
                         </constraints>
                     </view>
-                    <navigationItem title="Title" id="4304" key="navigationItem"/>
+                    <navigationItem title="Signature" id="4304" key="navigationItem">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="4518">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4517" translatesAutoresizingMaskIntoConstraints="NO" key="customView">
+                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Images/Left-25.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBack_UpInside:" destination="4245" id="4523" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="signaturePad" destination="4378" id="name-outlet-4378"/>
+                        <outlet property="btnBack" destination="4517" id="name-outlet-4517"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4247" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,8 +14,16 @@ namespace MobileInvoice.ios
     [Register ("InvoiceSignatureCell")]
     partial class InvoiceSignatureCell
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        public UIKit.UIImageView imgSignature { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (imgSignature != null) {
+                imgSignature.Dispose ();
+                imgSignature = null;
+            }
         }
     }
 }
