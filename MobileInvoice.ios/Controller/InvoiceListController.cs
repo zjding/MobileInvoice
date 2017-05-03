@@ -41,6 +41,7 @@ namespace MobileInvoice.ios
 			cloudManager = new CloudManager();
 		}
 
+
 		async public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -51,6 +52,8 @@ namespace MobileInvoice.ios
 
 			this.ExtendedLayoutIncludesOpaqueBars = true;
 
+			//TableView.Hidden = true;
+
 			LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 			this.View.Add(loadingOverlay);
 
@@ -59,6 +62,8 @@ namespace MobileInvoice.ios
 			await CK_LoadInvoices("a");
 
 			loadingOverlay.Hide();
+
+			//TableView.Hidden = false;
 
 			TableView.ReloadData();
 		}
@@ -76,12 +81,12 @@ namespace MobileInvoice.ios
 
 			//(this.TabBarController as InvoiceTabBarController).AddPlusButton();
 
-			var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
-			button.Hidden = false;
+			//var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
+			//button.Hidden = false;
 
-			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 2;
+			//(this.TabBarController as InvoiceTabBarController).SelectedIndex = 2;
 
-			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 1;
+			//(this.TabBarController as InvoiceTabBarController).SelectedIndex = 1;
 
 			//CGRect frame = button.Frame;
 			//frame.X = this.View.Frame.Size.Width / 2 - button.Frame.Size.Width / 2;
@@ -108,9 +113,9 @@ namespace MobileInvoice.ios
 
 			//(this.TabBarController as InvoiceTabBarController).BringButtonToFront();
 
-			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 2;
+			//(this.TabBarController as InvoiceTabBarController).SelectedIndex = 2;
 
-			(this.TabBarController as InvoiceTabBarController).SelectedIndex = 1;
+			//(this.TabBarController as InvoiceTabBarController).SelectedIndex = 1;
 
 		}
 
@@ -118,8 +123,8 @@ namespace MobileInvoice.ios
 		{
 			base.ViewWillDisappear(animated);
 
-			var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
-			button.Hidden = true;
+			//var button = this.NavigationController.TabBarController.View.ViewWithTag(1001);
+			//button.Hidden = true;
 		}
 
 		public override nint NumberOfSections(UITableView tableView)
@@ -317,7 +322,7 @@ namespace MobileInvoice.ios
 			return invoiceList.Count;
 		}
 
-		partial void btnSearch_UpInside(UIButton sender)
+		void btnSearch_UpInside(UIButton sender)
 		{
 			if (searchController == null)
 			{
@@ -484,6 +489,15 @@ namespace MobileInvoice.ios
 				(segue.DestinationViewController as InvoiceViewController).invoice.RecordName = selectedInvoiceName;
 				(segue.DestinationViewController as InvoiceViewController).bNewMode = false;
 			}
+		}
+
+		partial void btnInvoiceAdd_UpInside(UIBarButtonItem sender)
+		{
+			UIStoryboard storyBoard = UIStoryboard.FromName("Main", null);
+			UINavigationController invoiceViewNavigationController = (UINavigationController)storyBoard.InstantiateViewController("InvoiceViewNavigationController");
+			InvoiceViewController invoiceViewController = invoiceViewNavigationController.ViewControllers[0] as InvoiceViewController;
+			invoiceViewController.bNewMode = true;
+			this.PresentViewController(invoiceViewNavigationController, true, null);
 		}
 	}
 }

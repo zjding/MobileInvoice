@@ -22,6 +22,7 @@ namespace MobileInvoice.ios
 		public int invoiceId = -1;
 		public string invoiceName = "";
 		public bool bNewMode = true;
+		public bool bLoaded = false;
 
 		CloudManager cloudManager;
 
@@ -42,6 +43,11 @@ namespace MobileInvoice.ios
 		async public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+			TableView.TableFooterView = new UIView();
+			txtInvoiceName.Text = "";
+
+			bLoaded = false;
 
 			if (!bNewMode)
 			{
@@ -100,10 +106,14 @@ namespace MobileInvoice.ios
 
 				loadingOverlay.Hide();
 
+				bLoaded = true;
+
 				TableView.ReloadData();
 			}
 			else
 			{
+				bLoaded = true;
+
 				//string stRecordName = ThisApp.UserName + "-Invoice-" + DateTime.Now.ToString("s");
 				//var invoiceRecordID = new CKRecordID(stRecordName);
 				//var invoiceRecord = new CKRecord("Invoice", invoiceRecordID);
@@ -280,7 +290,10 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 7;
+			if (bLoaded)
+				return 7;
+			else
+				return 0;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
