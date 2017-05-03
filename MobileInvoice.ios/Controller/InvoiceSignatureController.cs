@@ -63,6 +63,7 @@ namespace MobileInvoice.ios
 			await cloudManager.SaveAsync(signatureRecord);
 
 			callingController.invoice.SignatureName = stRecordName;
+			callingController.signatureImage = signatureImage;
 
 			callingController.DismissViewController(true, null);
 		}
