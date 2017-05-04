@@ -21,6 +21,8 @@ namespace MobileInvoice.ios
 		public Dictionary<string, List<Invoice>> invoiceDictionary = new Dictionary<string, List<Invoice>>();
 		public List<string> keyList = new List<string>();
 
+		Dictionary<string, string> monthDictionary = new Dictionary<string, string>();
+
 		public UISearchController searchController;
 		public UISearchBar searchBar;
 
@@ -41,6 +43,19 @@ namespace MobileInvoice.ios
 		public InvoiceListController(IntPtr handle) : base(handle)
 		{
 			cloudManager = new CloudManager();
+
+			monthDictionary["1"] = "January";
+			monthDictionary["2"] = "Febuary";
+			monthDictionary["3"] = "March";
+			monthDictionary["4"] = "April";
+			monthDictionary["5"] = "May";
+			monthDictionary["6"] = "June";
+			monthDictionary["7"] = "July";
+			monthDictionary["8"] = "August";
+			monthDictionary["9"] = "September";
+			monthDictionary["10"] = "October";
+			monthDictionary["11"] = "November";
+			monthDictionary["12"] = "December";
 		}
 
 
@@ -146,7 +161,12 @@ namespace MobileInvoice.ios
 
 		public override string TitleForHeader(UITableView tableView, nint section)
 		{
-			return keyList[(int)section];
+			return monthDictionary[keyList[(int)section]];
+		}
+
+		public override string TitleForFooter(UITableView tableView, nint section)
+		{
+			return " ";
 		}
 
 		public override string[] SectionIndexTitles(UITableView tableView)
@@ -347,7 +367,9 @@ namespace MobileInvoice.ios
 
 				if (invoiceDictionary.ContainsKey(m))
 				{
-					invoiceDictionary[m].Add(_invoice);
+					List<Invoice> _tmpLst = invoiceDictionary[m];
+					Helper.InsertInOrder(_invoice, ref _tmpLst);
+					invoiceDictionary[m] = _tmpLst;
 				}
 				else
 				{

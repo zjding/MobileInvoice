@@ -123,6 +123,24 @@ namespace MobileInvoice.ios
 
 		}
 
+		public static void InsertInOrder(Invoice invoiceToInsert, ref List<Invoice> list)
+		{
+			if (list.Count == 0)
+			{
+				list.Add(invoiceToInsert);
+				return;
+			}
+
+			int i = 0;
+
+			while (i < list.Count && list[i].IssueDate.CompareTo(invoiceToInsert.IssueDate) < 0)
+			{
+				i++;
+			}
+
+			list.Insert(i, invoiceToInsert);
+		}
+
 		public static DateTime NSDateToDateTime(NSDate date)
 		{
 			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
