@@ -146,7 +146,7 @@ namespace MobileInvoice.ios
 
 		public override string[] SectionIndexTitles(UITableView tableView)
 		{
-			return keyList.ToArray();a
+			return keyList.ToArray();
 		}
 
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
@@ -154,7 +154,7 @@ namespace MobileInvoice.ios
 			var header = headerView as UITableViewHeaderFooterView;
 
 			header.TextLabel.TextColor = UIColor.LightGray;
-			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);2
+			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
