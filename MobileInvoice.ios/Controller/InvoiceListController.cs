@@ -18,6 +18,8 @@ namespace MobileInvoice.ios
 	{
 		public List<Invoice> invoiceList = new List<Invoice>();
 		public List<Invoice> filteredInvoiceList = new List<Invoice>();
+		public Dictionary<string, List<Invoice>> invoiceDictionary = new Dictionary<string, List<Invoice>>();
+		public List<string> keyList = new List<string>();
 
 		public UISearchController searchController;
 		public UISearchBar searchBar;
@@ -129,15 +131,30 @@ namespace MobileInvoice.ios
 
 		public override nint NumberOfSections(UITableView tableView)
 		{
-			return 1;
+			return invoiceDictionary.Count;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
-			if (!bSearching)
-				return invoiceList.Count;
-			else
-				return filteredInvoiceList.Count;
+			//if (!bSearching)
+			//	return invoiceList.Count;
+			//else
+			//	return filteredInvoiceList.Count;
+
+			return invoiceDictionary[keyList[(int)section]].Count;
+		}
+
+		public override string[] SectionIndexTitles(UITableView tableView)
+		{
+			return keyList.ToArray();a
+		}
+
+		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
+		{
+			var header = headerView as UITableViewHeaderFooterView;
+
+			header.TextLabel.TextColor = UIColor.LightGray;
+			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);2
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -154,7 +171,7 @@ namespace MobileInvoice.ios
 			cell.lblClientName.Text = _invoice.ClientName;
 			cell.lblInvoiceName.Text = _invoice.Name;
 			cell.lblTotal.Text = _invoice.Total.ToString("C", CultureInfo.CurrentCulture);
-			cell.lblDueDate.Text = _invoice.DueDate.ToShortDateString();
+			cell.lblDueDate.Text = _invoice.IssueDate.ToShortDateString();
 			cell.status = _invoice.Status;
 
 			return cell;
@@ -265,6 +282,7 @@ namespace MobileInvoice.ios
 
 				_invoice.Name = _invoiceRecord["Name"].ToString();
 				_invoice.RecordName = _invoiceRecordName;
+				_invoice.IssueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["IssuedDate"]));
 				_invoice.DueDate = Helper.NSDateToDateTime((NSDate)(_invoiceRecord["DueDate"]));
 				_invoice.Total = Convert.ToDecimal(((NSNumber)(_invoiceRecord["Total"])).FloatValue);
 
@@ -317,6 +335,21 @@ namespace MobileInvoice.ios
 				//}
 
 				invoiceList.Add(_invoice);
+
+				string m = _invoice.IssueDate.Month.ToString();
+
+				if (invoiceDictionary.ContainsKey(m))
+				{
+					invoiceDictionary[m].Add(_invoice);
+				}
+				else
+				{
+					List<Invoice> _tmpLst = new List<Invoice>();
+					_tmpLst.Add(_invoice);
+					invoiceDictionary.Add(m, _tmpLst);
+					Helper.InsertInOrder(m, ref keyList);
+				}
+
 			}
 
 			return invoiceList.Count;
