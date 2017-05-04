@@ -144,6 +144,11 @@ namespace MobileInvoice.ios
 			return invoiceDictionary[keyList[(int)section]].Count;
 		}
 
+		public override string TitleForHeader(UITableView tableView, nint section)
+		{
+			return keyList[(int)section];
+		}
+
 		public override string[] SectionIndexTitles(UITableView tableView)
 		{
 			return keyList.ToArray();
@@ -163,10 +168,12 @@ namespace MobileInvoice.ios
 
 			Invoice _invoice;
 
-			if (!bSearching)
-				_invoice = invoiceList[indexPath.Row];
-			else
-				_invoice = filteredInvoiceList[indexPath.Row];
+			//if (!bSearching)
+			//	_invoice = invoiceList[indexPath.Row];
+			//else
+			//	_invoice = filteredInvoiceList[indexPath.Row];
+
+			_invoice = invoiceDictionary[keyList[indexPath.Section]][indexPath.Row];
 
 			cell.lblClientName.Text = _invoice.ClientName;
 			cell.lblInvoiceName.Text = _invoice.Name;
