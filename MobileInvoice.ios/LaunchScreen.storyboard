@@ -46,6 +46,44 @@
         <image name="Images/User-25.png" width="25" height="25"/>
         <image name="Images/Circled User-25.png" width="25" height="25"/>
         <image name="Images/Circled User-50.png" width="50" height="50"/>
+        <image name="Images/User Group-50.png" width="50" height="50"/>
+        <image name="Images/User Group-25.png" width="25" height="25"/>
+        <image name="Images/Delete-50.png" width="50" height="50"/>
+        <image name="Images/Delete-25.png" width="25" height="25"/>
+        <image name="Images/Job-50.png" width="50" height="50"/>
+        <image name="Images/Job-25.png" width="25" height="25"/>
+        <image name="Images/Import-50.png" width="50" height="50"/>
+        <image name="Images/Import-30.png" width="30" height="30"/>
+        <image name="Images/Checkmark-25.png" width="25" height="25"/>
+        <image name="Images/Delete-20.png" width="20" height="20"/>
+        <image name="Images/Checkmark-20.png" width="20" height="20"/>
+        <image name="Images/Delete-18.png" width="18" height="18"/>
+        <image name="Images/Delete-16.png" width="25" height="25"/>
+        <image name="Images/Add Filled-50.png" width="50" height="50"/>
+        <image name="Images/Add-25-green.png" width="25" height="25"/>
+        <image name="Images/Job-30-green.png" width="30" height="30"/>
+        <image name="Images/Left-30-green.png" width="30" height="30"/>
+        <image name="Images/Attach-25-green.png" width="25" height="25"/>
+        <image name="Images/Edit-25-green.png" width="20" height="20"/>
+        <image name="Images/Edit-15-grey.png" width="15" height="15"/>
+        <image name="Images/Edit-10-grey.png" width="10" height="10"/>
+        <image name="Images/Edit-13-grey.png" width="13" height="13"/>
+        <image name="Images/Image File-100.png" width="100" height="100"/>
+        <image name="Images/Image File-100-lightgrey.png" width="100" height="100"/>
+        <image name="Images/Comments-50.png" width="50" height="50"/>
+        <image name="Images/Comments-25.png" width="25" height="25"/>
+        <image name="Images/US Dollar-50.png" width="50" height="50"/>
+        <image name="Images/US Dollar-25.png" width="25" height="25"/>
+        <image name="Images/Signature-50.png" width="50" height="50"/>
+        <image name="Images/Signature-25.png" width="25" height="25"/>
+        <image name="Images/More-50.png" width="50" height="50"/>
+        <image name="Images/More-20.png" width="20" height="20"/>
+        <image name="Images/More-25.png" width="25" height="25"/>
+        <image name="arrow_down_icon.png" width="12" height="7"/>
+        <image name="checkmark_icon.png" width="40" height="40"/>
+        <image name="Images/Search-20-white.png" width="22" height="22"/>
+        <image name="Images/Checkmark-20-white.png" width="20" height="20"/>
+        <image name="Images/Date Span-20-white.png" width="22" height="22"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.14509803921568629" green="0.41176470588235292" blue="0.69019607843137254" alpha="1"/>
 </document>

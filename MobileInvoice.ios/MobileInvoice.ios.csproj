@@ -289,6 +289,10 @@
     <Compile Include="Cell\InvoiceSignatureCell.designer.cs">
       <DependentUpon>InvoiceSignatureCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoicePaymentCell.cs" />
+    <Compile Include="InvoicePaymentCell.designer.cs">
+      <DependentUpon>InvoicePaymentCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />

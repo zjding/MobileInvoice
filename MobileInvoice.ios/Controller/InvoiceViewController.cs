@@ -282,6 +282,9 @@ namespace MobileInvoice.ios
 				return "NOTE";
 
 			if (section == 6)
+				return "PAYMENT";
+
+			if (section == 7)
 				return "SIGNATURE";
 
 
@@ -291,7 +294,7 @@ namespace MobileInvoice.ios
 		public override nint NumberOfSections(UITableView tableView)
 		{
 			if (bLoaded)
-				return 7;
+				return 8;
 			else
 				return 0;
 		}
@@ -310,7 +313,9 @@ namespace MobileInvoice.ios
 				return invoice.Attachments.Count + 1;
 			else if (section == 5)  // note
 				return 1;
-			else if (section == 6) // signature
+			else if (section == 6) // payment
+				return 1;
+			else if (section == 7) // signature
 				return 1;
 
 			return 0;
@@ -328,6 +333,9 @@ namespace MobileInvoice.ios
 				return " ";
 
 			if (section == 5)
+				return " ";
+
+			if (section == 6)
 				return " ";
 
 
@@ -426,8 +434,16 @@ namespace MobileInvoice.ios
 					cell.Tag = 1001;
 					return cell;
 				}
+			}else if (indexPath.Section == 6) // payment
+			{
+				if (indexPath.Row == 0)
+				{
+					InvoicePaymentCell cell = this.TableView.DequeueReusableCell("InvoicePaymentCell") as InvoicePaymentCell;
+	
+					return cell;
+				}
 			}
-			else if (indexPath.Section == 6) // signature
+			else if (indexPath.Section == 7) // signature
 			{
 				InvoiceSignatureCell cell = this.TableView.DequeueReusableCell("InvoiceSignatureCell") as InvoiceSignatureCell;
 

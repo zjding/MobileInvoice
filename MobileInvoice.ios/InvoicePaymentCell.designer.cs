@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
-namespace SignaturePad
+namespace MobileInvoice.ios
 {
-    [Register ("SignaturePadView")]
-    partial class SignaturePadView
+    [Register ("InvoicePaymentCell")]
+    partial class InvoicePaymentCell
     {
         void ReleaseDesignerOutlets ()
         {
