@@ -68,11 +68,8 @@ namespace MobileInvoice.ios
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)
 		{
 
-			var header = headerView as UITableViewHeaderFooterView;
 
-			header.TextLabel.TextColor = UIColor.LightGray;
-			//header.TextLabel.Font = UIFont.BoldSystemFontOfSize(12)
-			header.TextLabel.Font = UIFont.FromName("AvenirNext-Bold", 12);
+
 		}
 
 		public override nint NumberOfSections(UITableView tableView)

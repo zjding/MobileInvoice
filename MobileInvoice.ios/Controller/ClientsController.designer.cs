@@ -16,7 +16,7 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIBarButtonItem btnAdd { get; set; }
+        public UIKit.UIBarButtonItem btnAdd { get; set; }
 
         [Action ("btnAdd_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]

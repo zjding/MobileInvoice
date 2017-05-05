@@ -16,11 +16,11 @@ namespace iCloudPlayground
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnSave { get; set; }
+        public UIKit.UIButton btnSave { get; set; }
 
         [Action ("btnSave_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void btnSave_UpInside (UIKit.UIButton sender);
+        partial void btnSave_UpInside (public UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {

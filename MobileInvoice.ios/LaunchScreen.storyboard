@@ -84,6 +84,8 @@
         <image name="Images/Search-20-white.png" width="22" height="22"/>
         <image name="Images/Checkmark-20-white.png" width="20" height="20"/>
         <image name="Images/Date Span-20-white.png" width="22" height="22"/>
+        <image name="Images/PayPal-50.png" width="50" height="50"/>
+        <image name="Images/PayPal-25.png" width="25" height="25"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.14509803921568629" green="0.41176470588235292" blue="0.69019607843137254" alpha="1"/>
 </document>

@@ -11,19 +11,11 @@ using UIKit;
 
 namespace MobileInvoice.ios
 {
-    [Register ("InvoiceNoteController")]
-    partial class InvoiceNoteController
+    [Register ("InvoicePaymentController")]
+    partial class InvoicePaymentController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UITextView txtNote { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (txtNote != null) {
-                txtNote.Dispose ();
-                txtNote = null;
-            }
         }
     }
 }
