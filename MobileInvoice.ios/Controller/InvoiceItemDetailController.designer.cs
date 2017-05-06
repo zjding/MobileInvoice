@@ -16,23 +16,23 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIBarButtonItem btnCancel { get; set; }
+      public UIKit.UIBarButtonItem btnCancel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIButton btnDelete { get; set; }
+      public UIKit.UIButton btnDelete { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIBarButtonItem btnSave { get; set; }
+      public UIKit.UIBarButtonItem btnSave { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UISwitch swSave { get; set; }
+      public UIKit.UISwitch swSave { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UISwitch swTaxable { get; set; }
+      public UIKit.UISwitch swTaxable { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -40,7 +40,7 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UITextView txtNote { get; set; }
+      public UIKit.UITextView txtNote { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -52,7 +52,7 @@ namespace MobileInvoice.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIView vwUnder1 { get; set; }
+      public UIKit.UIView vwUnder1 { get; set; }
 
         [Action ("btnCancel_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]

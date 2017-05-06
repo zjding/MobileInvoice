@@ -16,7 +16,7 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIImageView imgSignature { get; set; }
+      public UIKit.UIImageView imgSignature { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

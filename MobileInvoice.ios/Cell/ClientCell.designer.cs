@@ -16,7 +16,7 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UILabel lblName { get; set; }
+      public UIKit.UILabel lblName { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

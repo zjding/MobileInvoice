@@ -16,23 +16,23 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIBarButtonItem btnCancel { get; set; }
+      public UIKit.UIBarButtonItem btnCancel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIButton btnDelete { get; set; }
+      public UIKit.UIButton btnDelete { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIButton btnImage { get; set; }
+      public UIKit.UIButton btnImage { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIBarButtonItem btnSave { get; set; }
+      public UIKit.UIBarButtonItem btnSave { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        public UIKit.UIImageView imgImage { get; set; }
+      public UIKit.UIImageView imgImage { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
