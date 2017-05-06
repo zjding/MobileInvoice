@@ -9,6 +9,21 @@ namespace MobileInvoice.ios
         public InvoicePaymentController (IntPtr handle) : base (handle)
         {
         }
+		 
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			UIBarButtonItem btnBack = new UIBarButtonItem(UIImage.FromFile("Images/Left-30-green.png"), UIBarButtonItemStyle.Plain, (sender, e) =>
+				{
+							//await SaveNote();
+							callingController.invoice.Note = this.txtNote.Text;
+					NavigationController.PopViewController(true);
+				}
+			);
+
+			NavigationItem.LeftBarButtonItem = btnBack;t
+		}
 
 
 		public override void WillDisplayHeaderView(UITableView tableView, UIView headerView, nint section)

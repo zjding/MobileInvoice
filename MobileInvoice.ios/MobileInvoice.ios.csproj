@@ -293,8 +293,8 @@
     <Compile Include="InvoicePaymentCell.designer.cs">
       <DependentUpon>InvoicePaymentCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoicePaymentController.cs" />
-    <Compile Include="InvoicePaymentController.designer.cs">
+    <Compile Include="Controller\InvoicePaymentController.cs" />
+    <Compile Include="Controller\InvoicePaymentController.designer.cs">
       <DependentUpon>InvoicePaymentController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -364,6 +364,8 @@
     <BundleResource Include="Images\Date Span-20-white.png" />
     <BundleResource Include="Images\PayPal-50.png" />
     <BundleResource Include="Images\PayPal-25.png" />
+    <BundleResource Include="Images\Paycheque-25-green.png" />
+    <BundleResource Include="Images\Bank-25-green.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
