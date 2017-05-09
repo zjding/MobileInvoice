@@ -2314,6 +2314,11 @@
         <image name="Images/PayPal-25.png" width="25" height="25"/>
         <image name="Images/Paycheque-25-green.png" width="25" height="25"/>
         <image name="Images/Bank-25-green.png" width="25" height="25"/>
+        <image name="Images/Save-25-green.png" width="25" height="25"/>
+        <image name="Images/Email-25-green.png" width="25" height="25"/>
+        <image name="Images/Chat-25-green.png" width="25" height="25"/>
+        <image name="Images/PDF-25-green.png" width="25" height="25"/>
+        <image name="Images/Share-25-green.png" width="25" height="25"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.18823529411764706" green="0.69019607843137254" blue="0.52941176470588236" alpha="1"/>
 </document>

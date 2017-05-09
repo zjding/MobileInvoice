@@ -63,8 +63,8 @@ namespace MobileInvoice.ios
  				{
 					UIAlertController actionSheetAlert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
 
-					// Add Actions
-					actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, async(action) =>
+					// save
+					var saveAction = UIAlertAction.Create("Save", UIAlertActionStyle.Default, async (action) =>
 					{
 						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 						this.View.Add(_loadingOverlay);
@@ -74,8 +74,81 @@ namespace MobileInvoice.ios
 						await CK_SaveInvoice();
 						_loadingOverlay.Hide();
 
-						NavigationController.PopViewController(true);
-					}));
+						DismissViewController(true, null);
+					});
+
+					saveAction.SetValueForKey(UIImage.FromFile("Images/Save-25-green.png"), (NSString)"image");
+					saveAction.SetValueForKey(UIColor.Black, (NSString)"titleTextColor");
+					actionSheetAlert.AddAction(saveAction);
+
+					// preview
+					var previewAction = UIAlertAction.Create("Preview", UIAlertActionStyle.Default, async (action) =>
+					{
+						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+						this.View.Add(_loadingOverlay);
+
+						BuildInvoice();
+
+						await CK_SaveInvoice();
+						_loadingOverlay.Hide();
+
+						DismissViewController(true, null);
+					});
+
+					previewAction.SetValueForKey(UIImage.FromFile("Images/PDF-25-green.png"), (NSString)"image");
+					actionSheetAlert.AddAction(previewAction);
+
+					// message
+					var messageAction = UIAlertAction.Create("Message", UIAlertActionStyle.Default, async (action) =>
+					{
+						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+						this.View.Add(_loadingOverlay);
+
+						BuildInvoice();
+
+						await CK_SaveInvoice();
+						_loadingOverlay.Hide();
+
+						DismissViewController(true, null);
+					});
+
+					messageAction.SetValueForKey(UIImage.FromFile("Images/Chat-25-green.png"), (NSString)"image");
+					actionSheetAlert.AddAction(messageAction);
+
+					// email
+					var emailAction = UIAlertAction.Create("Email", UIAlertActionStyle.Default, async (action) =>
+					{
+						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+						this.View.Add(_loadingOverlay);
+
+						BuildInvoice();
+
+						await CK_SaveInvoice();
+						_loadingOverlay.Hide();
+
+						DismissViewController(true, null);
+					});
+
+					emailAction.SetValueForKey(UIImage.FromFile("Images/Email-25-green.png"), (NSString)"image");
+					actionSheetAlert.AddAction(emailAction);
+
+					// share
+					var shareAction = UIAlertAction.Create("Share", UIAlertActionStyle.Default, async (action) =>
+					{
+						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
+						this.View.Add(_loadingOverlay);
+
+						BuildInvoice();
+
+						await CK_SaveInvoice();
+						_loadingOverlay.Hide();
+
+						DismissViewController(true, null);
+					});
+
+					shareAction.SetValueForKey(UIImage.FromFile("Images/Share-25-green.png"), (NSString)"image");
+					actionSheetAlert.AddAction(shareAction);
+
 
 					actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
 
@@ -521,7 +594,8 @@ namespace MobileInvoice.ios
 			UIAlertController actionSheetAlert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
 
 			// Add Actions
-			actionSheetAlert.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, async (action) =>
+
+			var action1 = UIAlertAction.Create("Save", UIAlertActionStyle.Default, async (action) =>
 			{
 				LoadingOverlay loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
 				this.View.Add(loadingOverlay);
@@ -534,7 +608,11 @@ namespace MobileInvoice.ios
 				loadingOverlay.Hide();
 
 				DismissViewController(true, null);
-			}));
+			});
+
+
+			action1.SetValueForKey(UIImage.FromFile("Images/Left-30-green.png"), (NSString)"image");
+			actionSheetAlert.AddAction(action1);
 
 			//			actionSheetAlert.AddAction(UIAlertAction.Create("New Estimate", UIAlertActionStyle.Default, (action) =>
 			//			{
@@ -553,6 +631,7 @@ namespace MobileInvoice.ios
 			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
 
 			actionSheetAlert.View.TintColor = UIColor.FromRGB(26, 188, 156);
+
 
 			this.PresentViewController(actionSheetAlert, true, null);
 		}
