@@ -16,19 +16,19 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblItemName { get; set; }
+        UIKit.UILabel lblItemName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblNum { get; set; }
+        UIKit.UILabel lblNum { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblTotalPrice { get; set; }
+        UIKit.UILabel lblTotalPrice { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblUnitPrice { get; set; }
+        UIKit.UILabel lblUnitPrice { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

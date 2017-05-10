@@ -16,15 +16,15 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIBarButtonItem btnClose { get; set; }
+        UIKit.UIBarButtonItem btnClose { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIBarButtonItem btnMore { get; set; }
+        UIKit.UIBarButtonItem btnMore { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtInvoiceName { get; set; }
+        UIKit.UITextField txtInvoiceName { get; set; }
 
         [Action ("btnClose_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]

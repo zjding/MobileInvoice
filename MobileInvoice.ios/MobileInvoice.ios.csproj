@@ -372,6 +372,10 @@
     <BundleResource Include="Images\Chat-25-green.png" />
     <BundleResource Include="Images\PDF-25-green.png" />
     <BundleResource Include="Images\Share-25-green.png" />
+    <BundleResource Include="Resources\invoice.html" />
+    <BundleResource Include="Resources\last_item.html" />
+    <BundleResource Include="Resources\single_item.html" />
+    <BundleResource Include="Resources\google.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">

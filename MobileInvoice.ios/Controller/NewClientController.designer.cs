@@ -16,55 +16,55 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIBarButtonItem btnCancel { get; set; }
+        UIKit.UIBarButtonItem btnCancel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIButton btnDelete { get; set; }
+        UIKit.UIButton btnDelete { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIBarButtonItem btnSave { get; set; }
+        UIKit.UIBarButtonItem btnSave { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIImageView imgContact { get; set; }
+        UIKit.UIImageView imgContact { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtCity { get; set; }
+        UIKit.UITextField txtCity { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtCountry { get; set; }
+        UIKit.UITextField txtCountry { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtEmail { get; set; }
+        UIKit.UITextField txtEmail { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtName { get; set; }
+        UIKit.UITextField txtName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtPhone { get; set; }
+        UIKit.UITextField txtPhone { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtPostal { get; set; }
+        UIKit.UITextField txtPostal { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtState { get; set; }
+        UIKit.UITextField txtState { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtStreet1 { get; set; }
+        UIKit.UITextField txtStreet1 { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtStreet2 { get; set; }
+        UIKit.UITextField txtStreet2 { get; set; }
 
         [Action ("btnCancel_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
