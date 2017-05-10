@@ -16,7 +16,7 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView txtNote { get; set; }
+      public UIKit.UITextView txtNote { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

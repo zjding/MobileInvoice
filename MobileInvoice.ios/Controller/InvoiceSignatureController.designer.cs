@@ -16,7 +16,7 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnBack { get; set; }
+      public UIKit.UIButton btnBack { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

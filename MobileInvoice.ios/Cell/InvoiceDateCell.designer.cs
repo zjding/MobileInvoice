@@ -16,11 +16,11 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnDueTerm { get; set; }
+      public UIKit.UIButton btnDueTerm { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnIssueDate { get; set; }
+      public UIKit.UIButton btnIssueDate { get; set; }
 
         [Action ("btnDueTerm_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]

@@ -93,6 +93,7 @@
         <image name="Images/Chat-25-green.png" width="25" height="25"/>
         <image name="Images/PDF-25-green.png" width="25" height="25"/>
         <image name="Images/Share-25-green.png" width="25" height="25"/>
+        <image name="google.png" width="272" height="92"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.14509803921568629" green="0.41176470588235292" blue="0.69019607843137254" alpha="1"/>
 </document>

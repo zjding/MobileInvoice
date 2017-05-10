@@ -16,11 +16,11 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView imgAttachment { get; set; }
+      public UIKit.UIImageView imgAttachment { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblDescription { get; set; }
+      public UIKit.UILabel lblDescription { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
