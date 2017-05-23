@@ -78,7 +78,7 @@ namespace MobileInvoice.ios
 					});
 
 					saveAction.SetValueForKey(UIImage.FromFile("Images/Save-25-green.png"), (NSString)"image");
-					saveAction.SetValueForKey(UIColor.DarkGray, (NSString)"titleTextColor");
+					saveAction.SetValueForKey(UIColor.Black, (NSString)"titleTextColor");
 					actionSheetAlert.AddAction(saveAction);
 
 					// preview
@@ -96,7 +96,6 @@ namespace MobileInvoice.ios
 					});
 
 					previewAction.SetValueForKey(UIImage.FromFile("Images/PDF-25-green.png"), (NSString)"image");
-					previewAction.SetValueForKey(UIColor.DarkGray, (NSString)"titleTextColor");
 					actionSheetAlert.AddAction(previewAction);
 
 					// message
@@ -114,7 +113,6 @@ namespace MobileInvoice.ios
 					});
 
 					messageAction.SetValueForKey(UIImage.FromFile("Images/Chat-25-green.png"), (NSString)"image");
-					messageAction.SetValueForKey(UIColor.DarkGray, (NSString)"titleTextColor");
 					actionSheetAlert.AddAction(messageAction);
 
 					// email
@@ -132,7 +130,6 @@ namespace MobileInvoice.ios
 					});
 
 					emailAction.SetValueForKey(UIImage.FromFile("Images/Email-25-green.png"), (NSString)"image");
-					emailAction.SetValueForKey(UIColor.DarkGray, (NSString)"titleTextColor");
 					actionSheetAlert.AddAction(emailAction);
 
 					// share
@@ -150,26 +147,10 @@ namespace MobileInvoice.ios
 					});
 
 					shareAction.SetValueForKey(UIImage.FromFile("Images/Share-25-green.png"), (NSString)"image");
-					shareAction.SetValueForKey(UIColor.DarkGray, (NSString)"titleTextColor");
 					actionSheetAlert.AddAction(shareAction);
 
-					// Cancel
-					var cancelAction = UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, async (action) =>
-					{
-						LoadingOverlay _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds);
-						this.View.Add(_loadingOverlay);
 
-						BuildInvoice();
-
-						await CK_SaveInvoice();
-						_loadingOverlay.Hide();
-
-						DismissViewController(true, null);
-					});
-
-					cancelAction.SetValueForKey(UIColor.DarkGray, (NSString)"titleTextColor");
-					actionSheetAlert.AddAction(cancelAction);
-
+					actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
 
 					actionSheetAlert.View.TintColor = UIColor.FromRGB(26, 188, 156);
 

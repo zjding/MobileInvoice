@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
@@ -16,11 +16,11 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIImageView imgAttachment { get; set; }
+        public UIKit.UIImageView imgAttachment { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblDescription { get; set; }
+        public UIKit.UILabel lblDescription { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

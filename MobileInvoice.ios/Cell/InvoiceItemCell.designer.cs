@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
@@ -16,19 +16,19 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblItemName { get; set; }
+        public UIKit.UILabel lblItemName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblNum { get; set; }
+        public UIKit.UILabel lblNum { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblTotalPrice { get; set; }
+        public UIKit.UILabel lblTotalPrice { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UILabel lblUnitPrice { get; set; }
+        public UIKit.UILabel lblUnitPrice { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

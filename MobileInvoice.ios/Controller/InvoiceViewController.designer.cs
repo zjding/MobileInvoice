@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
@@ -16,15 +16,15 @@ namespace MobileInvoice.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIBarButtonItem btnClose { get; set; }
+        UIKit.UIBarButtonItem btnClose { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UIBarButtonItem btnMore { get; set; }
+        UIKit.UIBarButtonItem btnMore { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-      public UIKit.UITextField txtInvoiceName { get; set; }
+        UIKit.UITextField txtInvoiceName { get; set; }
 
         [Action ("btnClose_UpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
