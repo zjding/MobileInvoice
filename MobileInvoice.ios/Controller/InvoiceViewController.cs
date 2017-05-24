@@ -77,7 +77,7 @@ namespace MobileInvoice.ios
 						DismissViewController(true, null);
 					});
 
-					saveAction.SetValueForKey(UIImage.FromFile("Images/Save-25-green.png"), (NSString)"image");
+					saveAction.SetValueForKey(UIImage.FromBundle("Save"), (NSString)"image");
 					saveAction.SetValueForKey(UIColor.Black, (NSString)"titleTextColor");
 					actionSheetAlert.AddAction(saveAction);
 
@@ -95,7 +95,7 @@ namespace MobileInvoice.ios
 						DismissViewController(true, null);
 					});
 
-					previewAction.SetValueForKey(UIImage.FromFile("Images/PDF-25-green.png"), (NSString)"image");
+					previewAction.SetValueForKey(UIImage.FromBundle("Pdf"), (NSString)"image");
 					actionSheetAlert.AddAction(previewAction);
 
 					// message
@@ -112,7 +112,7 @@ namespace MobileInvoice.ios
 						DismissViewController(true, null);
 					});
 
-					messageAction.SetValueForKey(UIImage.FromFile("Images/Chat-25-green.png"), (NSString)"image");
+					messageAction.SetValueForKey(UIImage.FromBundle("Message"), (NSString)"image");
 					actionSheetAlert.AddAction(messageAction);
 
 					// email
@@ -129,7 +129,7 @@ namespace MobileInvoice.ios
 						DismissViewController(true, null);
 					});
 
-					emailAction.SetValueForKey(UIImage.FromFile("Images/Email-25-green.png"), (NSString)"image");
+					emailAction.SetValueForKey(UIImage.FromBundle("Mail"), (NSString)"image");
 					actionSheetAlert.AddAction(emailAction);
 
 					// share
@@ -146,7 +146,7 @@ namespace MobileInvoice.ios
 						DismissViewController(true, null);
 					});
 
-					shareAction.SetValueForKey(UIImage.FromFile("Images/Share-25-green.png"), (NSString)"image");
+					shareAction.SetValueForKey(UIImage.FromBundle("Action"), (NSString)"image");
 					actionSheetAlert.AddAction(shareAction);
 
 

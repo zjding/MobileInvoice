@@ -2319,6 +2319,26 @@
         <image name="Images/Chat-25-green.png" width="25" height="25"/>
         <image name="Images/PDF-25-green.png" width="25" height="25"/>
         <image name="Images/Share-25-green.png" width="25" height="25"/>
+        <image name="ImageFiles/Action-25-green.png" width="25" height="25"/>
+        <image name="ImageFiles/Action-50-green.png" width="50" height="50"/>
+        <image name="ImageFiles/Action-75-green.png" width="75" height="75"/>
+        <image name="Action" width="25" height="25"/>
+        <image name="ImageFiles/Mail-25-green.png" width="25" height="25"/>
+        <image name="ImageFiles/Mail-50-green.png" width="50" height="50"/>
+        <image name="ImageFiles/Mail-75-green.png" width="75" height="75"/>
+        <image name="Mail" width="25" height="25"/>
+        <image name="ImageFiles/Message-75-green.png" width="75" height="75"/>
+        <image name="ImageFiles/Message-50-green.png" width="50" height="50"/>
+        <image name="ImageFiles/Message-25-green.png" width="25" height="25"/>
+        <image name="Message" width="25" height="25"/>
+        <image name="ImageFiles/Pdf-25-green.png" width="25" height="25"/>
+        <image name="ImageFiles/Pdf-50-green.png" width="50" height="50"/>
+        <image name="ImageFiles/Pdf-75-green.png" width="75" height="75"/>
+        <image name="Pdf" width="25" height="25"/>
+        <image name="ImageFiles/Save-75-green.png" width="75" height="75"/>
+        <image name="ImageFiles/Save-50-green.png" width="50" height="50"/>
+        <image name="ImageFiles/Save-25-green.png" width="25" height="25"/>
+        <image name="Save" width="25" height="25"/>
     </resources>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.18823529411764706" green="0.69019607843137254" blue="0.52941176470588236" alpha="1"/>
 </document>

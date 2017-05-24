@@ -139,6 +139,26 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Docs%40180w.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Action.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Action.imageset\Action-25-green.png" />
+    <ImageAsset Include="Assets.xcassets\Action.imageset\Action-50-green.png" />
+    <ImageAsset Include="Assets.xcassets\Action.imageset\Action-75-green.png" />
+    <ImageAsset Include="Assets.xcassets\Mail.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Mail.imageset\Mail-25-green.png" />
+    <ImageAsset Include="Assets.xcassets\Mail.imageset\Mail-50-green.png" />
+    <ImageAsset Include="Assets.xcassets\Mail.imageset\Mail-75-green.png" />
+    <ImageAsset Include="Assets.xcassets\Message.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Message.imageset\Message-25-green.png" />
+    <ImageAsset Include="Assets.xcassets\Message.imageset\Message-50-green.png" />
+    <ImageAsset Include="Assets.xcassets\Message.imageset\Message-75-green.png" />
+    <ImageAsset Include="Assets.xcassets\Pdf.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Pdf.imageset\Pdf-25-green.png" />
+    <ImageAsset Include="Assets.xcassets\Pdf.imageset\Pdf-50-green.png" />
+    <ImageAsset Include="Assets.xcassets\Pdf.imageset\Pdf-75-green.png" />
+    <ImageAsset Include="Assets.xcassets\Save.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Save.imageset\Save-25-green.png" />
+    <ImageAsset Include="Assets.xcassets\Save.imageset\Save-50-green.png" />
+    <ImageAsset Include="Assets.xcassets\Save.imageset\Save-75-green.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -148,6 +168,12 @@
     <Folder Include="Cell\" />
     <Folder Include="Helper\" />
     <Folder Include="Model\" />
+    <Folder Include="ImageFiles\" />
+    <Folder Include="Assets.xcassets\Action.imageset\" />
+    <Folder Include="Assets.xcassets\Mail.imageset\" />
+    <Folder Include="Assets.xcassets\Message.imageset\" />
+    <Folder Include="Assets.xcassets\Pdf.imageset\" />
+    <Folder Include="Assets.xcassets\Save.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -373,6 +399,21 @@
     <BundleResource Include="Images\Chat-25-green.png" />
     <BundleResource Include="Images\PDF-25-green.png" />
     <BundleResource Include="Images\Share-25-green.png" />
+    <BundleResource Include="ImageFiles\Action-75-green.png" />
+    <BundleResource Include="ImageFiles\Action-50-green.png" />
+    <BundleResource Include="ImageFiles\Action-25-green.png" />
+    <BundleResource Include="ImageFiles\Mail-25-green.png" />
+    <BundleResource Include="ImageFiles\Mail-50-green.png" />
+    <BundleResource Include="ImageFiles\Mail-75-green.png" />
+    <BundleResource Include="ImageFiles\Message-75-green.png" />
+    <BundleResource Include="ImageFiles\Message-50-green.png" />
+    <BundleResource Include="ImageFiles\Message-25-green.png" />
+    <BundleResource Include="ImageFiles\Pdf-25-green.png" />
+    <BundleResource Include="ImageFiles\Pdf-50-green.png" />
+    <BundleResource Include="ImageFiles\Pdf-75-green.png" />
+    <BundleResource Include="ImageFiles\Save-75-green.png" />
+    <BundleResource Include="ImageFiles\Save-50-green.png" />
+    <BundleResource Include="ImageFiles\Save-25-green.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
