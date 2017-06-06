@@ -325,6 +325,14 @@
       <DependentUpon>InvoicePaymentController.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\SRActionSheet.cs" />
+    <Compile Include="InvoicePreviewController.cs" />
+    <Compile Include="InvoicePreviewController.designer.cs">
+      <DependentUpon>InvoicePreviewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePreviewNavigationController.cs" />
+    <Compile Include="InvoicePreviewNavigationController.designer.cs">
+      <DependentUpon>InvoicePreviewNavigationController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Bar Chart-50.png" />
