@@ -2283,7 +2283,7 @@
         </scene>
         <scene sceneID="4998">
             <objects>
-                <viewController id="4999" sceneMemberID="viewController">
+                <viewController id="4999" sceneMemberID="viewController" customClass="InvoicePDFPreviewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4996"/>
                         <viewControllerLayoutGuide type="bottom" id="4997"/>
@@ -2305,6 +2305,9 @@
                         </constraints>
                     </view>
                     <navigationItem title="Title" id="5072" key="navigationItem"/>
+                    <connections>
+                        <outlet property="wvPDF" destination="5075" id="name-outlet-5075"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5001" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,11 +11,19 @@ using UIKit;
 
 namespace MobileInvoice.ios
 {
-    [Register ("InvoicePreviewController")]
-    partial class InvoicePreviewController
+    [Register ("InvoicePDFPreviewController")]
+    partial class InvoicePDFPreviewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIWebView wvPDF { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (wvPDF != null) {
+                wvPDF.Dispose ();
+                wvPDF = null;
+            }
         }
     }
 }

@@ -101,6 +101,15 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="XamiTextSharpLGPL.iOS">
+      <HintPath>..\packages\Xam.iTextSharpLGPL.0.1.0\lib\Xamarin.iOS10\XamiTextSharpLGPL.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.11\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -325,13 +334,9 @@
       <DependentUpon>InvoicePaymentController.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\SRActionSheet.cs" />
-    <Compile Include="InvoicePreviewController.cs" />
-    <Compile Include="InvoicePreviewController.designer.cs">
-      <DependentUpon>InvoicePreviewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvoicePreviewNavigationController.cs" />
-    <Compile Include="InvoicePreviewNavigationController.designer.cs">
-      <DependentUpon>InvoicePreviewNavigationController.cs</DependentUpon>
+    <Compile Include="InvoicePDFPreviewController.cs" />
+    <Compile Include="InvoicePDFPreviewController.designer.cs">
+      <DependentUpon>InvoicePDFPreviewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
